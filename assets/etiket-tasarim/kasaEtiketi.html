@@ -1,0 +1,118 @@
+`
+<html>
+
+<head>
+   <meta charset="utf-8" />
+   <style>
+      @page {
+         size: auto portrait;
+         margin: 3mm 3mm 3mm 3mm;
+      }
+
+      body {
+         padding: 0px !important;
+         margin: 0px !important;
+         font-size: 12px;
+      }
+
+      table,
+      tr,
+      td {
+         border: 1px solid;
+         border-spacing: 0;
+      }
+
+      table {
+         table-layout: fixed;
+         margin: 0;
+         width: 100%;
+      }
+
+      .center {
+         text-align: center;
+         vertical-align: middle;
+      }
+
+      tr {
+         width: 100%;
+      }
+
+      td {
+         padding: 2px;
+         text-align: left;
+         word-wrap: break-word;
+      }
+
+      td.title {
+         font-weight: bolder;
+         width: 140px;
+      }
+
+      .h-1x {
+         height: 15px;
+      }
+
+      .h-2x {
+         height: 40px;
+      }
+
+      .h-3x {
+         height: 50px;
+      }
+
+      .h-4x {
+         height: 60px;
+      }
+
+      .h-5x {
+         height: 150px;
+      }
+
+      .font-size-lg {
+         font-size: 150px;
+         font-weight: bolder;
+      }
+   </style>
+</head>
+
+<body>
+   <table>
+      <tbody>
+         <tr class="h-1x">
+            <td class="title">Kasalanma Zamanı</td>
+            <td>${data.kasalanmaZamani}</td>
+         </tr>
+         <tr class="h-5x">
+            <td colspan="2" class="h-5x center font-size-lg">
+               ${data.kasaNo}
+            </td>
+         </tr>
+         <!-- <tr class="h-4x">
+            <td class="title">
+               Sipariş Numarası
+            </td>
+            <td>${data.siparisSiraNolari}</td>
+         </tr> -->
+         <tr class="h-1x">
+            <td class="title">Kasa İçi Miktar</td>
+            <td>${data.kasaIciMiktar}</td>
+         </tr>
+         <tr class="h-1x">
+            <td class="title">Firma Kodu</td>
+            <td>${data.companyCode}</td>
+         </tr>
+         <tr class="h-1x">
+            <td class="title">Firma Adı</td>
+            <td>${data.companyName}</td>
+         </tr>
+         <tr>
+            <td colspan="2" class="center">
+               <img  class="h-3x" src="${qrUrl}" />
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</body>
+
+</html>
+`
