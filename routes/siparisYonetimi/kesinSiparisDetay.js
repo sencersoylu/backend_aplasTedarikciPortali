@@ -189,6 +189,11 @@ router.post('/create', async function (req, res) {
 
     const data = req.body.data;
     const userData = req.body.userData;
+    const userFirmaTurID = userData.userFirmaTurID;
+
+    if(userFirmaTurID == 2){
+        return res.status(400).json("tedarikçi sipariş detayı ekleyemez!");
+    }
 
     const mevcutKalemler = await db.sequelize.query(`SELECT * FROM ${table} WHERE ${parentKeyExpr} = ${userData.parentID} AND urunYonetimiUreticiUrunID = ${data.urunYonetimiUreticiUrunID} AND genelOlcuBirimiID = ${data.genelOlcuBirimiID}`, { type: db.Sequelize.QueryTypes.SELECT })
         .catch(err => {

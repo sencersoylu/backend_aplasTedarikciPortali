@@ -179,7 +179,23 @@ router.post('/getEtiket', async function (req, res) {
         return;
     }
 
-    let rawQuery = "SELECT 'testStokNo' as stokNo, 'testStokNo' as stokNoBarcodeValue, 'testTedarikçiÜrünKodu' as resimNo, 'testUrunAdi' as tanim, 'testLotNo' as lotNo, 'testLotNo' as lotNoBarcodeValue, 'testTedarikçiFirmaAdi' as firma, '08.04.2021' as tarih, 'testIrsaliyeNo' as irsaliyeNo";
+    let rawQuery = `
+SELECT
+	det.urunKodu AS stokNo,
+	det.urunKodu AS stokNoBarcodeValue,
+	det.tedarikciUrunKodu AS resimNo,
+	det.urunAdi AS tanim,
+	'testLotNo' AS lotNo,
+	'testLotNo' AS lotNoBarcodeValue,
+	ir.tedarikciFirmaAdi AS firma,
+	DATE_FORMAT( NOW(), '%d.%m.%Y %H:%i' ) AS tarih,
+	ir.irsaliyeNo AS irsaliyeNo
+FROM
+	sevkiyat_yonetimi_irsaliye AS ir
+LEFT JOIN sevkiyat_yonetimi_irsaliye_detay AS det ON det.sevkiyatYonetimiIrsaliyeID = ir.sevkiyatYonetimiIrsaliyeID
+WHERE
+	det.sevkiyatYonetimiIrsaliyeDetayID = ${irsaliyeDetayID}
+    `;
 
     await crudHelper.getListR({
         data: filterData,

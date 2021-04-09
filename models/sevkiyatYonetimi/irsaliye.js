@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
 
-    // kesinleşmiş satınalma siparişe ait sevk irsaliyesi
+    // kesinleşmiş satınalma siparişine ait sevk irsaliyesi
     const model = sequelize.define('sevkiyat_yonetimi_irsaliye', {
 
         sevkiyatYonetimiIrsaliyeID: {
