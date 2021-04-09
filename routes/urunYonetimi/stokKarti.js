@@ -5,7 +5,44 @@ const crudHelper = require('../../helpers/crudHelper');
 const table = "urun_yonetimi_uretici_urun";
 const keyExpr = "urunYonetimiUreticiUrunID";
 
-router.post('/boxKesinSiparisDetay', async function(req, res) {
+router.post('/boxIrsaliyeDetay', async function (req, res) {
+
+    const filterData = req.body;
+
+    let rawQuery;
+
+
+    rawQuery = `
+        
+SELECT
+	kat.tedarikciUrunKodu, 
+	stok.adi as urunAdi,
+	stok.kodu as urunKodu,
+    stok.urunYonetimiUreticiUrunID
+FROM
+	siparis_yonetimi_kesin_siparis AS sip
+LEFT JOIN urun_yonetimi_mal_satis_katalogu AS kat ON sip.tedarikciFirmaID = sip.tedarikciFirmaID
+LEFT JOIN kullanici_firma_kullanici as kfk ON kfk.kullaniciFirmaID = sip.ureticiFirmaID
+LEFT JOIN ${table} AS stok ON stok.${keyExpr} = kat.${keyExpr}
+WHERE stok.${keyExpr} = ${filterData.ID}`;
+
+    await crudHelper.getListR({
+        data: filterData,
+        rawQuery: rawQuery
+    }, (data, err) => {
+        if (data) {
+            res.json(filterData.ID ? data.data[0] : data);
+        }
+
+        if (err) {
+            res.status(400).json(err);
+        }
+    });
+
+
+});
+
+router.post('/boxKesinSiparisDetay', async function (req, res) {
 
     const filterData = req.body;
 
@@ -60,7 +97,7 @@ WHERE stok.${keyExpr} = ${filterData.ID}`;
 
 });
 
-router.post('/boxMalSatisKatalogu', async function(req, res) {
+router.post('/boxMalSatisKatalogu', async function (req, res) {
 
     const filterData = req.body;
 

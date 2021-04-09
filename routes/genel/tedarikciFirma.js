@@ -5,6 +5,34 @@ const crudHelper = require('../../helpers/crudHelper');
 const table = "tedarikci_firma";
 const keyExpr = "tedarikciFirmaID";
 
+router.post('/boxIrsaliye', async function(req, res) {
+
+    const filterData = req.body;
+
+    let rawQuery;
+
+    if (!filterData.ID) { // liste
+        rawQuery = `SELECT t.* FROM ${table} as t ORDER BY firmaKodu ASC`;
+    } else { // tek kayıt
+        rawQuery = `SELECT t.* FROM ${table} as t WHERE t.${keyExpr} = ${filterData.ID}`;
+    }
+
+    await crudHelper.getListR({
+        data: filterData,
+        rawQuery: rawQuery
+    }, (data, err) => {
+        if (data) {
+            res.json(filterData.ID ? data.data[0] : data);
+        }
+
+        if (err) {
+            res.status(400).json(err);
+        }
+    });
+
+
+});
+
 router.post('/boxStokKartiTedarikciFirma', async function(req, res) {
 
     const filterData = req.body;

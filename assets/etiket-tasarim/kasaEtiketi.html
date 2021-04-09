@@ -38,7 +38,7 @@
       }
 
       td {
-         padding: 2px;
+         padding: 5px;
          text-align: left;
          word-wrap: break-word;
       }
@@ -78,38 +78,54 @@
 <body>
    <table>
       <tbody>
-         <tr class="h-1x">
-            <td class="title">Kasalanma Zamanı</td>
-            <td>${data.kasalanmaZamani}</td>
+         <tr class="h-2x">
+            <td class="title" colspan="2" style="text-align: center;">Aplas Malzeme Tanıtım Kartı</td>
          </tr>
-         <tr class="h-5x">
-            <td colspan="2" class="h-5x center font-size-lg">
-               ${data.kasaNo}
+         <tr class="h-4x">
+            <td class="title">Stok No</td>
+            <td>
+               <div style="display: flex; align-items:center;">
+                  <img class="h-3x" src="${qrUrlStokNo}" />
+                  <span style="margin-left: 20px;">${data.stokNo}</span>
+               </div>
             </td>
          </tr>
-         <!-- <tr class="h-4x">
-            <td class="title">
-               Sipariş Numarası
-            </td>
-            <td>${data.siparisSiraNolari}</td>
-         </tr> -->
-         <tr class="h-1x">
-            <td class="title">Kasa İçi Miktar</td>
-            <td>${data.kasaIciMiktar}</td>
+         <tr class="h-2x">
+            <td class="title">Resim No</td>
+            <td>${data.resimNo}</td>
          </tr>
-         <tr class="h-1x">
-            <td class="title">Firma Kodu</td>
-            <td>${data.companyCode}</td>
+
+         <tr class="h-2x">
+            <td class="title">Tanım</td>
+            <td>${data.tanim}</td>
          </tr>
-         <tr class="h-1x">
-            <td class="title">Firma Adı</td>
-            <td>${data.companyName}</td>
-         </tr>
-         <tr>
-            <td colspan="2" class="center">
-               <img  class="h-3x" src="${qrUrl}" />
+
+         <tr class="h-4x">
+            <td class="title">Lot No</td>
+            <td>
+            <div style="display: flex; align-items:center;">
+               <img class="h-4x" src="${qrUrlLotNo}" />
+               <span style="margin-left: 20px;">${data.lotNo}</span>
+            </div>
+               
             </td>
          </tr>
+
+         <tr class="h-2x">
+            <td class="title">Firma</td>
+            <td>${data.firma}</td>
+         </tr>
+
+         <tr class="h-2x">
+            <td class="title">Tarih</td>
+            <td>${data.tarih}</td>
+         </tr>
+
+         <tr class="h-2x">
+            <td class="title">İrsaliye No</td>
+            <td>${data.irsaliyeNo}</td>
+         </tr>
+
       </tbody>
    </table>
 </body>

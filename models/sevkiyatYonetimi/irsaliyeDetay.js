@@ -10,11 +10,12 @@ module.exports = (sequelize, DataTypes) => {
         sevkiyatYonetimiIrsaliyeID: DataTypes.INTEGER,
         miktar: DataTypes.DECIMAL(10,3), // sevk miktarı
         genelOlcuBirimiID: DataTypes.INTEGER,
-        genelUrunTasiyiciID: DataTypes.INTEGER,
+        urunYonetimiUreticiUrunID: DataTypes.INTEGER,
 
         tedarikciUrunKodu: DataTypes.STRING, // satıcı ürün kodu
         urunAdi: DataTypes.STRING, // alıcı ürün adı
         urunKodu: DataTypes.STRING, // alıcı ürün kodu
+
         createdUserID: DataTypes.STRING,
         updatedUserID: DataTypes.STRING,
         createdAt: {
@@ -38,9 +39,9 @@ module.exports = (sequelize, DataTypes) => {
             targetKey: 'genelOlcuBirimiID'
         });
 
-        model.belongsTo(models.genel_urun_tasiyici, {
-            foreignKey: 'genelUrunTasiyiciID',
-            targetKey: 'genelUrunTasiyiciID'
+        model.belongsTo(models.urun_yonetimi_uretici_urun, {
+            foreignKey: 'urunYonetimiUreticiUrunID',
+            targetKey: 'urunYonetimiUreticiUrunID'
         });
 
     };

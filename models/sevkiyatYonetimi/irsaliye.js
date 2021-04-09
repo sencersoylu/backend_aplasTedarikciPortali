@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
 
-    // kesinleşmiş satınalma siparişi
+    // kesinleşmiş satınalma siparişe ait sevk irsaliyesi
     const model = sequelize.define('sevkiyat_yonetimi_irsaliye', {
 
         sevkiyatYonetimiIrsaliyeID: {
@@ -68,11 +68,6 @@ module.exports = (sequelize, DataTypes) => {
         model.belongsTo(models.sevkiyat_yonetimi_irsaliye_durum, {
             foreignKey: 'sevkiyatYonetimiIrsaliyeDurumID',
             targetKey: 'sevkiyatYonetimiIrsaliyeDurumID'
-        });
-
-        model.belongsTo(models.sevkiyat_yonetimi_irsaliye, {
-            foreignKey: 'sonrakiIrsaliyeID',
-            targetKey: 'sevkiyatYonetimiIrsaliyeID'
         });
 
     };

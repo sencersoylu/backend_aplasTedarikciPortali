@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
         siparisMiktari: DataTypes.DECIMAL(10,3),
         siparisTeslimTarihi: DataTypes.DATE,
         genelOlcuBirimiID: DataTypes.INTEGER,
-        genelUrunTasiyiciID: DataTypes.INTEGER,
         urunYonetimiUreticiUrunID: DataTypes.INTEGER,
         tedarikciUrunKodu: DataTypes.STRING,
         stokAdi: DataTypes.STRING,
@@ -46,11 +45,6 @@ module.exports = (sequelize, DataTypes) => {
         model.belongsTo(models.genel_olcu_birimi, {
             foreignKey: 'genelOlcuBirimiID',
             targetKey: 'genelOlcuBirimiID'
-        });
-
-        model.belongsTo(models.genel_urun_tasiyici, {
-            foreignKey: 'genelUrunTasiyiciID',
-            targetKey: 'genelUrunTasiyiciID'
         });
 
     };

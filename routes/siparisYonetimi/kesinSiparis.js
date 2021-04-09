@@ -10,6 +10,67 @@ const keyExpr = "siparisYonetimiKesinSiparisID";
 const operasyonHareketiEkle = require('./kesinSiparisOperasyonKaydi');
 const durumGuncelle = require('./kesinSiparisDurumGuncelleme');
 
+router.post('/boxOperasyonDurum', async function (req, res) {
+    try {
+        console.log(`post request => ${req.originalUrl}`);
+
+        let body = req.body;
+        let ID = body.userData["userFirmaTurID"];
+
+        if (!ID) {
+            throw "firma tür ID boş olamaz!";
+        }
+
+        const aliciFirmaMi = ID == 1 ? true : false;
+        const fieldName = aliciFirmaMi ? 'aliciFirmaDurum' : 'saticiFirmaDurum';
+
+        db.sequelize.query(`SELECT ${fieldName} as durum FROM siparis_yonetimi_kesin_siparis_operasyon WHERE ${fieldName} IS NOT NULL GROUP BY ${fieldName}  ORDER BY siparisYonetimiKesinSiparisOperasyonID ASC`, { type: db.Sequelize.QueryTypes.SELECT })
+            .then(d => {
+                res.json(d);
+            })
+            .catch(e => {
+                console.log(e);
+                throw "Sorgulama esnasında hata oluştu!";
+            });
+
+
+    } catch (err) {
+        console.error(err);
+        res.status(400).json(err);
+    }
+});
+
+router.post('/siparisDurum', async function (req, res) {
+    try {
+        console.log(`post request => ${req.originalUrl}`);
+
+        let body = req.body;
+        let ID = body["ID"];
+
+        if (!ID) {
+            throw "sipariş ID boş olamaz!";
+        }
+
+        const oldRecord = (await db.sequelize.query(`SELECT t.siparisDurumID, MAX(har.siparisYonetimiKesinSiparisOperasyonID) as operasyonID FROM ${table} as t LEFT JOIN siparis_yonetimi_kesin_siparis_hareket as har ON har.${keyExpr} = t.${keyExpr}  WHERE t.${keyExpr} = ${ID} GROUP BY t.${keyExpr}`, { type: db.Sequelize.QueryTypes.SELECT })
+            .catch(e => {
+                console.log(e);
+                throw "Sorgulama esnasında hata oluştu!";
+            }))[0];
+
+        if (oldRecord) {
+            return res.json(oldRecord)
+        }
+        else {
+            throw "sipariş bulunamadı!";
+        }
+
+
+    } catch (err) {
+        console.error(err);
+        res.status(400).json(err);
+    }
+});
+
 router.post('/onayaCikar', async function (req, res) {
     try {
         console.log(`post request => ${req.originalUrl}`);
@@ -32,17 +93,13 @@ router.post('/onayaCikar', async function (req, res) {
         FROM ${table} as sip 
         LEFT JOIN (
             SELECT
-                siparisYonetimiKesinSiparisOperasyonID as operasyonID,
+            MAX(siparisYonetimiKesinSiparisOperasyonID) as operasyonID,
                 ${keyExpr}
         
             FROM
                 siparis_yonetimi_kesin_siparis_hareket
             GROUP BY
                 ${keyExpr}
-            HAVING
-                MAX(
-                    siparisYonetimiKesinSiparisHareketID
-                )
         ) AS sonHar ON sonHar.${keyExpr} = sip.${keyExpr} 
         WHERE sip.${keyExpr} = ${siparisID}`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
@@ -58,10 +115,18 @@ router.post('/onayaCikar', async function (req, res) {
             }
             else {
 
+                if(sipDurum['operasyonID'] != 2){
+                    throw "sipariş detayları eklendikten sonra onaya çıkarılmalıdır!"
+                }
+
                 // onaya çıkarma hareket kaydı
                 await operasyonHareketiEkle(siparisID, 3, req);
+                res.json("OK");
 
             }
+        }
+        else{
+            throw "sipariş içeriği olmadan onaya çıkarılamaz!";
         }
 
 
@@ -93,17 +158,13 @@ router.post('/iptalEt', async function (req, res) {
         FROM ${table} as sip 
         LEFT JOIN (
             SELECT
-                siparisYonetimiKesinSiparisOperasyonID as operasyonID,
+            MAX(siparisYonetimiKesinSiparisOperasyonID) as operasyonID,
                 ${keyExpr}
         
             FROM
                 siparis_yonetimi_kesin_siparis_hareket
             GROUP BY
                 ${keyExpr}
-            HAVING
-                MAX(
-                    siparisYonetimiKesinSiparisHareketID
-                )
         ) AS sonHar ON sonHar.${keyExpr} = sip.${keyExpr} 
         WHERE sip.${keyExpr} = ${siparisID}`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
@@ -152,17 +213,13 @@ router.post('/onayla', async function (req, res) {
         FROM ${table} as sip 
         LEFT JOIN (
             SELECT
-                siparisYonetimiKesinSiparisOperasyonID as operasyonID,
+            MAX(siparisYonetimiKesinSiparisOperasyonID) as operasyonID,
                 ${keyExpr}
         
             FROM
                 siparis_yonetimi_kesin_siparis_hareket
             GROUP BY
                 ${keyExpr}
-            HAVING
-                MAX(
-                    siparisYonetimiKesinSiparisHareketID
-                )
         ) AS sonHar ON sonHar.${keyExpr} = sip.${keyExpr} 
         WHERE sip.${keyExpr} = ${siparisID}`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
@@ -178,6 +235,10 @@ router.post('/onayla', async function (req, res) {
             }
             else if (sipDurum['siparisDurumID'] == 1) {
                 if(sipDurum['operasyonID'] == 3){
+
+                    if(firmaTurID == 1){
+                        throw "onaya çıkarılan sipariş, öncelikle satıcı tarafından onaylanmalıdır!"
+                    }
                     
                     // onay hareket kaydı
                     await operasyonHareketiEkle(siparisID, 5, req);
@@ -189,7 +250,7 @@ router.post('/onayla', async function (req, res) {
                     throw "taslak sipariş önce satıcı onayına sunulmalıdır!";
                 }
             }
-            else if (sipDurum['siparisDurumID'] == 4) {
+            else if (sipDurum['siparisDurumID'] == 4) { // şartlı onay
                 if (firmaTurID == 2) {
                     
                     // onay hareket kaydı
@@ -197,7 +258,7 @@ router.post('/onayla', async function (req, res) {
                 }
                 else if (firmaTurID == 1) {
 
-                    // onay hareket kaydı
+                    // alıcı onay hareket kaydı
                     await operasyonHareketiEkle(siparisID, 7, req);
 
                     // onay durum güncelleme
@@ -211,67 +272,7 @@ router.post('/onayla', async function (req, res) {
             }
         }
 
-
-    } catch (err) {
-        console.error(err);
-        res.status(400).json(err);
-    }
-});
-
-router.post('/boxOperasyonDurum', async function (req, res) {
-    try {
-        console.log(`post request => ${req.originalUrl}`);
-
-        let body = req.body;
-        let ID = body["turID"];
-
-        if (!ID) {
-            throw "firma tür ID boş olamaz!";
-        }
-
-        const aliciFirmaMi = ID == 1 ? true : false;
-        const fieldName = aliciFirmaMi ? 'aliciFirmaDurum' : 'saticiFirmaDurum';
-
-        db.sequelize.query(`SELECT ${fieldName} as durum FROM siparis_yonetimi_kesin_siparis_operasyon WHERE ${fieldName} IS NOT NULL GROUP BY ${fieldName}  ORDER BY siparisYonetimiKesinSiparisOperasyonID ASC`, { type: db.Sequelize.QueryTypes.SELECT })
-            .then(d => {
-                res.json(d);
-            })
-            .catch(e => {
-                console.log(e);
-                throw "Sorgulama esnasında hata oluştu!";
-            });
-
-
-    } catch (err) {
-        console.error(err);
-        res.status(400).json(err);
-    }
-});
-
-
-router.post('/siparisDurum', async function (req, res) {
-    try {
-        console.log(`post request => ${req.originalUrl}`);
-
-        let body = req.body;
-        let ID = body["ID"];
-
-        if (!ID) {
-            throw "sipariş ID boş olamaz!";
-        }
-
-        const oldRecord = (await db.sequelize.query(`SELECT t.siparisDurumID, har.siparisYonetimiKesinSiparisOperasyonID as operasyonID FROM ${table} as t LEFT JOIN siparis_yonetimi_kesin_siparis_hareket as har ON har.${keyExpr} = t.${keyExpr}  WHERE t.${keyExpr} = ${ID} GROUP BY t.${keyExpr} HAVING MAX(siparisYonetimiKesinSiparisHareketID)`, { type: db.Sequelize.QueryTypes.SELECT })
-            .catch(e => {
-                console.log(e);
-                throw "Sorgulama esnasında hata oluştu!";
-            }))[0];
-
-        if (oldRecord) {
-            return res.json(oldRecord)
-        }
-        else {
-            throw "sipariş bulunamadı!";
-        }
+        return res.json("OK");
 
 
     } catch (err) {
@@ -308,17 +309,13 @@ LEFT JOIN tedarikci_firma_adres AS tedAdres ON tedAdres.tedarikciFirmaAdresID = 
 LEFT JOIN kullanici_firma_adres AS uretAdres ON uretAdres.kullaniciFirmaAdresID = t.varisAdresiID
 LEFT JOIN (
 	SELECT
-		siparisYonetimiKesinSiparisOperasyonID,
+		MAX(siparisYonetimiKesinSiparisOperasyonID) as siparisYonetimiKesinSiparisOperasyonID,
 		${keyExpr}
 
 	FROM
 		siparis_yonetimi_kesin_siparis_hareket
 	GROUP BY
         ${keyExpr}
-	HAVING
-		MAX(
-			siparisYonetimiKesinSiparisHareketID
-		)
 ) AS sonHar ON sonHar.${keyExpr} = t.${keyExpr}
 LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon as oper ON oper.siparisYonetimiKesinSiparisOperasyonID = sonHar.siparisYonetimiKesinSiparisOperasyonID
 WHERE
@@ -345,20 +342,16 @@ LEFT JOIN tedarikci_firma_adres AS tedAdres ON tedAdres.tedarikciFirmaAdresID = 
 LEFT JOIN kullanici_firma_adres AS uretAdres ON uretAdres.kullaniciFirmaAdresID = t.varisAdresiID
 LEFT JOIN (
 	SELECT
-		siparisYonetimiKesinSiparisOperasyonID,
+		MAX(siparisYonetimiKesinSiparisOperasyonID) as siparisYonetimiKesinSiparisOperasyonID,
 		${keyExpr}
 	FROM
 		siparis_yonetimi_kesin_siparis_hareket
 	GROUP BY
         ${keyExpr}
-	HAVING
-		MAX(
-			siparisYonetimiKesinSiparisHareketID
-		)
 ) AS sonHar ON sonHar.${keyExpr} = t.${keyExpr}
 LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon as oper ON oper.siparisYonetimiKesinSiparisOperasyonID = sonHar.siparisYonetimiKesinSiparisOperasyonID
 WHERE
-	t.ureticiFirmaID = ${userFirmaID} AND t.siparisDurumID != 1
+	t.ureticiFirmaID = ${userFirmaID} AND sonHar.siparisYonetimiKesinSiparisOperasyonID > 2
 ORDER BY
 	t.${keyExpr} DESC`;
         }
@@ -402,7 +395,6 @@ router.post('/get', async function (req, res) {
     });
 
 });
-
 
 router.post('/create', async function (req, res) {
     try {
@@ -480,17 +472,21 @@ router.post('/delete', async function (req, res) {
 
         const id = req.body.ID;
 
-        const record = (await db.sequelize.query(`SELECT * FROM ${table} WHERE ${keyExpr} = ${id}`, { type: db.Sequelize.QueryTypes.SELECT })
+        const sipDurum = (await db.sequelize.query(`SELECT t.siparisDurumID, MAX(har.siparisYonetimiKesinSiparisOperasyonID) as operasyonID FROM ${table} as t LEFT JOIN siparis_yonetimi_kesin_siparis_hareket as har ON har.${keyExpr} = t.${keyExpr}  WHERE t.${keyExpr} = ${id} GROUP BY t.${keyExpr}`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
                 console.log(e);
-                throw "Kayıt sorgulama esnasında hata oluştu!";
+                throw "Sorgulama esnasında hata oluştu!";
             }))[0];
 
-        if (record) {
-            if (record.siparisDurumID != 1) {
+        if (sipDurum) {
+            if (sipDurum.siparisDurumID != 1) {
                 throw "sadece taslak siparişler silinebilir";
             }
             else {
+
+                if(sipDurum.operasyonID == 3){
+                    throw "onaya çıkarılmış sipariş silinemez!";
+                }
 
                 await db.sequelize.query(`DELETE FROM siparis_yonetimi_kesin_siparis_detay WHERE ${keyExpr} = ${id}`, { type: db.Sequelize.QueryTypes.DELETE })
                     .catch(e => {

@@ -6,34 +6,6 @@ const table = "urun_yonetimi_uretici_urun_urun_tasiyici";
 const keyExpr = "urunYonetimiUreticiUrunUrunTasiyiciID";
 const parentKeyExpr = "urunYonetimiUreticiUrunID";
 
-router.post('/boxKesinSiparisDetay', async function(req, res) {
-
-    const filterData = req.body;
-
-    let rawQuery;
-
-    if (!filterData.ID) { // liste
-        rawQuery = `SELECT t.varsayilanMi, birim.*, CONCAT('[ ',birim.kodu,' ] ', birim.adi) as koduAdi FROM ${table} as t LEFT JOIN genel_urun_tasiyici as birim ON birim.genelUrunTasiyiciID = t.genelUrunTasiyiciID WHERE t.urunYonetimiUreticiUrunID = ${filterData.urunID} ORDER BY kodu, adi ASC`;
-    } else { // tek kayıt
-        rawQuery = `SELECT t.varsayilanMi, birim.*, CONCAT('[ ',birim.kodu,' ] ', birim.adi) as koduAdi FROM ${table} as t LEFT JOIN genel_urun_tasiyici as birim ON birim.genelUrunTasiyiciID = t.genelUrunTasiyiciID WHERE birim.genelUrunTasiyiciID = ${filterData.ID}`;
-    }
-
-    await crudHelper.getListR({
-        data: filterData,
-        rawQuery: rawQuery
-    }, (data, err) => {
-        if (data) {
-            res.json(filterData.ID ? data.data[0] : data);
-        }
-
-        if (err) {
-            res.status(400).json(err);
-        }
-    });
-
-
-});
-
 router.post('/getList', async function (req, res) {
    
     const filterData = req.body;

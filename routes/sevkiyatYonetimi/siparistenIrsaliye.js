@@ -13,18 +13,43 @@ router.post('/kaydet', async function (req, res) {
         const filterData = req.body;
         const siparisID = +filterData.siparisID;
 
-        const siparis = (
-            await db.sequelize.query(`SELECT * FROM siparis_yonetimi_siparis WHERE siparisYonetimiSiparisID = ${siparisID}`, { type: db.Sequelize.QueryTypes.SELECT })
-            .catch(e => {
-                throw "Sorgulama esnasında hata oluştu!";
-            })
-            )[0];
+        if(!siparisID){
+            throw "sipariş ID boş olamaz!"
+        }
 
-        if (siparis) {
-            if (siparis['siparisDurumID'] != 11) {
-                throw "sevk bekleyen sipariş üzerinden sadece irsaliye alınabilir!";
+        const sipDurum = (await db.sequelize.query(`
+        
+        SELECT sip.*, sonHar.operasyonID, kf.firmaAdi as ureticiFirmaAdi, kf.firmaKodu as ureticiFirmaKodu, tf.firmaAdi as tedarikciFirmaAdi, tf.firmaKodu as tedarikciFirmaKodu, kfa.adres as varisAdresi, tfa.adres as cikisAdresi
+        FROM siparis_yonetimi_kesin_siparis as sip
+        LEFT JOIN kullanici_firma as kf ON sip.ureticiFirmaID = kf.kullaniciFirmaID
+        LEFT JOIN kullanici_firma_adres kfa ON sip.varisAdresiID = kfa.kullaniciFirmaAdresID 
+        LEFT JOIN tedarikci_firma as tf ON sip.tedarikciFirmaID = tf.tedarikciFirmaID 
+        LEFT JOIN tedarikci_firma_adres tfa ON sip.cikisAdresiID = tfa.tedarikciFirmaAdresID 
+        LEFT JOIN (
+            SELECT
+            MAX(siparisYonetimiKesinSiparisOperasyonID) as operasyonID,
+            siparisYonetimiKesinSiparisID
+        
+            FROM
+                siparis_yonetimi_kesin_siparis_hareket
+            GROUP BY
+            siparisYonetimiKesinSiparisID
+        ) AS sonHar ON sonHar.siparisYonetimiKesinSiparisID = sip.siparisYonetimiKesinSiparisID
+        WHERE sip.siparisYonetimiKesinSiparisID = ${siparisID}`, { type: db.Sequelize.QueryTypes.SELECT })
+            .catch(e => {
+                console.log(e);
+                throw "Sorgulama esnasında hata oluştu!";
+            }))[0];
+
+        if (sipDurum) {
+            if (sipDurum['siparisDurumID'] != 2) {
+                throw "onaylanmış sipariş üzerinden sadece irsaliye alınabilir!";
             }
             else {
+
+                if(sipDurum['operasyonID'] != 7){
+                    throw "sadece sevk bekleyen sipariş üzerinden irsaliye alınabilir!";
+                }
 
                 const filterData = req.body;
                 const detaylar = filterData.detaylar;
@@ -70,13 +95,19 @@ router.post('/kaydet', async function (req, res) {
                     filterData.data['sevkiyatYonetimiIrsaliyeDurumID'] = talepInfo['sevkiyatYonetimiIrsaliyeDurumID'];
                     filterData.data['irsaliyeNo'] = talepInfo['irsaliyeNo'];
                     filterData.data['sevkTarihi'] = talepInfo['sevkTarihi'];
-                    filterData.data['siparisYonetimiSiparisID'] = siparisID;
-                    filterData.data['tedarikciFirmaID'] = siparis['tedarikciFirmaID'];
-                    filterData.data['ureticiFirmaID'] = siparis['ureticiFirmaID'];
-                    filterData.data['cikisAdresiID'] = siparis['cikisAdresiID'];
-                    filterData.data['varisAdresiID'] = siparis['varisAdresiID'];
-                    filterData.data['siparisNo'] = siparis['siparisNo'];
-                    filterData.data['siparisTarihi'] = siparis['siparisTarihi'];
+                    filterData.data['siparisYonetimiKesinSiparisID'] = siparisID;
+                    filterData.data['tedarikciFirmaID'] = sipDurum['tedarikciFirmaID'];
+                    filterData.data['tedarikciFirmaAdi'] = sipDurum['tedarikciFirmaAdi'];
+                    filterData.data['tedarikciFirmaKodu'] = sipDurum['tedarikciFirmaKodu'];
+                    filterData.data['ureticiFirmaID'] = sipDurum['ureticiFirmaID'];
+                    filterData.data['ureticiFirmaAdi'] = sipDurum['ureticiFirmaAdi'];
+                    filterData.data['ureticiFirmaKodu'] = sipDurum['ureticiFirmaKodu'];
+                    filterData.data['cikisAdresiID'] = sipDurum['cikisAdresiID'];
+                    filterData.data['cikisAdresi'] = sipDurum['cikisAdresi'];
+                    filterData.data['varisAdresiID'] = sipDurum['varisAdresiID'];
+                    filterData.data['varisAdresi'] = sipDurum['varisAdresi'];
+                    filterData.data['siparisNo'] = sipDurum['siparisNo'];
+                    filterData.data['siparisTarihi'] = sipDurum['siparisTarihi'];
 
                     await crudHelper.createR({
                         body: req.body,
@@ -88,6 +119,8 @@ router.post('/kaydet', async function (req, res) {
                             db.sevkiyat_yonetimi_irsaliye_detay.bulkCreate(detaylar.map(detay => {
                                 detay[keyExpr] = data[keyExpr];
                                 detay['createdUserID'] = req.body.userData.userID;
+                                detay['urunAdi']= detay['stokAdi'];
+                                detay['urunKodu']= detay['stokKodu'];
                                 delete detay['sevkiyatYonetimiIrsaliyeDetayID'];
                                 delete detay['createdAt'];
                                 delete detay['updatedAt'];
@@ -135,14 +168,18 @@ router.post('/siparisDetay', async function (req, res) {
         const filterData = req.body;
         const siparisID = +filterData.ID;
 
-        const siparis = (await db.sequelize.query(`SELECT * FROM siparis_yonetimi_siparis WHERE siparisYonetimiSiparisID = ${siparisID}`, { type: db.Sequelize.QueryTypes.SELECT })
+        if(!siparisID){
+            throw "sipariş id boş olamaz!";
+        }
+
+        const siparis = (await db.sequelize.query(`SELECT * FROM siparis_yonetimi_kesin_siparis WHERE siparisYonetimiKesinSiparisID = ${siparisID}`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
                 throw "sipariş sorgulama esnasında hata oluştu!";
             }))[0];
 
         if (siparis) {
 
-            const detaylar = await db.sequelize.query(`SELECT * FROM siparis_yonetimi_siparis_detay WHERE siparisYonetimiSiparisID = ${siparisID}`, { type: db.Sequelize.QueryTypes.SELECT })
+            const detaylar = await db.sequelize.query(`SELECT * FROM siparis_yonetimi_kesin_siparis_detay WHERE siparisYonetimiKesinSiparisID = ${siparisID}`, { type: db.Sequelize.QueryTypes.SELECT })
                 .catch(e => {
                     throw "sipariş detay sorgulama esnasında hata oluştu!";
                 });

@@ -8,6 +8,34 @@ const parentKeyExpr = "kullaniciFirmaID";
 
 const crudHelper = require('../../helpers/crudHelper');
 
+router.post('/boxIrsaliye', async function(req, res) {
+
+    const filterData = req.body;
+
+    let rawQuery;
+
+    if (!filterData.ID) { // liste
+        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID ORDER BY x." + keyExpr + " DESC";
+    } else { // tek kayıt
+        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID WHERE x." + keyExpr + " = " + filterData.ID;
+    }
+
+    await crudHelper.getListR({
+        data: filterData,
+        rawQuery: rawQuery
+    }, (data, err) => {
+        if (data) {
+            res.json(filterData.ID ? data.data[0] : data);
+        }
+
+        if (err) {
+            res.status(400).json(err);
+        }
+    });
+
+
+});
+
 router.post('/boxSiparisYonetimiKesinSiparis', async function(req, res) {
 
     const filterData = req.body;

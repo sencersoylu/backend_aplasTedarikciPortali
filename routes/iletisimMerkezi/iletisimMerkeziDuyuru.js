@@ -10,9 +10,8 @@ const crudHelper = require('../../helpers/crudHelper');
 router.post('/getList', async function(req, res) {
 
     const filterData = req.body;
-	const userFirmaID = req.body.userData.userFirmaID;
 
-    let rawQuery = `SELECT t.* FROM ${table} as t LEFT JOIN genel_firma as firma ON t.genelFirmaID = firma.genelFirmaID WHERE firma.ureticiFirmaID = ${userFirmaID} OR t.genelFirmaID = ${userFirmaID} ORDER BY t.${keyExpr} DESC`;
+    let rawQuery = `SELECT t.* FROM ${table} as t ORDER BY t.${keyExpr} DESC`;
 
     await crudHelper.getListR({
         data: filterData,
