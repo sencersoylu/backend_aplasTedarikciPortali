@@ -180,11 +180,28 @@ router.post('/iptalEt', async function (req, res) {
             }
             else {
 
+                // iptal notun kaydetme
+                db[table].update({
+                    updatedUserID: req.body.userData.userID,
+                    not: req.body.not,
+                },
+                 {
+                    where: {
+                        [keyExpr]: siparisID
+                    }
+                })
+                .catch(e => {
+                    console.error(e);
+                    throw "iptal notu kaydedilirken hatayla karşılaşıldı!";
+                })
+
                 // iptal hareket kaydı
                 await operasyonHareketiEkle(siparisID, 4, req);
 
                 // iptal edildi durum güncelleme
                 await durumGuncelle(siparisID, 3, req);
+                
+                res.json("OK");
             }
         }
 

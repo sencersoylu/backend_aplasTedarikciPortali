@@ -3,8 +3,8 @@ const router = express.Router();
 const crudHelper = require('../../helpers/crudHelper');
 const db = require('../../models');
 
-const table = "urun_yonetimi_mal_satis_katalogu";
-const keyExpr = "urunYonetimiMalSatisKataloguID";
+const table = "urun_yonetimi_mal_alis_katalogu";
+const keyExpr = "urunYonetimiMalAlisKataloguID";
 
 router.post('/getList', async function (req, res) {
     try {

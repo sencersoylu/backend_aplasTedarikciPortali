@@ -89,7 +89,7 @@ router.post('/boxSiparisYonetimiKesinSiparis', async function(req, res) {
 
 });
 
-router.post('/boxMalSatisKatalogu', async function(req, res) {
+router.post('/boxMalAlisKatalogu', async function(req, res) {
 
     const filterData = req.body;
 

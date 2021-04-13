@@ -21,7 +21,7 @@ SELECT
     stok.urunYonetimiUreticiUrunID
 FROM
 	siparis_yonetimi_kesin_siparis AS sip
-LEFT JOIN urun_yonetimi_mal_satis_katalogu AS kat ON sip.tedarikciFirmaID = sip.tedarikciFirmaID
+LEFT JOIN urun_yonetimi_mal_alis_katalogu AS kat ON sip.tedarikciFirmaID = kat.tedarikciFirmaID
 LEFT JOIN kullanici_firma_kullanici as kfk ON kfk.kullaniciFirmaID = sip.ureticiFirmaID
 LEFT JOIN ${table} AS stok ON stok.${keyExpr} = kat.${keyExpr}
 WHERE stok.${keyExpr} = ${filterData.ID}`;
@@ -54,10 +54,11 @@ SELECT
 	kat.tedarikciUrunKodu, 
 	stok.adi as urunAdi,
 	stok.kodu as urunKodu,
-    stok.urunYonetimiUreticiUrunID
+    stok.urunYonetimiUreticiUrunID,
+    stok.genelOlcuBirimiID
 FROM
 	siparis_yonetimi_kesin_siparis AS sip
-LEFT JOIN urun_yonetimi_mal_Satis_katalogu AS kat ON sip.tedarikciFirmaID = sip.tedarikciFirmaID
+LEFT JOIN urun_yonetimi_mal_alis_katalogu AS kat ON sip.tedarikciFirmaID = kat.tedarikciFirmaID
 LEFT JOIN kullanici_firma_kullanici as kfk ON kfk.kullaniciFirmaID = sip.ureticiFirmaID
 LEFT JOIN ${table} AS stok ON stok.${keyExpr} = kat.${keyExpr}
 WHERE
@@ -72,10 +73,12 @@ SELECT
 	kat.tedarikciUrunKodu, 
 	stok.adi as urunAdi,
 	stok.kodu as urunKodu,
-    stok.urunYonetimiUreticiUrunID
+    stok.urunYonetimiUreticiUrunID,
+    stok.genelOlcuBirimiID
+
 FROM
 	siparis_yonetimi_kesin_siparis AS sip
-LEFT JOIN urun_yonetimi_mal_Satis_katalogu AS kat ON sip.tedarikciFirmaID = sip.tedarikciFirmaID
+LEFT JOIN urun_yonetimi_mal_alis_katalogu AS kat ON sip.tedarikciFirmaID = sip.tedarikciFirmaID
 LEFT JOIN kullanici_firma_kullanici as kfk ON kfk.kullaniciFirmaID = sip.ureticiFirmaID
 LEFT JOIN ${table} AS stok ON stok.${keyExpr} = kat.${keyExpr}
 WHERE stok.${keyExpr} = ${filterData.ID}`;
@@ -97,7 +100,7 @@ WHERE stok.${keyExpr} = ${filterData.ID}`;
 
 });
 
-router.post('/boxMalSatisKatalogu', async function (req, res) {
+router.post('/boxMalAlisKatalogu', async function (req, res) {
 
     const filterData = req.body;
 

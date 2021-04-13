@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
         kullaniciFirmaAdresID: DataTypes.INTEGER,
         genelUrunGrupID: DataTypes.INTEGER,
         genelUrunTurID: DataTypes.INTEGER,
+        genelOlcuBirimiID: DataTypes.INTEGER,
+
         aktifMi: DataTypes.BOOLEAN,
         createdUserID: DataTypes.STRING,
         updatedUserID: DataTypes.STRING,
@@ -39,6 +41,12 @@ module.exports = (sequelize, DataTypes) => {
         model.belongsTo(models.kullanici_firma_adres, {
             foreignKey: 'kullaniciFirmaAdresID',
             targetKey: 'kullaniciFirmaAdresID'
+        });
+
+        
+        model.belongsTo(models.genel_olcu_birimi, {
+            foreignKey: 'genelOlcuBirimiID',
+            targetKey: 'genelOlcuBirimiID'
         });
 
     };

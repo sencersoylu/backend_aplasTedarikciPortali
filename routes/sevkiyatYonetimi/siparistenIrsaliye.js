@@ -179,7 +179,45 @@ router.post('/siparisDetay', async function (req, res) {
 
         if (siparis) {
 
-            const detaylar = await db.sequelize.query(`SELECT * FROM siparis_yonetimi_kesin_siparis_detay WHERE siparisYonetimiKesinSiparisID = ${siparisID}`, { type: db.Sequelize.QueryTypes.SELECT })
+            const detaylar = await db.sequelize.query(`
+
+SELECT
+	sipDet.*, 
+CASE
+WHEN irsOzet.miktar IS NULL THEN
+	sipDet.siparisMiktari
+ELSE
+	(
+		sipDet.siparisMiktari - irsOzet.miktar
+	)
+END AS miktar
+
+FROM
+	siparis_yonetimi_kesin_siparis AS sip
+LEFT JOIN siparis_yonetimi_kesin_siparis_detay AS sipDet ON sipDet.siparisYonetimiKesinSiparisID = sip.siparisYonetimiKesinSiparisID
+LEFT JOIN (
+	SELECT
+		irs.siparisYonetimiKesinSiparisID,
+		irsDet.urunYonetimiUreticiUrunID,
+		irsDet.genelOlcuBirimiID,
+		SUM(irsDet.miktar) AS miktar
+	FROM
+		sevkiyat_yonetimi_irsaliye AS irs
+	LEFT JOIN sevkiyat_yonetimi_irsaliye_detay AS irsDet ON irsDet.sevkiyatYonetimiIrsaliyeID = irs.sevkiyatYonetimiIrsaliyeID
+	GROUP BY
+		irs.siparisYonetimiKesinSiparisID,
+		irsDet.urunYonetimiUreticiUrunID,
+		irsDet.genelOlcuBirimiID
+) AS irsOzet ON irsOzet.siparisYonetimiKesinSiparisID = sip.siparisYonetimiKesinSiparisID
+WHERE
+	sip.siparisYonetimiKesinSiparisID = 2
+AND (
+	irsOzet.miktar IS NULL
+ 	OR 
+ 	sipDet.siparisMiktari > irsOzet.miktar
+)
+            
+            `, { type: db.Sequelize.QueryTypes.SELECT })
                 .catch(e => {
                     throw "sipariş detay sorgulama esnasında hata oluştu!";
                 });

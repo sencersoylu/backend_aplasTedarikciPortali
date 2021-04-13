@@ -261,6 +261,7 @@ router.post('/create', async function (req, res) {
                 res.json(data);
 
                 // hareket kaydı
+                const aciklama = "";
                 await operasyonHareketiEkle(data[parentKeyExpr], 2, req);
 
             }

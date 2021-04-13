@@ -1,8 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
 
-    const model = sequelize.define('urun_yonetimi_mal_satis_katalogu', {
-        urunYonetimiMalSatisKataloguID: {
+    const model = sequelize.define('urun_yonetimi_mal_alis_katalogu', {
+        urunYonetimiMalAlisKataloguID: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
