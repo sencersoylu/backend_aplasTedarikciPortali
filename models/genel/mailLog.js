@@ -4,9 +4,8 @@ module.exports = (sequelize, DataTypes) => {
   const tanim = sequelize.define('mail_log', {
 
     mailLogID: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
+      type: DataTypes.UUID, 
+            defaultValue: DataTypes.UUIDV4,primaryKey: true
     },
     konu: DataTypes.TEXT,
     kime: DataTypes.TEXT,

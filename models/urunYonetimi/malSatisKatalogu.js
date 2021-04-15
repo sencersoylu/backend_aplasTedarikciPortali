@@ -3,16 +3,16 @@ module.exports = (sequelize, DataTypes) => {
 
     const model = sequelize.define('urun_yonetimi_mal_alis_katalogu', {
         urunYonetimiMalAlisKataloguID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID, 
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
-        urunYonetimiUreticiUrunID: DataTypes.INTEGER,
-        tedarikciFirmaID: DataTypes.INTEGER,
+        urunYonetimiUreticiUrunID: DataTypes.UUID,
+        tedarikciFirmaID: DataTypes.UUID,
         tedarikciUrunKodu: DataTypes.STRING,
 
-        createdUserID: DataTypes.STRING,
-        updatedUserID: DataTypes.STRING,
+        createdUserID: DataTypes.UUID,
+        updatedUserID: DataTypes.UUID,
         createdAt: {
             type: "DATETIME DEFAULT CURRENT_TIMESTAMP",
         },

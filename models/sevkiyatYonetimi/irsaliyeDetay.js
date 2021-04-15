@@ -3,21 +3,21 @@ module.exports = (sequelize, DataTypes) => {
 
     const model = sequelize.define('sevkiyat_yonetimi_irsaliye_detay', {
         sevkiyatYonetimiIrsaliyeDetayID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID, 
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
-        sevkiyatYonetimiIrsaliyeID: DataTypes.INTEGER,
+        sevkiyatYonetimiIrsaliyeID: DataTypes.UUID,
         miktar: DataTypes.DECIMAL(10,3), // sevk miktarı
-        genelOlcuBirimiID: DataTypes.INTEGER,
-        urunYonetimiUreticiUrunID: DataTypes.INTEGER,
+        genelOlcuBirimiID: DataTypes.UUID,
+        urunYonetimiUreticiUrunID: DataTypes.UUID,
 
         tedarikciUrunKodu: DataTypes.STRING, // satıcı ürün kodu
         urunAdi: DataTypes.STRING, // alıcı ürün adı
         urunKodu: DataTypes.STRING, // alıcı ürün kodu
 
-        createdUserID: DataTypes.STRING,
-        updatedUserID: DataTypes.STRING,
+        createdUserID: DataTypes.UUID,
+        updatedUserID: DataTypes.UUID,
         createdAt: {
             type: "DATETIME DEFAULT CURRENT_TIMESTAMP",
         },

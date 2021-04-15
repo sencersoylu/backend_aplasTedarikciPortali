@@ -5,17 +5,17 @@ module.exports = (sequelize, DataTypes) => {
   const tanim = sequelize.define('kullanici_firma_kullanici', {
 
     kullaniciFirmaKullaniciID: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
+      type: DataTypes.UUID, 
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
     
-    kullaniciID: DataTypes.STRING,
-    kullaniciFirmaAdresID: DataTypes.INTEGER,
-    kullaniciFirmaID: DataTypes.INTEGER,
+    kullaniciID: DataTypes.UUID,
+    kullaniciFirmaAdresID: DataTypes.UUID,
+    kullaniciFirmaID: DataTypes.UUID,
 
-    createdUserID: DataTypes.STRING,
-    updatedUserID: DataTypes.STRING,
+    createdUserID: DataTypes.UUID,
+    updatedUserID: DataTypes.UUID,
     createdAt: {
         type: "DATETIME DEFAULT CURRENT_TIMESTAMP",
     },

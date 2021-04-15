@@ -11,9 +11,9 @@ const crudHelper = require('../../helpers/crudHelper');
 router.post('/getList', async function(req, res) {
 
     const filterData = req.body;
-    const parentID = +req.body.userData.parentID;
+    const parentID = req.body.userData.parentID;
     
-    let rawQuery = "SELECT x.*, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) AS kisiAdSoyad FROM " + table + " as x INNER JOIN kullanici as kul ON kul.kullaniciUUID = x.kullaniciID WHERE x."+ parentKeyExpr + " = "+ parentID +" ORDER BY x." + keyExpr + " DESC";
+    let rawQuery = "SELECT x.*, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) AS kisiAdSoyad FROM " + table + " as x INNER JOIN kullanici as kul ON kul.kullaniciID = x.kullaniciID WHERE x."+ parentKeyExpr + " = '"+ parentID +"' ORDER BY x.createdAt DESC";
 
     await crudHelper.getListR({
         data: filterData,

@@ -14,7 +14,7 @@ router.post('/boxIrsaliye', async function(req, res) {
     if (!filterData.ID) { // liste
         rawQuery = `SELECT t.* FROM ${table} as t ORDER BY firmaKodu ASC`;
     } else { // tek kayıt
-        rawQuery = `SELECT t.* FROM ${table} as t WHERE t.${keyExpr} = ${filterData.ID}`;
+        rawQuery = `SELECT t.* FROM ${table} as t WHERE t.${keyExpr} = '${filterData.ID}'`;
     }
 
     await crudHelper.getListR({
@@ -42,7 +42,7 @@ router.post('/boxStokKartiTedarikciFirma', async function(req, res) {
     if (!filterData.ID) { // liste
         rawQuery = `SELECT t.* FROM ${table} as t ORDER BY firmaKodu ASC`;
     } else { // tek kayıt
-        rawQuery = `SELECT t.* FROM ${table} as t WHERE t.${keyExpr} = ${filterData.ID}`;
+        rawQuery = `SELECT t.* FROM ${table} as t WHERE t.${keyExpr} = '${filterData.ID}'`;
     }
 
     await crudHelper.getListR({
@@ -70,7 +70,7 @@ router.post('/boxSiparisYonetimiKesinSiparis', async function(req, res) {
     if (!filterData.ID) { // liste
         rawQuery = `SELECT t.* FROM ${table} as t ORDER BY firmaKodu ASC`;
     } else { // tek kayıt
-        rawQuery = `SELECT t.* FROM ${table} as t WHERE t.${keyExpr} = ${filterData.ID}`;
+        rawQuery = `SELECT t.* FROM ${table} as t WHERE t.${keyExpr} = '${filterData.ID}'`;
     }
 
     await crudHelper.getListR({
@@ -98,7 +98,7 @@ router.post('/boxMalAlisKatalogu', async function(req, res) {
     if (!filterData.ID) { // liste
         rawQuery = `SELECT t.* FROM ${table} as t ORDER BY firmaKodu ASC`;
     } else { // tek kayıt
-        rawQuery = `SELECT t.* FROM ${table} as t WHERE t.${keyExpr} = ${filterData.ID}`;
+        rawQuery = `SELECT t.* FROM ${table} as t WHERE t.${keyExpr} = '${filterData.ID}'`;
     }
 
     await crudHelper.getListR({
@@ -122,7 +122,7 @@ router.post('/getList', async function (req, res) {
 
     const filterData = req.body;
 
-    let rawQuery = `SELECT t.* FROM ${table} as t ORDER BY t.${keyExpr} DESC`;
+    let rawQuery = `SELECT t.* FROM ${table} as t ORDER BY t.createdAt DESC`;
 
     await crudHelper.getListR({
         data: filterData,

@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes) => {
 
     const model = sequelize.define('genel_urun_grup', {
         genelUrunGrupID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID, 
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         kodu: DataTypes.STRING,
@@ -18,9 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         },
     }, {});
 
-    model.associate = function (models) {
-
-    };
+    
 
     return model;
 

@@ -3,11 +3,11 @@ module.exports = (sequelize, DataTypes) => {
 
     const model = sequelize.define('genel_semt', {
         genelSemtID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID, 
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
-        genelIlceID: DataTypes.INTEGER,
+        genelIlceID: DataTypes.UUID,
         adi: DataTypes.STRING,
         createdAt: {
             type: "DATETIME DEFAULT CURRENT_TIMESTAMP",

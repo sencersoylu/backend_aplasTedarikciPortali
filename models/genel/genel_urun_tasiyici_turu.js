@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes) => {
 
     const model = sequelize.define('genel_urun_tasiyici_turu', {
         genelUrunTasiyiciTuruID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID, 
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         kodu: DataTypes.STRING,
@@ -17,9 +17,6 @@ module.exports = (sequelize, DataTypes) => {
             type: "DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP",
         },
     }, {});
-
-    model.associate = function (models) {
-    };
 
     return model;
 

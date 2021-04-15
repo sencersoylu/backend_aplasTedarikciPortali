@@ -9,14 +9,14 @@ const parentKeyExpr = "urunYonetimiUreticiUrunID";
 router.post('/getList', async function (req, res) {
    
     const filterData = req.body;
-    const parentID = +filterData.userData.parentID;
+    const parentID = filterData.userData.parentID;
 
     let rawQuery;
 
     if (!filterData.ID) { // liste
-        rawQuery = `SELECT t.*, gut.kodu, gut.adi, tur.adi as turu FROM ${table} as t LEFT JOIN genel_urun_tasiyici as gut ON gut.genelUrunTasiyiciID = t.genelUrunTasiyiciID LEFT JOIN genel_urun_tasiyici_turu as tur ON tur.genelUrunTasiyiciTuruID = gut.genelUrunTasiyiciTuruID  WHERE t.${parentKeyExpr} = ${parentID} ORDER BY kodu ASC`;
+        rawQuery = `SELECT t.*, gut.kodu, gut.adi, tur.adi as turu FROM ${table} as t LEFT JOIN genel_urun_tasiyici as gut ON gut.genelUrunTasiyiciID = t.genelUrunTasiyiciID LEFT JOIN genel_urun_tasiyici_turu as tur ON tur.genelUrunTasiyiciTuruID = gut.genelUrunTasiyiciTuruID  WHERE t.${parentKeyExpr} = '${parentID}' ORDER BY kodu ASC`;
     } else { // tek kayıt
-        rawQuery = `SELECT t.*, gut.kodu, gut.adi, tur.adi as turu  FROM ${table} as t LEFT JOIN genel_urun_tasiyici as gut ON gut.genelUrunTasiyiciID = t.genelUrunTasiyiciID WHERE ${keyExpr} = ${filterData.ID}`;
+        rawQuery = `SELECT t.*, gut.kodu, gut.adi, tur.adi as turu  FROM ${table} as t LEFT JOIN genel_urun_tasiyici as gut ON gut.genelUrunTasiyiciID = t.genelUrunTasiyiciID WHERE ${keyExpr} = '${filterData.ID}'`;
     }
 
     await crudHelper.getListR({

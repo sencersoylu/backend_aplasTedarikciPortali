@@ -35,7 +35,7 @@ router.post('/kaydet', async function (req, res) {
             GROUP BY
             siparisYonetimiKesinSiparisID
         ) AS sonHar ON sonHar.siparisYonetimiKesinSiparisID = sip.siparisYonetimiKesinSiparisID
-        WHERE sip.siparisYonetimiKesinSiparisID = ${siparisID}`, { type: db.Sequelize.QueryTypes.SELECT })
+        WHERE sip.siparisYonetimiKesinSiparisID = '${siparisID}'`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
                 console.log(e);
                 throw "Sorgulama esnasında hata oluştu!";

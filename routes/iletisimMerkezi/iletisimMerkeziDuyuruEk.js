@@ -108,13 +108,13 @@ router.delete('/ekler/:id', async function (req, res, next) {
 // router.post('/getList', async function (req, res) {
 
 //     const filterData = req.body;
-//     const parentID = +req.body.userData.parentID;
+//     const parentID = req.body.userData.parentID;
 
 //     if (!parentID) {
 //         res.status(400).json("geçersiz plan id");
 //     } else {
 
-//         let rawQuery = "SELECT dosyaID, adi, turu, createdAt as yuklemeTarihi FROM dosya WHERE iliskiliTablo = 'iletisim_merkezi_duyuru' AND iliskiID = " + parentID + " ORDER BY dosyaID DESC";
+//         let rawQuery = "SELECT dosyaID, adi, turu, createdAt as yuklemeTarihi FROM dosya WHERE iliskiliTablo = 'iletisim_merkezi_duyuru' AND iliskiID = " + parentID + " ORDER BY createdAt DESC";
 
 //         await crudHelper.getListR({
 //             data: filterData,

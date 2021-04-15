@@ -15,9 +15,9 @@ router.post('/boxIrsaliye', async function(req, res) {
     let rawQuery;
 
     if (!filterData.ID) { // liste
-        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID ORDER BY x." + keyExpr + " DESC";
+        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID ORDER BY x.createdAt DESC";
     } else { // tek kayıt
-        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID WHERE x." + keyExpr + " = " + filterData.ID;
+        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID WHERE x." + keyExpr + " = '" + filterData.ID + "'";
     }
 
     await crudHelper.getListR({
@@ -43,9 +43,9 @@ router.post('/boxSiparisYonetimiKesinSiparis', async function(req, res) {
     let rawQuery;
 
     if (!filterData.ID) { // liste
-        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID ORDER BY x." + keyExpr + " DESC";
+        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID ORDER BY x.createdAt DESC";
     } else { // tek kayıt
-        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID WHERE x." + keyExpr + " = " + filterData.ID;
+        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID WHERE x." + keyExpr + " = '" + filterData.ID + "'";
     }
 
     await crudHelper.getListR({
@@ -71,9 +71,9 @@ router.post('/boxStokKarti', async function(req, res) {
     let rawQuery;
 
     if (!filterData.ID) { // liste
-        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID ORDER BY x." + keyExpr + " DESC";
+        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID ORDER BY x.createdAt DESC";
     } else { // tek kayıt
-        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID WHERE x." + keyExpr + " = " + filterData.ID;
+        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID WHERE x." + keyExpr + " = '" + filterData.ID+ "'";
     }
 
     await crudHelper.getListR({
@@ -99,9 +99,9 @@ router.post('/boxKullaniciFirmaTeslimYeri', async function (req, res) {
     let rawQuery;
 
     if (!filterData.ID) { // liste
-        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID ORDER BY x." + keyExpr + " DESC";
+        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID ORDER BY x.createdAt DESC";
     } else { // tek kayıt
-        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID WHERE x." + keyExpr + " = " + filterData.ID;
+        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID WHERE x." + keyExpr + " = '" + filterData.ID + "'";
     }
 
     await crudHelper.getListR({
@@ -127,9 +127,9 @@ router.post('/boxKullaniciFirmaKullanici', async function (req, res) {
     let rawQuery;
 
     if (!filterData.ID) { // liste
-        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID ORDER BY x." + keyExpr + " DESC";
+        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID ORDER BY x.createdAt DESC";
     } else { // tek kayıt
-        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID WHERE x." + keyExpr + " = " + filterData.ID;
+        rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID WHERE x." + keyExpr + " = '" + filterData.ID+ "'";
     }
 
     await crudHelper.getListR({
@@ -152,7 +152,7 @@ router.post('/getList', async function(req, res) {
 
     const filterData = req.body;
     
-    let rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID ORDER BY x." + keyExpr + " DESC";
+    let rawQuery = "SELECT x.*, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID ORDER BY x.createdAt DESC";
 
     await crudHelper.getListR({
         data: filterData,

@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes) => {
 
     const model = sequelize.define('genel_ulke', {
         genelUlkeID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID, 
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         binaryCode: DataTypes.STRING(2),

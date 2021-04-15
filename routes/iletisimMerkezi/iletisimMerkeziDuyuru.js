@@ -11,7 +11,7 @@ router.post('/getList', async function(req, res) {
 
     const filterData = req.body;
 
-    let rawQuery = `SELECT t.* FROM ${table} as t ORDER BY t.${keyExpr} DESC`;
+    let rawQuery = `SELECT t.* FROM ${table} as t ORDER BY t.createdAt DESC`;
 
     await crudHelper.getListR({
         data: filterData,

@@ -3,11 +3,11 @@ module.exports = (sequelize, DataTypes) => {
 
     const model = sequelize.define('genel_il', {
         genelIlID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID, 
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
-        genelUlkeID: DataTypes.INTEGER,
+        genelUlkeID: DataTypes.UUID,
         adi: DataTypes.STRING,
         plakaNo: DataTypes.STRING,
         telefonKodu: DataTypes.STRING,

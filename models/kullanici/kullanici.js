@@ -4,15 +4,9 @@ module.exports = (sequelize, DataTypes) => {
   const tanim = sequelize.define('kullanici', {
 
     kullaniciID: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false,
-      autoIncrement: true
-    },
-    kullaniciUUID: {
-      type: DataTypes.STRING(36), // UUID4
-      allowNull: false,
-      unique: true
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true
     },
     kullaniciAdi: DataTypes.STRING,
     sifre: DataTypes.STRING,
@@ -23,8 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     kisiSoyadi: DataTypes.STRING,
     
     aktifMi: DataTypes.BOOLEAN,
-    createdUserID: DataTypes.STRING,
-    updatedUserID: DataTypes.STRING,
+    createdUserID: DataTypes.UUID,
+    updatedUserID: DataTypes.UUID,
     createdAt: {
         type: "DATETIME DEFAULT CURRENT_TIMESTAMP",
     },
@@ -33,11 +27,6 @@ module.exports = (sequelize, DataTypes) => {
     },
 
   }, {});
-
-  tanim.associate = function (models) {
-    // associations can be defined here
-
-  };
 
   return tanim;
 

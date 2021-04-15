@@ -12,9 +12,9 @@ router.post('/boxKullaniciFirmaAdres', async function(req, res) {
     let rawQuery;
 
     if (!filterData.ID) { // liste
-        rawQuery = `SELECT * FROM ${table} WHERE genelUlkeID = ${filterData.genelUlkeID} ORDER BY adi ASC`;
+        rawQuery = `SELECT * FROM ${table} WHERE genelUlkeID = '${filterData.genelUlkeID}' ORDER BY adi ASC`;
     } else { // tek kayıt
-        rawQuery = `SELECT * FROM ${table} WHERE ${keyExpr} = ${filterData.ID}`;
+        rawQuery = `SELECT * FROM ${table} WHERE ${keyExpr} = '${filterData.ID}'`;
     }
 
     await crudHelper.getListR({
@@ -40,9 +40,9 @@ router.post('/boxGenelFirmaAdres', async function(req, res) {
     let rawQuery;
 
     if (!filterData.ID) { // liste
-        rawQuery = `SELECT * FROM ${table} WHERE genelUlkeID = ${filterData.genelUlkeID} ORDER BY adi ASC`;
+        rawQuery = `SELECT * FROM ${table} WHERE genelUlkeID = '${filterData.genelUlkeID}' ORDER BY adi ASC`;
     } else { // tek kayıt
-        rawQuery = `SELECT * FROM ${table} WHERE ${keyExpr} = ${filterData.ID}`;
+        rawQuery = `SELECT * FROM ${table} WHERE ${keyExpr} = '${filterData.ID}'`;
     }
 
     await crudHelper.getListR({

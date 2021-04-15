@@ -4,20 +4,20 @@ module.exports = (sequelize, DataTypes) => {
   const tanim = sequelize.define('kullanici_grup_kullanici', {
 
     kullaniciGrupKullaniciID: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
+      type: DataTypes.UUID, 
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
     kullaniciGrupID: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false
     },
     kullaniciID: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUID,
       allowNull: false
     },
-    createdUserID: DataTypes.STRING,
-    updatedUserID: DataTypes.STRING,
+    createdUserID: DataTypes.UUID,
+    updatedUserID: DataTypes.UUID,
     createdAt: {
         type: "DATETIME DEFAULT CURRENT_TIMESTAMP",
     },
@@ -32,6 +32,11 @@ module.exports = (sequelize, DataTypes) => {
     tanim.belongsTo(models.kullanici_grup, {
       foreignKey: 'kullaniciGrupID',
       targetKey: 'kullaniciGrupID'
+    });
+
+    tanim.belongsTo(models.kullanici, {
+      foreignKey: 'kullaniciID',
+      targetKey: 'kullaniciID'
     });
 
   };

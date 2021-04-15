@@ -3,15 +3,15 @@ module.exports = (sequelize, DataTypes) => {
 
     const model = sequelize.define('siparis_yonetimi_kesin_siparis_detay', {
         siparisYonetimiKesinSiparisDetayID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID, 
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
-        siparisYonetimiKesinSiparisID: DataTypes.INTEGER,
+        siparisYonetimiKesinSiparisID: DataTypes.UUID,
         siparisMiktari: DataTypes.DECIMAL(10,3),
         siparisTeslimTarihi: DataTypes.DATE,
-        genelOlcuBirimiID: DataTypes.INTEGER,
-        urunYonetimiUreticiUrunID: DataTypes.INTEGER,
+        genelOlcuBirimiID: DataTypes.UUID,
+        urunYonetimiUreticiUrunID: DataTypes.UUID,
         tedarikciUrunKodu: DataTypes.STRING,
         stokAdi: DataTypes.STRING,
         stokKodu: DataTypes.STRING,
@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
         sevkMiktari: DataTypes.DECIMAL(10,3),
         sevkTeslimTarihi: DataTypes.DATE,
 
-        createdUserID: DataTypes.STRING,
-        updatedUserID: DataTypes.STRING,
+        createdUserID: DataTypes.UUID,
+        updatedUserID: DataTypes.UUID,
         createdAt: {
             type: "DATETIME DEFAULT CURRENT_TIMESTAMP",
         },

@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes) => {
 
     const model = sequelize.define('tedarikci_firma', {
         tedarikciFirmaID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID, 
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         firmaAdi: DataTypes.STRING,
@@ -17,8 +17,8 @@ module.exports = (sequelize, DataTypes) => {
         kepAdresi: DataTypes.STRING,
         aktifMi: DataTypes.BOOLEAN,
         
-        createdUserID: DataTypes.STRING,
-        updatedUserID: DataTypes.STRING,
+        createdUserID: DataTypes.UUID,
+        updatedUserID: DataTypes.UUID,
         createdAt: {
             type: "DATETIME DEFAULT CURRENT_TIMESTAMP",
         },

@@ -47,7 +47,7 @@ const getPersonelMailFromUserID = async (userID, callbackFunc) => {
         callbackFunc(null, "user id boş olmamalı!!");
     }
 
-    db.sequelize.query("SELECT kul.ePosta as mail FROM kullanici as kul WHERE kul.kullaniciUUID = :userID", {
+    db.sequelize.query("SELECT kul.ePosta as mail FROM kullanici as kul WHERE kul.kullaniciID = :userID", {
         type: db.Sequelize.QueryTypes.SELECT, replacements: {
             userID: userID
         }
@@ -133,7 +133,7 @@ const getUserInfoFromUserID = async (userID, callbackFunc) => {
         callbackFunc(null, "Kullanıcı id boş olmamalı!!!");
     } else {
 
-        db.sequelize.query("SELECT per.*, dept.adi as departmanAdi, CONCAT(adi, ' ', soyadi) as personelAdSoyad, lok.lokasyonAdi, lok.kullanimdaMi as lokasyonKullanimdaMi, gorev.adi as gorevi FROM kullanici as kul LEFT JOIN ik_personel_sicil AS per ON kul.ikPersonelSicilID = per.ikPersonelSicilID LEFT JOIN genel_departman AS dept ON dept.genelDepartmanID = per.genelDepartmanID LEFT JOIN personel_gorev as gorev ON gorev.personelGorevID = per.personelGorevID LEFT JOIN sirket_lokasyon as lok ON lok.sirketLokasyonID = per.sirketLokasyonID WHERE kul.kullaniciUUID = :userID AND kul.aktifMi = 1", {
+        db.sequelize.query("SELECT per.*, dept.adi as departmanAdi, CONCAT(adi, ' ', soyadi) as personelAdSoyad, lok.lokasyonAdi, lok.kullanimdaMi as lokasyonKullanimdaMi, gorev.adi as gorevi FROM kullanici as kul LEFT JOIN ik_personel_sicil AS per ON kul.ikPersonelSicilID = per.ikPersonelSicilID LEFT JOIN genel_departman AS dept ON dept.genelDepartmanID = per.genelDepartmanID LEFT JOIN personel_gorev as gorev ON gorev.personelGorevID = per.personelGorevID LEFT JOIN sirket_lokasyon as lok ON lok.sirketLokasyonID = per.sirketLokasyonID WHERE kul.kullaniciID = :userID AND kul.aktifMi = 1", {
             type: db.Sequelize.QueryTypes.SELECT, replacements: {
                 userID: userID
             }
@@ -166,7 +166,7 @@ const getUserIDFromSicil = async (personelSicil, callbackFunc) => {
         callbackFunc(null, "sicil id boş olmamalı!!");
     }
 
-    db.sequelize.query("SELECT kul.kullaniciUUID as userid FROM ik_personel_sicil as per LEFT JOIN kullanici as kul WHERE per.ikPersonelSicilID = :sicilID", {
+    db.sequelize.query("SELECT kul.kullaniciID as userid FROM ik_personel_sicil as per LEFT JOIN kullanici as kul WHERE per.ikPersonelSicilID = :sicilID", {
         type: db.Sequelize.QueryTypes.SELECT, replacements: {
             sicilID: personelSicil
         }

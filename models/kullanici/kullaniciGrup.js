@@ -4,8 +4,8 @@ module.exports = (sequelize, DataTypes) => {
   const tanim = sequelize.define('kullanici_grup', {
 
     kullaniciGrupID: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
+      type: DataTypes.UUID, 
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
     adi: {
@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     aciklama: DataTypes.TEXT,
-    createdUserID: DataTypes.STRING,
-    updatedUserID: DataTypes.STRING,
+    createdUserID: DataTypes.UUID,
+    updatedUserID: DataTypes.UUID,
     createdAt: {
         type: "DATETIME DEFAULT CURRENT_TIMESTAMP",
     },
@@ -24,12 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     },
 
   }, {});
-
-  tanim.associate = function (models) {
-    // associations can be defined here
-
-
-  };
 
   return tanim;
 

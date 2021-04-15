@@ -24,7 +24,7 @@ FROM
 LEFT JOIN urun_yonetimi_mal_alis_katalogu AS kat ON sip.tedarikciFirmaID = kat.tedarikciFirmaID
 LEFT JOIN kullanici_firma_kullanici as kfk ON kfk.kullaniciFirmaID = sip.ureticiFirmaID
 LEFT JOIN ${table} AS stok ON stok.${keyExpr} = kat.${keyExpr}
-WHERE stok.${keyExpr} = ${filterData.ID}`;
+WHERE stok.${keyExpr} = '${filterData.ID}'`;
 
     await crudHelper.getListR({
         data: filterData,
@@ -62,7 +62,7 @@ LEFT JOIN urun_yonetimi_mal_alis_katalogu AS kat ON sip.tedarikciFirmaID = kat.t
 LEFT JOIN kullanici_firma_kullanici as kfk ON kfk.kullaniciFirmaID = sip.ureticiFirmaID
 LEFT JOIN ${table} AS stok ON stok.${keyExpr} = kat.${keyExpr}
 WHERE
-	sip.siparisYonetimiKesinSiparisID = ${filterData.siparisID} 
+	sip.siparisYonetimiKesinSiparisID = '${filterData.siparisID}' 
 AND kfk.kullaniciFirmaAdresID = stok.kullaniciFirmaAdresID
         `;
 
@@ -81,7 +81,7 @@ FROM
 LEFT JOIN urun_yonetimi_mal_alis_katalogu AS kat ON sip.tedarikciFirmaID = sip.tedarikciFirmaID
 LEFT JOIN kullanici_firma_kullanici as kfk ON kfk.kullaniciFirmaID = sip.ureticiFirmaID
 LEFT JOIN ${table} AS stok ON stok.${keyExpr} = kat.${keyExpr}
-WHERE stok.${keyExpr} = ${filterData.ID}`;
+WHERE stok.${keyExpr} = '${filterData.ID}'`;
     }
 
     await crudHelper.getListR({
@@ -109,7 +109,7 @@ router.post('/boxMalAlisKatalogu', async function (req, res) {
     if (!filterData.ID) { // liste
         rawQuery = `SELECT t.* FROM ${table} as t ORDER BY kodu, adi ASC`;
     } else { // tek kayıt
-        rawQuery = `SELECT t.* FROM ${table} as t WHERE t.${keyExpr} = ${filterData.ID}`;
+        rawQuery = `SELECT t.* FROM ${table} as t WHERE t.${keyExpr} = '${filterData.ID}'`;
     }
 
     await crudHelper.getListR({
@@ -134,7 +134,7 @@ router.post('/getList', async function (req, res) {
 
         const filterData = req.body;
 
-        let rawQuery = `SELECT t.*, adr.kisaKodu as lokasyon FROM ${table} as t LEFT JOIN kullanici_firma_adres as adr ON adr.kullaniciFirmaAdresID = t.kullaniciFirmaAdresID ORDER BY ${keyExpr} DESC`;
+        let rawQuery = `SELECT t.*, adr.kisaKodu as lokasyon FROM ${table} as t LEFT JOIN kullanici_firma_adres as adr ON adr.kullaniciFirmaAdresID = t.kullaniciFirmaAdresID ORDER BY t.createdAt DESC`;
 
         await crudHelper.getListR({
             data: filterData,

@@ -14,7 +14,7 @@ router.post('/boxUrunYonetimiUreticiUrun', async function(req, res) {
     if (!filterData.ID) { // liste
         rawQuery = `SELECT *, CONCAT('[ ',kodu,' ] ', adi) as koduAdi FROM ${table} ORDER BY kodu ASC`;
     } else { // tek kayıt
-        rawQuery = `SELECT *, CONCAT('[ ',kodu,' ] ', adi) as koduAdi FROM ${table} WHERE ${keyExpr} = ${filterData.ID}`;
+        rawQuery = `SELECT *, CONCAT('[ ',kodu,' ] ', adi) as koduAdi FROM ${table} WHERE ${keyExpr} = '${filterData.ID}'`;
     }
 
     await crudHelper.getListR({
@@ -42,7 +42,7 @@ router.post('/boxIrsaliyeDetay', async function(req, res) {
     if (!filterData.ID) { // liste
         rawQuery = `SELECT *, CONCAT('[ ',kodu,' ] ', adi) as koduAdi FROM ${table} ORDER BY kodu ASC`;
     } else { // tek kayıt
-        rawQuery = `SELECT *, CONCAT('[ ',kodu,' ] ', adi) as koduAdi FROM ${table} WHERE ${keyExpr} = ${filterData.ID}`;
+        rawQuery = `SELECT *, CONCAT('[ ',kodu,' ] ', adi) as koduAdi FROM ${table} WHERE ${keyExpr} = '${filterData.ID}'`;
     }
 
     await crudHelper.getListR({
@@ -70,7 +70,7 @@ router.post('/boxSiparistenIrsaliye', async function(req, res) {
     if (!filterData.ID) { // liste
         rawQuery = `SELECT *, CONCAT('[ ',kodu,' ] ', adi) as koduAdi FROM ${table} ORDER BY kodu ASC`;
     } else { // tek kayıt
-        rawQuery = `SELECT *, CONCAT('[ ',kodu,' ] ', adi) as koduAdi FROM ${table} WHERE ${keyExpr} = ${filterData.ID}`;
+        rawQuery = `SELECT *, CONCAT('[ ',kodu,' ] ', adi) as koduAdi FROM ${table} WHERE ${keyExpr} = '${filterData.ID}'`;
     }
 
     await crudHelper.getListR({
@@ -98,7 +98,7 @@ router.post('/boxKesinSiparisDetay', async function(req, res) {
     if (!filterData.ID) { // liste
         rawQuery = `SELECT *, CONCAT('[ ',kodu,' ] ', adi) as koduAdi FROM ${table} ORDER BY kodu ASC`;
     } else { // tek kayıt
-        rawQuery = `SELECT *, CONCAT('[ ',kodu,' ] ', adi) as koduAdi FROM ${table} WHERE ${keyExpr} = ${filterData.ID}`;
+        rawQuery = `SELECT *, CONCAT('[ ',kodu,' ] ', adi) as koduAdi FROM ${table} WHERE ${keyExpr} = '${filterData.ID}'`;
     }
 
     await crudHelper.getListR({
@@ -126,7 +126,7 @@ router.post('/boxStokKartiOlcuBirimi', async function(req, res) {
     if (!filterData.ID) { // liste
         rawQuery = `SELECT *, CONCAT('[ ',kodu,' ] ', adi) as koduAdi FROM ${table} ORDER BY kodu ASC`;
     } else { // tek kayıt
-        rawQuery = `SELECT *, CONCAT('[ ',kodu,' ] ', adi) as koduAdi FROM ${table} WHERE ${keyExpr} = ${filterData.ID}`;
+        rawQuery = `SELECT *, CONCAT('[ ',kodu,' ] ', adi) as koduAdi FROM ${table} WHERE ${keyExpr} = '${filterData.ID}'`;
     }
 
     await crudHelper.getListR({

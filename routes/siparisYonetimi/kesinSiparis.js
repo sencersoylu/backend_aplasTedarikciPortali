@@ -51,7 +51,7 @@ router.post('/siparisDurum', async function (req, res) {
             throw "sipariş ID boş olamaz!";
         }
 
-        const oldRecord = (await db.sequelize.query(`SELECT t.siparisDurumID, MAX(har.siparisYonetimiKesinSiparisOperasyonID) as operasyonID FROM ${table} as t LEFT JOIN siparis_yonetimi_kesin_siparis_hareket as har ON har.${keyExpr} = t.${keyExpr}  WHERE t.${keyExpr} = ${ID} GROUP BY t.${keyExpr}`, { type: db.Sequelize.QueryTypes.SELECT })
+        const oldRecord = (await db.sequelize.query(`SELECT t.siparisDurumID, MAX(har.siparisYonetimiKesinSiparisOperasyonID) as operasyonID FROM ${table} as t LEFT JOIN siparis_yonetimi_kesin_siparis_hareket as har ON har.${keyExpr} = t.${keyExpr}  WHERE t.${keyExpr} = '${ID}' GROUP BY t.${keyExpr}`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
                 console.log(e);
                 throw "Sorgulama esnasında hata oluştu!";
@@ -101,7 +101,7 @@ router.post('/onayaCikar', async function (req, res) {
             GROUP BY
                 ${keyExpr}
         ) AS sonHar ON sonHar.${keyExpr} = sip.${keyExpr} 
-        WHERE sip.${keyExpr} = ${siparisID}`, { type: db.Sequelize.QueryTypes.SELECT })
+        WHERE sip.${keyExpr} = '${siparisID}'`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
                 console.log(e);
                 throw "Sorgulama esnasında hata oluştu!";
@@ -166,7 +166,7 @@ router.post('/iptalEt', async function (req, res) {
             GROUP BY
                 ${keyExpr}
         ) AS sonHar ON sonHar.${keyExpr} = sip.${keyExpr} 
-        WHERE sip.${keyExpr} = ${siparisID}`, { type: db.Sequelize.QueryTypes.SELECT })
+        WHERE sip.${keyExpr} = '${siparisID}'`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
                 console.log(e);
                 throw "Sorgulama esnasında hata oluştu!";
@@ -238,7 +238,7 @@ router.post('/onayla', async function (req, res) {
             GROUP BY
                 ${keyExpr}
         ) AS sonHar ON sonHar.${keyExpr} = sip.${keyExpr} 
-        WHERE sip.${keyExpr} = ${siparisID}`, { type: db.Sequelize.QueryTypes.SELECT })
+        WHERE sip.${keyExpr} = '${siparisID}'`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
                 console.log(e);
                 throw "Sorgulama esnasında hata oluştu!";
@@ -336,9 +336,9 @@ LEFT JOIN (
 ) AS sonHar ON sonHar.${keyExpr} = t.${keyExpr}
 LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon as oper ON oper.siparisYonetimiKesinSiparisOperasyonID = sonHar.siparisYonetimiKesinSiparisOperasyonID
 WHERE
-	t.ureticiFirmaID = ${userFirmaID}
+	t.ureticiFirmaID = '${userFirmaID}'
 ORDER BY
-	t.${keyExpr} DESC`;
+	t.createdAt DESC`;
 
         }
         else if (userFirmaTurID == 2) { // tedarikci firma
@@ -368,9 +368,9 @@ LEFT JOIN (
 ) AS sonHar ON sonHar.${keyExpr} = t.${keyExpr}
 LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon as oper ON oper.siparisYonetimiKesinSiparisOperasyonID = sonHar.siparisYonetimiKesinSiparisOperasyonID
 WHERE
-	t.ureticiFirmaID = ${userFirmaID} AND sonHar.siparisYonetimiKesinSiparisOperasyonID > 2
+	t.ureticiFirmaID = '${userFirmaID}' AND sonHar.siparisYonetimiKesinSiparisOperasyonID > 2
 ORDER BY
-	t.${keyExpr} DESC`;
+	t.createdAt DESC`;
         }
 
 
@@ -432,12 +432,12 @@ router.post('/create', async function (req, res) {
             body: req.body,
             table: table,
             keyExpr: keyExpr
-        }, async (data, err) => {
-            if (data) {
-                res.status(200).json(data);
+        }, async (datum, err) => {
+            if (datum) {
+                res.status(200).json(datum);
 
                 // hareket kaydı
-                await operasyonHareketiEkle(data[keyExpr], 1, req);
+                await operasyonHareketiEkle(datum[keyExpr], 1, req);
 
             }
 

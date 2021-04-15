@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes) => {
 
     const model = sequelize.define('kullanici_firma', {
         kullaniciFirmaID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID, 
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         firmaAdi: DataTypes.STRING,
@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
         faks: DataTypes.STRING,
         ePosta: DataTypes.STRING,
         kepAdresi: DataTypes.STRING,
-        createdUserID: DataTypes.STRING,
-        updatedUserID: DataTypes.STRING,
+        createdUserID: DataTypes.UUID,
+        updatedUserID: DataTypes.UUID,
         createdAt: {
             type: "DATETIME DEFAULT CURRENT_TIMESTAMP",
         },
@@ -25,9 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         },
     }, {});
 
-    model.associate = function (models) {
-
-    };
+    
 
     return model;
 

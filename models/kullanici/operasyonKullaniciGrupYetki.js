@@ -4,9 +4,9 @@ module.exports = (sequelize, DataTypes) => {
   const tanim = sequelize.define('operasyon_kullanici_grup_yetki', {
 	  
     operasyonKullaniciGrupYetkiID: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
+      type: DataTypes.UUID, 
+      defaultValue: DataTypes.UUIDV4,
+	  primaryKey: true
 	},
 	
 	operasyonID: {
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
 		allowNull: false
 	},
     kullaniciGrupID: {
-		type: DataTypes.INTEGER,
+		type: DataTypes.UUID,
 		allowNull: false
 	},
 

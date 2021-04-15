@@ -21,7 +21,7 @@ router.post('/getList', async function (req, res) {
         });
     }
 
-    let rawQuery = "SELECT t.*, CONCAT('[ ',gob.kodu,' ] ', gob.adi) as olcuBirimi FROM " + table + " as t LEFT JOIN genel_olcu_birimi as gob ON gob.genelOlcuBirimiID = t.genelOlcuBirimiID WHERE t." + parentKeyExpr + " = " + parentID;
+    let rawQuery = "SELECT t.*, CONCAT('[ ',gob.kodu,' ] ', gob.adi) as olcuBirimi FROM " + table + " as t LEFT JOIN genel_olcu_birimi as gob ON gob.genelOlcuBirimiID = t.genelOlcuBirimiID WHERE t." + parentKeyExpr + " = '" + parentID + "'";
 
     await crudHelper.getListR({
         data: filterData,
@@ -79,7 +79,7 @@ router.post('/update', async function (req, res) {
             GROUP BY
                 ${parentKeyExpr}
         ) AS sonHar ON sonHar.${parentKeyExpr} = sip.${parentKeyExpr} 
-        WHERE sip.${parentKeyExpr} = ${siparisID}`, { type: db.Sequelize.QueryTypes.SELECT })
+        WHERE sip.${parentKeyExpr} = '${siparisID}'`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
                 console.log(e);
                 throw "Sorgulama esnasında hata oluştu!";
@@ -195,7 +195,11 @@ router.post('/create', async function (req, res) {
         return res.status(400).json("tedarikçi sipariş detayı ekleyemez!");
     }
 
-    const mevcutKalemler = await db.sequelize.query(`SELECT * FROM ${table} WHERE ${parentKeyExpr} = ${userData.parentID} AND urunYonetimiUreticiUrunID = ${data.urunYonetimiUreticiUrunID} AND genelOlcuBirimiID = ${data.genelOlcuBirimiID}`, { type: db.Sequelize.QueryTypes.SELECT })
+    const mevcutKalemler = await db.sequelize.query(`SELECT * FROM ${table} WHERE ${parentKeyExpr} = :parentID AND urunYonetimiUreticiUrunID = :urunID AND genelOlcuBirimiID = :olcuBirimiID`, { type: db.Sequelize.QueryTypes.SELECT, replacements: {
+        parentID: userData.parentID,
+        urunID: data.urunYonetimiUreticiUrunID,
+        olcuBirimiID: data.genelOlcuBirimiID
+    } })
         .catch(err => {
             console.log(err);
             return res.status(400).json({ validationError: "sorgulama esnasında hata oluştu!" });
@@ -220,7 +224,7 @@ router.post('/create', async function (req, res) {
             GROUP BY
                 ${parentKeyExpr}
         ) AS sonHar ON sonHar.${parentKeyExpr} = sip.${parentKeyExpr} 
-        WHERE sip.${parentKeyExpr} = ${userData.parentID}`, { type: db.Sequelize.QueryTypes.SELECT })
+        WHERE sip.${parentKeyExpr} = '${userData.parentID}'`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
                 console.log(e);
                 throw "Durum Sorgulama esnasında hata oluştu!";
@@ -303,7 +307,7 @@ router.post('/delete', async function (req, res) {
             GROUP BY
                 ${parentKeyExpr}
         ) AS sonHar ON sonHar.${parentKeyExpr} = sip.${parentKeyExpr} 
-        WHERE t.${keyExpr} = ${id}`, { type: db.Sequelize.QueryTypes.SELECT })
+        WHERE t.${keyExpr} = '${id}'`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
                 console.log(e);
                 throw "Sorgulama esnasında hata oluştu!";

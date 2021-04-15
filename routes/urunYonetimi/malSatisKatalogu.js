@@ -12,7 +12,7 @@ router.post('/getList', async function (req, res) {
 
         const filterData = req.body;
 
-        let rawQuery = `SELECT t.*, urun.adi as urunAdi, firma.firmaAdi FROM ${table} as t LEFT JOIN urun_yonetimi_uretici_urun as urun ON urun.urunYonetimiUreticiUrunID = t.urunYonetimiUreticiUrunID LEFT JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = t.tedarikciFirmaID ORDER BY ${keyExpr} DESC`;
+        let rawQuery = `SELECT t.*, urun.adi as urunAdi, firma.firmaAdi FROM ${table} as t LEFT JOIN urun_yonetimi_uretici_urun as urun ON urun.urunYonetimiUreticiUrunID = t.urunYonetimiUreticiUrunID LEFT JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = t.tedarikciFirmaID ORDER BY t.createdAt DESC`;
 
         await crudHelper.getListR({
             data: filterData,
@@ -44,7 +44,10 @@ router.post('/create', async function (req, res) {
             throw "Data boş olamaz!";
         }
 
-        const oldRecord = (await db.sequelize.query(`SELECT * FROM ${table} WHERE tedarikciFirmaID = ${data['tedarikciFirmaID']} AND urunYonetimiUreticiUrunID = ${data['urunYonetimiUreticiUrunID']}`, { type: db.Sequelize.QueryTypes.SELECT })
+        const oldRecord = (await db.sequelize.query(`SELECT * FROM ${table} WHERE tedarikciFirmaID = :firmaID AND urunYonetimiUreticiUrunID = :urunID`, { type: db.Sequelize.QueryTypes.SELECT,replacements: {
+            firmaID: data['tedarikciFirmaID'],
+            urunID: data['urunYonetimiUreticiUrunID']
+        } })
             .catch(e => {
                 console.log(e);
                 throw "Sorgulama esnasında hata oluştu!";
@@ -104,7 +107,11 @@ router.post('/update', async function (req, res) {
             throw "Data boş olamaz!";
         }
 
-        const oldRecord = (await db.sequelize.query(`SELECT * FROM ${table} WHERE tedarikciFirmaID = ${data['tedarikciFirmaID']} AND urunYonetimiUreticiUrunID = ${data['urunYonetimiUreticiUrunID']} AND ${keyExpr} != ${data[keyExpr]}`, { type: db.Sequelize.QueryTypes.SELECT })
+        const oldRecord = (await db.sequelize.query(`SELECT * FROM ${table} WHERE tedarikciFirmaID =:firmaID AND urunYonetimiUreticiUrunID = :urunID AND ${keyExpr} != :id`, { type: db.Sequelize.QueryTypes.SELECT,replacements: {
+            firmaID: data['tedarikciFirmaID'],
+            urunID: data['urunYonetimiUreticiUrunID'],
+            id: data[keyExpr]
+        } })
             .catch(e => {
                 console.log(e);
                 throw "Sorgulama esnasında hata oluştu!";

@@ -4,7 +4,7 @@ const db = require('../../models');
 
 router.get('/', function (req, res, next) {
 	
-   db.sequelize.query("SELECT p.*, d.icerik as imageContent, d.turu as imageType FROM iletisim_merkezi_duyuru as p LEFT JOIN duyuru_fotolari as pd ON p.iletisimMerkeziDuyuruID = pd.iletisimMerkeziDuyuruID LEFT JOIN dosya as d ON d.dosyaID = pd.dosyaID  WHERE yayinBaslangicTarihi < NOW() AND yayinBitisTarihi > NOW() GROUP BY iletisimMerkeziDuyuruID ORDER BY FIELD(duyuruyuUsteAl, TRUE, FALSE), iletisimMerkeziDuyuruID DESC", { type: db.Sequelize.QueryTypes.SELECT })
+   db.sequelize.query("SELECT p.*, d.icerik as imageContent, d.turu as imageType FROM iletisim_merkezi_duyuru as p LEFT JOIN duyuru_fotolari as pd ON p.iletisimMerkeziDuyuruID = pd.iletisimMerkeziDuyuruID LEFT JOIN dosya as d ON d.dosyaID = pd.dosyaID  WHERE yayinBaslangicTarihi < NOW() AND yayinBitisTarihi > NOW() GROUP BY iletisimMerkeziDuyuruID ORDER BY FIELD(duyuruyuUsteAl, TRUE, FALSE), p.createdAt DESC", { type: db.Sequelize.QueryTypes.SELECT })
 		.then(projeL => {
             res.json(projeL.map(d => {
                 if(d.imageContent){

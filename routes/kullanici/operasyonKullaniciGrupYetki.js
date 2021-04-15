@@ -11,7 +11,7 @@ router.post('/get', function (req, res, next) {
         return;
     }
 
-    db.sequelize.query("SELECT m.operasyonID, m.adi, IF(y.durum, true, false) as durum FROM operasyon AS m LEFT JOIN operasyon_kullanici_grup_yetki AS y ON y.operasyonID = m.operasyonID AND y.kullaniciGrupID = " + id + " ORDER BY operasyonID", {
+    db.sequelize.query("SELECT m.operasyonID, m.adi, IF(y.durum, true, false) as durum FROM operasyon AS m LEFT JOIN operasyon_kullanici_grup_yetki AS y ON y.operasyonID = m.operasyonID AND y.kullaniciGrupID = '" + id + "' ORDER BY operasyonID", {
         type: db.Sequelize.QueryTypes.SELECT
     })
         .then(projeL => res.json(projeL))

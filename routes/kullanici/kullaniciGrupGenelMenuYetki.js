@@ -62,7 +62,7 @@ router.put('/', async function(req, res, next) {
         })
     }
 
-    db.sequelize.query("SELECT * FROM kullanici_grup_genel_menu_yetki WHERE kullaniciGrupID = " + kullaniciGrupID, {
+    db.sequelize.query("SELECT * FROM kullanici_grup_genel_menu_yetki WHERE kullaniciGrupID = '" + kullaniciGrupID + "'", {
             type: db.Sequelize.QueryTypes.SELECT
         })
         .then( ( mevcutYetkiler )=> {
@@ -79,7 +79,7 @@ router.put('/', async function(req, res, next) {
 						// console.log("1");
 						try {
 						// kullanici grubunun hiçbir yetkisi olmayan menuleri siliniyor
-						await db.sequelize.query("DELETE FROM kullanici_grup_genel_menu_yetki WHERE gorebilir = 0 AND silebilir = 0 AND duzenleyebilir = 0 AND ekleyebilir = 0 AND kullaniciGrupID = " + kullaniciGrupID , {
+						await db.sequelize.query("DELETE FROM kullanici_grup_genel_menu_yetki WHERE gorebilir = 0 AND silebilir = 0 AND duzenleyebilir = 0 AND ekleyebilir = 0 AND kullaniciGrupID = '" + kullaniciGrupID+ "'" , {
 							type: db.Sequelize.QueryTypes.DELETE
 						})
 						}

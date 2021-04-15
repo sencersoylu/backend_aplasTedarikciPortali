@@ -4,8 +4,8 @@ module.exports = (sequelize, DataTypes) => {
   const tanim = sequelize.define('genel_islem_grup', {
 
     genelIslemGrupID: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
+      type: DataTypes.UUID, 
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
     adi: {

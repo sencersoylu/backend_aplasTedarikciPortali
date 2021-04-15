@@ -15,7 +15,7 @@ router.post('/boxIrsaliye', async function(req, res) {
     let rawQuery;
 
     if (!filterData.ID) { // liste
-        rawQuery = `SELECT * FROM ${table} WHERE tedarikciFirmaID = ${filterData.tedarikciID} ORDER BY kisaKodu ASC`;
+        rawQuery = `SELECT * FROM ${table} WHERE tedarikciFirmaID = '${filterData.tedarikciID}' ORDER BY kisaKodu ASC`;
     } else { // tek kayıt
         rawQuery = `SELECT * FROM ${table} WHERE ${keyExpr} = ${filterData.ID}`;
     }
@@ -43,7 +43,7 @@ router.post('/boxSiparisYonetimiKesinSiparis', async function(req, res) {
     let rawQuery;
 
     if (!filterData.ID) { // liste
-        rawQuery = `SELECT * FROM ${table} WHERE tedarikciFirmaID = ${filterData.tedarikciID} ORDER BY kisaKodu ASC`;
+        rawQuery = `SELECT * FROM ${table} WHERE tedarikciFirmaID = '${filterData.tedarikciID}' ORDER BY kisaKodu ASC`;
     } else { // tek kayıt
         rawQuery = `SELECT * FROM ${table} WHERE ${keyExpr} = ${filterData.ID}`;
     }
@@ -68,9 +68,9 @@ router.post('/boxSiparisYonetimiKesinSiparis', async function(req, res) {
 router.post('/getList', async function(req, res) {
 
     const filterData = req.body;
-    const parentID = +req.body.userData.parentID;
+    const parentID = req.body.userData.parentID;
 
-    let rawQuery = "SELECT x.*, firma.firmaAdi, firma.firmaKodu, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = x.tedarikciFirmaID LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID WHERE x."+ parentKeyExpr + " = "+ parentID+" ORDER BY x." + keyExpr + " DESC";
+    let rawQuery = "SELECT x.*, firma.firmaAdi, firma.firmaKodu, ulke.adi as ulke, il.adi as il FROM " + table + " as x LEFT JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = x.tedarikciFirmaID LEFT JOIN genel_ulke as ulke ON ulke.genelUlkeID = x.genelUlkeID LEFT JOIN genel_il as il ON il.genelIlID = x.genelIlID WHERE x."+ parentKeyExpr + " = '"+ parentID+"' ORDER BY x.createdAt DESC";
 
     await crudHelper.getListR({
         data: filterData,

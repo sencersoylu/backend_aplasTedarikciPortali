@@ -25,10 +25,10 @@ FROM
     ${table} AS t
 LEFT JOIN sevkiyat_yonetimi_irsaliye_durum AS durum ON durum.sevkiyatYonetimiIrsaliyeDurumID = t.sevkiyatYonetimiIrsaliyeDurumID
 WHERE
-	t.ureticiFirmaID = ${userFirmaID}
+	t.ureticiFirmaID = '${userFirmaID}'
     ${userFirmaTurID == 1 ? 'AND t.sevkiyatYonetimiIrsaliyeDurumID > 1' : ''} 
 ORDER BY
-	t.${keyExpr} DESC
+	t.createdAt DESC
         
         `;
 

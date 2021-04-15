@@ -1,6 +1,7 @@
 const tdb = require('../models');
 const queryHelper = require('../helpers/queryHelper');
 const utils = require('./utils');
+const { v4: uuidv4 } = require('uuid');
 
 // for mysql
 const getListR = async (dd, callbackFunc) => {
@@ -90,11 +91,12 @@ const getR = async (d, callbackFunc) => {
 
     try {
 
-        const id = +d.body.ID;
+        const id = d.body.ID;
 
         if (!id) {
             callbackFunc(null, "geçersiz id");
         } else {
+
             const result = await db[d.table].findOne({
                 where: {
                     [d.keyExpr]: id
@@ -130,7 +132,7 @@ const updateR = async (d, callbackFunc) => {
         db = tdb;
     }
 
-    const id = +d.body.userData.ID;
+    const id = d.body.userData.ID;
     const data = d.body.data;
     const userID = d.body.userData.userID;
 
@@ -138,7 +140,6 @@ const updateR = async (d, callbackFunc) => {
     delete data["createdAt"];
 
     try {
-
         const result = await db[d.table].update(
             data, {
             where: {
@@ -177,7 +178,7 @@ const createR = async (d, callbackFunc) => {
     data["createdUserID"] = userID;
 
     if (d.parentKeyExpr) {
-        data[d.parentKeyExpr] = +d.body.userData.parentID;
+        data[d.parentKeyExpr] = d.body.userData.parentID;
     }
 
     db[d.table].create(data).then(async (resp) => {
@@ -203,7 +204,7 @@ const deleteR = async (d, callbackFunc) => {
         db = tdb;
     }
 
-    const id = +d.body.ID;
+    const id = d.body.ID;
 
     if (!id) {
         throw "geçersiz id";
@@ -214,10 +215,10 @@ const deleteR = async (d, callbackFunc) => {
             },
             raw: true
         })
-        .catch(e => {
-            callbackFunc(null,"silinecek kayıt aranırken hatayla karşılaşıldı!");
-            return;
-        });
+            .catch(e => {
+                callbackFunc(null, "silinecek kayıt aranırken hatayla karşılaşıldı!");
+                return;
+            });
 
         if (!willBeDeletedProje) {
             throw "kayıt bulunamadı";

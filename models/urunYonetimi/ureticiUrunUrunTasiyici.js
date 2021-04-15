@@ -3,15 +3,15 @@ module.exports = (sequelize, DataTypes) => {
 
     const model = sequelize.define('urun_yonetimi_uretici_urun_urun_tasiyici', {
         urunYonetimiUreticiUrunUrunTasiyiciID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID, 
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
-        urunYonetimiUreticiUrunID: DataTypes.INTEGER,
-        genelUrunTasiyiciID: DataTypes.INTEGER,
+        urunYonetimiUreticiUrunID: DataTypes.UUID,
+        genelUrunTasiyiciID: DataTypes.UUID,
         varsayilanMi: DataTypes.BOOLEAN,
-        createdUserID: DataTypes.STRING,
-        updatedUserID: DataTypes.STRING,
+        createdUserID: DataTypes.UUID,
+        updatedUserID: DataTypes.UUID,
         createdAt: {
             type: "DATETIME DEFAULT CURRENT_TIMESTAMP",
         },

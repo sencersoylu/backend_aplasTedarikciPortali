@@ -11,14 +11,14 @@ const crudHelper = require('../../helpers/crudHelper');
 router.post('/getList', async function (req, res) {
 
     const filterData = req.body;
-    const parentID = +req.body.userData.parentID;
+    const parentID = req.body.userData.parentID;
 
     if (!parentID) {
-        res.status(400).json("geçersiz sabit kıymet id");
+        res.status(400).json("geçersiz işlem grup id");
     } else {
 
         let rawQuery = `
-        SELECT g.${keyExpr}, k.kullaniciAdi, i.adi, i.soyadi FROM ( SELECT kullaniciID, ${keyExpr} FROM ${table} WHERE genelIslemGrupID = ${parentID} ) AS g LEFT JOIN kullanici AS k ON k.kullaniciUUID = g.kullaniciID LEFT JOIN genel_kisi AS i ON k.genelKisiID = i.genelKisiID ORDER BY g.${keyExpr} DESC
+        SELECT g.${keyExpr}, k.kullaniciAdi, k.kisiAdi as adi, k.kisiSoyadi as soyadi FROM ( SELECT kullaniciID, ${keyExpr} FROM ${table} WHERE genelIslemGrupID = '${parentID}' ) AS g LEFT JOIN kullanici AS k ON k.kullaniciID = g.kullaniciID ORDER BY g.createdAt DESC
         `;
 
         await crudHelper.getListR({
@@ -57,8 +57,13 @@ router.post('/get', async function (req, res) {
 
 router.post('/update', async function (req, res) {
 
-    const kullanicilar = await db.sequelize.query("select * from "+table+" WHERE "+parentKeyExpr+" = " + req.body.data[parentKeyExpr] + " AND kullaniciID = '" + req.body.data.kullaniciID + "' AND "+keyExpr+" != " + req.body.data[keyExpr] , {
-        type: db.Sequelize.QueryTypes.SELECT
+    const kullanicilar = await db.sequelize.query("select * from "+table+" WHERE "+parentKeyExpr+" = :parentID AND kullaniciID = :kullaniciID AND "+keyExpr+" != :id" , {
+        type: db.Sequelize.QueryTypes.SELECT,
+        replacements: {
+            parentID: req.body.data[parentKeyExpr],
+            kullaniciID: req.body.data.kullaniciID,
+            id: req.body.data[keyExpr]
+        }
     })
     .catch(e => {
         console.error(e);
@@ -89,8 +94,12 @@ router.post('/update', async function (req, res) {
 
 router.post('/create', async function (req, res) {
     
-    const kullanicilar = await db.sequelize.query("select * from "+table+" WHERE "+keyExpr+" = " + req.body.userData.parentID + " AND kullaniciID = '" + req.body.data.kullaniciID + "'", {
-        type: db.Sequelize.QueryTypes.SELECT
+    const kullanicilar = await db.sequelize.query("select * from "+table+" WHERE "+keyExpr+" = :parentID AND kullaniciID = :kullaniciID", {
+        type: db.Sequelize.QueryTypes.SELECT,
+        replacements: {
+            parentID: req.body.userData.parentID,
+            kullaniciID:  req.body.data.kullaniciID
+        }
     })
     .catch(e => {
         console.error(e);

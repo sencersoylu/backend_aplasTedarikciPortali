@@ -47,9 +47,9 @@ FROM
 			t.aciklama
 		FROM
         ${table}  AS t
-		LEFT JOIN kullanici AS kul ON kul.kullaniciUUID = t.createdUserID
+		LEFT JOIN kullanici AS kul ON kul.kullaniciID = t.createdUserID
 		LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon AS oper ON oper.siparisYonetimiKesinSiparisOperasyonID = t.siparisYonetimiKesinSiparisOperasyonID
-        WHERE t.${parentKeyExpr} = ${parentID}
+        WHERE t.${parentKeyExpr} = '${parentID}'
 	) AS a,
 	(SELECT @rownum := 0) r
 ORDER BY

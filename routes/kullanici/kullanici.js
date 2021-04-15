@@ -15,9 +15,9 @@ router.post('/boxTedarikciFirmaKullanici', async function (req, res) {
     let rawQuery;
 
     if (!filterData.ID) { // liste
-        rawQuery = "SELECT kul.kullaniciUUID as UserId, kul.kisiAdi, kul.kisiSoyadi, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.aktifMi = 1 ORDER BY adiSoyadi ASC";
+        rawQuery = "SELECT kul.kullaniciID as UserId, kul.kisiAdi, kul.kisiSoyadi, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.aktifMi = 1 ORDER BY adiSoyadi ASC";
     } else { // tek kayıt
-        rawQuery = "SELECT kul.kullaniciUUID as UserId, kul.kisiAdi, kul.kisiSoyadi, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.kullaniciUUID = '" + filterData.ID + "'";
+        rawQuery = "SELECT kul.kullaniciID as UserId, kul.kisiAdi, kul.kisiSoyadi, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.kullaniciID = '" + filterData.ID + "'";
     }
 
     await crudHelper.getListR({
@@ -42,9 +42,9 @@ router.post('/boxKullaniciFirmaKullanici', async function (req, res) {
     let rawQuery;
 
     if (!filterData.ID) { // liste
-        rawQuery = "SELECT kul.kullaniciUUID as UserId, kul.kisiAdi, kul.kisiSoyadi, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.aktifMi = 1 ORDER BY adiSoyadi ASC";
+        rawQuery = "SELECT kul.kullaniciID as UserId, kul.kisiAdi, kul.kisiSoyadi, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.aktifMi = 1 ORDER BY adiSoyadi ASC";
     } else { // tek kayıt
-        rawQuery = "SELECT kul.kullaniciUUID as UserId, kul.kisiAdi, kul.kisiSoyadi, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.kullaniciUUID = '" + filterData.ID + "'";
+        rawQuery = "SELECT kul.kullaniciID as UserId, kul.kisiAdi, kul.kisiSoyadi, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.kullaniciID = '" + filterData.ID + "'";
     }
 
     await crudHelper.getListR({
@@ -69,9 +69,9 @@ router.post('/boxKullaniciFirmaAdres', async function (req, res) {
     let rawQuery;
 
     if (!filterData.ID) { // liste
-        rawQuery = "SELECT kul.kullaniciUUID as UserId, kul.kisiAdi, kul.kisiSoyadi, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.aktifMi = 1 ORDER BY adiSoyadi ASC";
+        rawQuery = "SELECT kul.kullaniciID as UserId, kul.kisiAdi, kul.kisiSoyadi, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.aktifMi = 1 ORDER BY adiSoyadi ASC";
     } else { // tek kayıt
-        rawQuery = "SELECT kul.kullaniciUUID as UserId, kul.kisiAdi, kul.kisiSoyadi, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.kullaniciUUID = '" + filterData.ID + "'";
+        rawQuery = "SELECT kul.kullaniciID as UserId, kul.kisiAdi, kul.kisiSoyadi, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.kullaniciID = '" + filterData.ID + "'";
     }
 
     await crudHelper.getListR({
@@ -96,9 +96,9 @@ router.post('/boxGenelIslemGrupKullanici', async function (req, res) {
     let rawQuery;
 
     if (!filterData.ID) { // liste
-        rawQuery = "SELECT kul.kullaniciUUID as UserId, kul.kullaniciAdi, kul.ePosta, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.aktifMi = 1 ORDER BY kul.kullaniciAdi ASC";
+        rawQuery = "SELECT kul.kullaniciID as UserId, kul.kullaniciAdi, kul.ePosta, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.aktifMi = 1 ORDER BY kul.kullaniciAdi ASC";
     } else { // tek kayıt
-        rawQuery = "SELECT kul.kullaniciUUID as UserId, kul.kullaniciAdi, kul.ePosta, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.kullaniciUUID = '" + filterData.ID + "'";
+        rawQuery = "SELECT kul.kullaniciID as UserId, kul.kullaniciAdi, kul.ePosta, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.kullaniciID = '" + filterData.ID + "'";
     }
 
     await crudHelper.getListR({
@@ -123,9 +123,9 @@ router.post('/boxGenelKullaniciGrupKullanici', async function (req, res) {
     let rawQuery;
 
     if (!filterData.ID) { // liste
-        rawQuery = "SELECT kul.kullaniciUUID as UserId, kul.kullaniciAdi, kul.ePosta, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.aktifMi = 1 ORDER BY kul.kullaniciAdi ASC";
+        rawQuery = "SELECT kul.kullaniciID as UserId, kul.kullaniciAdi, kul.ePosta, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.aktifMi = 1 ORDER BY kul.kullaniciAdi ASC";
     } else { // tek kayıt
-        rawQuery = "SELECT kul.kullaniciUUID as UserId, kul.kullaniciAdi, kul.ePosta, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.kullaniciUUID = '" + filterData.ID + "'";
+        rawQuery = "SELECT kul.kullaniciID as UserId, kul.kullaniciAdi, kul.ePosta, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul WHERE kul.kullaniciID = '" + filterData.ID + "'";
     }
 
     await crudHelper.getListR({
@@ -151,9 +151,9 @@ router.post('/boxGenelIslemGrupKullanici', async function (req, res) {
     let rawQuery;
 
     if (!filterData.ID) { // liste
-        rawQuery = "SELECT kul.kullaniciUUID as UserId, kul.kullaniciAdi FROM kullanici as kul WHERE kul.aktifMi = 1 ORDER BY kul.kullaniciAdi ASC";
+        rawQuery = "SELECT kul.kullaniciID as UserId, kul.kullaniciAdi FROM kullanici as kul WHERE kul.aktifMi = 1 ORDER BY kul.kullaniciAdi ASC";
     } else { // tek kayıt
-        rawQuery = "SELECT kul.kullaniciUUID as UserId, kul.kullaniciAdi FROM kullanici as kul WHERE kul.kullaniciUUID = " + filterData.ID;
+        rawQuery = "SELECT kul.kullaniciID as UserId, kul.kullaniciAdi FROM kullanici as kul WHERE kul.kullaniciID = '" + filterData.ID+"'";
     }
 
     await crudHelper.getListR({
@@ -174,7 +174,7 @@ router.post('/boxGenelIslemGrupKullanici', async function (req, res) {
 // tüm aktif kullanıcıları alfabetik sıralamada getirir
 router.get('/', function (req, res) {
 
-    db.sequelize.query("SELECT kul.kullaniciUUID as UserId, kul.kullaniciAdi FROM kullanici as kul WHERE kul.aktifMi = 1 ORDER BY kul.kisiAdi ASC, kul.kisiSoyadi ASC", {
+    db.sequelize.query("SELECT kul.kullaniciID as UserId, kul.kullaniciAdi FROM kullanici as kul WHERE kul.aktifMi = 1 ORDER BY kul.kisiAdi ASC, kul.kisiSoyadi ASC", {
         type: db.Sequelize.QueryTypes.SELECT
     })
         .then(users => {
@@ -189,13 +189,11 @@ router.get('/', function (req, res) {
 // kullanici id kullanılarak kullanıcının tüm yetkili olduğu menuleri getirir
 router.post('/menuYetkileri', async function (req, res) {
 
-
     const id = req.body.userData.userID;
 
     if (!id) return res.status(400).json("gecersiz kullanici id");
 
-
-    db.sequelize.query("SELECT m.genelMenuID, m.adi, m.genelMenuParentID,m.siraNo,m.path,m.iconName, y.ekleyebilir, y.silebilir, y.duzenleyebilir, y.gorebilir FROM genel_menu as m LEFT JOIN kullanici_genel_menu_yetki as y ON m.genelMenuID = y.genelMenuID WHERE y.kullaniciID = '" + id + "' ORDER BY m.genelMenuID", {
+    db.sequelize.query("SELECT m.genelMenuID, m.adi, m.genelMenuParentID,m.siraNo,m.path,m.iconName, y.ekleyebilir, y.silebilir, y.duzenleyebilir, y.gorebilir FROM genel_menu as m LEFT JOIN kullanici_genel_menu_yetki as y ON m.genelMenuID = y.genelMenuID WHERE y.kullaniciID = '" + id + "'", {
         type: db.Sequelize.QueryTypes.SELECT
     })
         .then(kulllaniciMenuYetkileri => {
@@ -236,7 +234,7 @@ router.post('/getList', async function (req, res) {
 
     const filterData = req.body;
 
-    let rawQuery = "SELECT kul.kullaniciUUID as UserId, kul.kullaniciAdi, kul.ePosta, kul.sonGirisZamani, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul ORDER BY kul." + keyExpr + " DESC";
+    let rawQuery = "SELECT kul.kullaniciID as UserId, kul.kullaniciAdi, kul.ePosta, kul.sonGirisZamani, CONCAT(kul.kisiAdi, ' ', kul.kisiSoyadi) as adiSoyadi FROM kullanici as kul ORDER BY kul.createdAt DESC";
 
     await crudHelper.getListR({
         data: filterData,
@@ -255,49 +253,30 @@ router.post('/getList', async function (req, res) {
 
 router.post('/get', async function (req, res) {
 
-    const userUUID = req.body.ID;
-    if (!userUUID) {
-        res.status(400).json({ validationError: "kullanıcı id boş olamaz!" });
-        return;
-    }
-
-    db.sequelize.query("SELECT kullaniciUUID as userID, kullaniciAdi, sifre, ePosta, aktifMi FROM " + table + " WHERE kullaniciUUID = :userID LIMIT 1", {
-        type: db.Sequelize.QueryTypes.SELECT, replacements: {
-            userID: req.body.ID
+    await crudHelper.getR({
+        body: req.body,
+        table: table,
+        keyExpr: keyExpr
+    }, (data, err) => {
+        if (data) {
+            res.status(200).json(data);
         }
-    })
-        .then(users => {
-            if (users.length == 0) {
-                res.status(400).json({ validationError: "kullanıcı bulunamadı!" })
-            }
-            else {
-                res.json(users[0]);
-            }
-        })
-        .catch(e => {
-            res.status(400).json(e);
-        })
+
+        if (err) {
+            console.error(err);
+            res.status(400).json(err);
+        }
+    });
 
 });
 
 router.post('/update', async function (req, res) {
 
-    const userUUID = req.body.data.userID;
-    if (!userUUID) {
-        res.status(400).json({ validationError: "kullanıcı id boş olamaz!" });
-        return;
-    }
-
     try {
 
-        const users = await db.sequelize.query("SELECT * FROM " + table + " WHERE kullaniciUUID = :userID LIMIT 1", {
-            type: db.Sequelize.QueryTypes.SELECT, replacements: {
-                userID: userUUID
-            }
-        })
-
-        if (users.length == 0) {
-            res.status(400).json({ validationError: "kullanıcı bulunamadı!" });
+        const userUUID = req.body.data.userID;
+        if (!userUUID) {
+            res.status(400).json({ validationError: "kullanıcı id boş olamaz!" });
             return;
         }
 
@@ -305,7 +284,7 @@ router.post('/update', async function (req, res) {
 
         if (data["kullaniciAdi"]) {
 
-            const existUserName = await db.sequelize.query("SELECT * FROM " + table + " WHERE aktifMi = 1 AND kullaniciAdi = :userName AND kullaniciUUID != :userUUID LIMIT 1", {
+            const existUserName = await db.sequelize.query("SELECT * FROM " + table + " WHERE aktifMi = 1 AND kullaniciAdi = :userName AND kullaniciID != :userUUID LIMIT 1", {
                 type: db.Sequelize.QueryTypes.SELECT, replacements: {
                     userName: data["kullaniciAdi"],
                     userUUID: userUUID
@@ -319,16 +298,21 @@ router.post('/update', async function (req, res) {
 
         }
 
-        data['updatedUserID'] = req.body.userData.userID;
+        await crudHelper.updateR({
+            body: req.body,
+            table: table,
+            keyExpr: keyExpr
+        }, (data, err) => {
+            if (data) {
+                return res.status(200).json(data);
+            }
 
-        await db[table].update(
-            data, {
-            where: {
-                kullaniciUUID: userUUID
+            if (err) {
+                console.error(err);
+                return res.status(400).json(err);
             }
         });
         
-        res.json("OK");
 
     } catch (e) {
 
@@ -361,25 +345,6 @@ router.post('/create', async function (req, res) {
             return;
         }
 
-        if (data["genelKisiID"]) {
-
-            const existPersonel = await db.sequelize.query("SELECT * FROM " + table + " WHERE aktifMi = 1 AND genelKisiID = :personelID LIMIT 1", {
-                type: db.Sequelize.QueryTypes.SELECT, replacements: {
-                    personelID: data["genelKisiID"]
-                }
-            });
-
-            if (existPersonel.length > 0) {
-                res.status(400).json({ validationError: "personele ait kullanıcı zaten mevcut!" });
-                return;
-            }
-
-        }
-
-        // uuid_v4() -> db de kendi tanımımıza oluşturuğumuz kayıtlı fonksiyon
-        const newUUID = await db.sequelize.query("SELECT uuid_v4() as uuid", { type: db.Sequelize.QueryTypes.SELECT });
-        data['kullaniciUUID'] = newUUID[0].uuid;
-
         await crudHelper.createR({
             body: req.body,
             table: table,
@@ -410,31 +375,21 @@ router.post('/create', async function (req, res) {
 
 router.post('/delete', async function (req, res) {
 
-    const userUUID = req.body.ID;
-    if (!userUUID) {
-        res.status(400).json({ validationError: "kullanıcı id boş olamaz!" });
-        return;
-    }
-
     try {
 
-        const users = await db.sequelize.query("SELECT * FROM " + table + " WHERE kullaniciUUID = :userID LIMIT 1", {
-            type: db.Sequelize.QueryTypes.SELECT, replacements: {
-                userID: userUUID
+        await crudHelper.deleteR({
+            body: req.body,
+            table: table,
+            keyExpr: keyExpr
+        }, (data, err) => {
+            if (data) {
+                return res.status(200).json(data);
             }
-        })
-        if (users.length == 0) {
-            res.status(400).json({ validationError: "kullanıcı bulunamadı!" })
-        }
-        else {
-            await db.sequelize.query("DELETE FROM " + table + " WHERE kullaniciUUID = :userID", {
-                type: db.Sequelize.QueryTypes.DELETE, replacements: {
-                    userID: userUUID
-                }
-            });
-
-            res.json("OK");
-        }
+    
+            if (err) {
+                return res.status(400).json(err);
+            }
+        });
 
     } catch (e) {
 
@@ -454,7 +409,7 @@ router.post('/sifreDegistir', async function (req, res) {
 
     try {
 
-        const users = await db.sequelize.query("SELECT * FROM " + table + " WHERE kullaniciUUID = :userID LIMIT 1", {
+        const users = await db.sequelize.query("SELECT * FROM " + table + " WHERE kullaniciID = :userID LIMIT 1", {
             type: db.Sequelize.QueryTypes.SELECT, replacements: {
                 userID: userUUID
             }
@@ -477,7 +432,7 @@ router.post('/sifreDegistir', async function (req, res) {
             return;
         }
 
-        await db.sequelize.query("UPDATE " + table + " SET sifre = :sifre WHERE kullaniciUUID = :userID", {
+        await db.sequelize.query("UPDATE " + table + " SET sifre = :sifre WHERE kullaniciID = :userID", {
             type: db.Sequelize.QueryTypes.UPDATE, replacements: {
                 userID: userUUID,
                 sifre: data.newPassword
@@ -492,8 +447,6 @@ router.post('/sifreDegistir', async function (req, res) {
     }
 
 });
-
-
 
 function personeleBilgiMailiGonder(data) {
     try {

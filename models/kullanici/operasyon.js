@@ -22,12 +22,6 @@ module.exports = (sequelize, DataTypes) => {
 
   }, {});
 
-  tanim.associate = function (models) {
-    // associations can be defined here
-
-
-  };
-
   return tanim;
 
 };

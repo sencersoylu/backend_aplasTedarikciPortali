@@ -19,7 +19,7 @@ router.post('/getList', async function (req, res) {
         });
     }
 
-    let rawQuery = "SELECT t.*, CONCAT('[ ',gob.kodu,' ] ', gob.adi) as olcuBirimi FROM " + table + " as t LEFT JOIN genel_olcu_birimi as gob ON gob.genelOlcuBirimiID = t.genelOlcuBirimiID WHERE t." + parentKeyExpr + " = " + parentID;
+    let rawQuery = "SELECT t.*, CONCAT('[ ',gob.kodu,' ] ', gob.adi) as olcuBirimi FROM " + table + " as t LEFT JOIN genel_olcu_birimi as gob ON gob.genelOlcuBirimiID = t.genelOlcuBirimiID WHERE t." + parentKeyExpr + " = '" + parentID + "'";
 
     await crudHelper.getListR({
         data: filterData,
@@ -70,7 +70,7 @@ router.post('/update', async function (req, res) {
         
         SELECT sevkiyatYonetimiIrsaliyeDurumID as durumID
         FROM sevkiyat_yonetimi_irsaliye 
-        WHERE ${parentKeyExpr} = ${irsaliyeID}`, { type: db.Sequelize.QueryTypes.SELECT })
+        WHERE ${parentKeyExpr} = '${irsaliyeID}'`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
                 console.log(e);
                 throw "Sorgulama esnasında hata oluştu!";
@@ -130,7 +130,7 @@ router.post('/delete', async function (req, res) {
         
         SELECT ir.sevkiyatYonetimiIrsaliyeDurumID as durumID
         FROM sevkiyat_yonetimi_irsaliye as ir LEFT JOIN ${table} as det ON det.${parentKeyExpr} = ir.${parentKeyExpr}
-        WHERE det.${keyExpr} = ${id}`, { type: db.Sequelize.QueryTypes.SELECT })
+        WHERE det.${keyExpr} = '${id}'`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
                 console.log(e);
                 throw "Sorgulama esnasında hata oluştu!";

@@ -4,12 +4,12 @@ module.exports = (sequelize, DataTypes) => {
   const tanim = sequelize.define('genel_menu', {
 
     genelMenuID: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
+      type: DataTypes.UUID, 
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
     adi: DataTypes.STRING,
-    genelMenuParentID: DataTypes.INTEGER,
+    genelMenuParentID: DataTypes.UUID,
     siraNo: DataTypes.INTEGER,
     path: DataTypes.STRING,
     iconName: DataTypes.STRING,

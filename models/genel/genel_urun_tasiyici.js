@@ -4,14 +4,14 @@ module.exports = (sequelize, DataTypes) => {
     // taşıyıcı/kasa/paket tanımı
     const model = sequelize.define('genel_urun_tasiyici', {
         genelUrunTasiyiciID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID, 
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         kodu: DataTypes.STRING,
         adi: DataTypes.STRING,
         aciklama: DataTypes.TEXT,
-        genelUrunTasiyiciTuruID: DataTypes.INTEGER,
+        genelUrunTasiyiciTuruID: DataTypes.UUID,
         tasiyiciIciMiktar: DataTypes.INTEGER,
         createdAt: {
             type: "DATETIME DEFAULT CURRENT_TIMESTAMP",

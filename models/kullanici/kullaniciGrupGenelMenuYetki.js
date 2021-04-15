@@ -4,16 +4,16 @@ module.exports = (sequelize, DataTypes) => {
 	const tanim = sequelize.define('kullanici_grup_genel_menu_yetki', {
 
 		kullaniciGrupGenelMenuYetkiID: {
-			type: DataTypes.INTEGER,
-			autoIncrement: true,
+			type: DataTypes.UUID,
+			defaultValue: DataTypes.UUIDV4,
 			primaryKey: true
 		},
 		genelMenuID: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.UUID,
 			allowNull: false
 		},
 		kullaniciGrupID: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.UUID,
 			allowNull: false
 		},
 
@@ -57,7 +57,7 @@ module.exports = (sequelize, DataTypes) => {
 			foreignKey: 'kullaniciGrupID',
 			targetKey: 'kullaniciGrupID'
 		});
-
+		
 	};
 
 	return tanim;

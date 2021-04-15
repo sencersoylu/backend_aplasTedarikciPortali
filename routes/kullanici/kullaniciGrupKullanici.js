@@ -11,15 +11,13 @@ const crudHelper = require('../../helpers/crudHelper');
 router.post('/getList', async function (req, res) {
 
     const filterData = req.body;
-    const parentID = +req.body.userData.parentID;
+    const parentID = req.body.userData.parentID;
 
     if (!parentID) {
-        res.status(400).json("geçersiz sabit kıymet id");
+        res.status(400).json("geçersiz kullanıcı grup id");
     } else {
 
-        let rawQuery = `
-        SELECT g.kullaniciGrupKullaniciID, k.kullaniciAdi, k.kisiAdi as adi, k.kisiSoyadi as soyadi FROM ( SELECT kullaniciID, kullaniciGrupKullaniciID FROM kullanici_grup_kullanici WHERE kullaniciGrupID = ${parentID} ) AS g LEFT JOIN kullanici AS k ON k.kullaniciUUID = g.kullaniciID ORDER BY g.kullaniciGrupKullaniciID DESC
-        `;
+        let rawQuery = `SELECT g.kullaniciGrupKullaniciID, k.kullaniciAdi, k.kisiAdi as adi, k.kisiSoyadi as soyadi FROM kullanici_grup_kullanici as g LEFT JOIN kullanici AS k ON k.kullaniciID = g.kullaniciID WHERE g.kullaniciGrupID = '${parentID}' ORDER BY g.createdAt DESC`;
 
         await crudHelper.getListR({
             data: filterData,
@@ -57,8 +55,13 @@ router.post('/get', async function (req, res) {
 
 router.post('/update', async function (req, res) {
 
-    const kullanicilar = await db.sequelize.query("select * from kullanici_grup_kullanici WHERE kullaniciGrupID = " + req.body.data.kullaniciGrupID + " AND kullaniciID = '" + req.body.data.kullaniciID + "' AND kullaniciGrupKullaniciID != " + req.body.data.kullaniciGrupKullaniciID , {
-        type: db.Sequelize.QueryTypes.SELECT
+    const kullanicilar = await db.sequelize.query("select * from kullanici_grup_kullanici WHERE kullaniciGrupID = :grupID AND kullaniciID = :kullaniciID AND kullaniciGrupKullaniciID != :kullaniciGrupID" , {
+        type: db.Sequelize.QueryTypes.SELECT,
+        replacements: {
+            grupID: req.body.data.kullaniciGrupID,
+            kullaniciID: req.body.data.kullaniciID,
+            kullaniciGrupID: req.body.data.kullaniciGrupKullaniciID
+        }
     })
     .catch(e => {
         console.error(e);
@@ -89,8 +92,12 @@ router.post('/update', async function (req, res) {
 
 router.post('/create', async function (req, res) {
     
-    const kullanicilar = await db.sequelize.query("select * from kullanici_grup_kullanici WHERE kullaniciGrupID = " + req.body.userData.parentID + " AND kullaniciID = '" + req.body.data.kullaniciID + "'", {
-        type: db.Sequelize.QueryTypes.SELECT
+    const kullanicilar = await db.sequelize.query("select * from kullanici_grup_kullanici WHERE kullaniciGrupID = :grupID AND kullaniciID = :kullaniciID", {
+        type: db.Sequelize.QueryTypes.SELECT,
+        replacements: {
+            grupID: req.body.userData.parentID,
+            kullaniciID: req.body.data.kullaniciID
+        }
     })
     .catch(e => {
         console.error(e);
