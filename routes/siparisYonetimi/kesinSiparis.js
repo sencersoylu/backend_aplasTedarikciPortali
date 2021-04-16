@@ -368,7 +368,7 @@ LEFT JOIN (
 ) AS sonHar ON sonHar.${keyExpr} = t.${keyExpr}
 LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon as oper ON oper.siparisYonetimiKesinSiparisOperasyonID = sonHar.siparisYonetimiKesinSiparisOperasyonID
 WHERE
-	t.ureticiFirmaID = '${userFirmaID}' AND sonHar.siparisYonetimiKesinSiparisOperasyonID > 2
+	t.tedarikciFirmaID = '${userFirmaID}' AND sonHar.siparisYonetimiKesinSiparisOperasyonID > 2
 ORDER BY
 	t.createdAt DESC`;
         }

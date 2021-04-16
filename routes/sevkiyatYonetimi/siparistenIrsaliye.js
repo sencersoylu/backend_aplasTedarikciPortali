@@ -11,9 +11,9 @@ router.post('/kaydet', async function (req, res) {
         console.log(`post request => ${req.originalUrl}`);
 
         const filterData = req.body;
-        const siparisID = +filterData.siparisID;
+        const siparisID = filterData.siparisID;
 
-        if(!siparisID){
+        if (!siparisID) {
             throw "sipariş ID boş olamaz!"
         }
 
@@ -42,116 +42,111 @@ router.post('/kaydet', async function (req, res) {
             }))[0];
 
         if (sipDurum) {
-            if (sipDurum['siparisDurumID'] != 2) {
-                throw "onaylanmış sipariş üzerinden sadece irsaliye alınabilir!";
+
+            if (sipDurum['operasyonID'] != 7) {
+                throw "sadece sevk bekleyen (alıcı onayından geçmiş) sipariş üzerinden irsaliye alınabilir!";
+            }
+
+            const filterData = req.body;
+            const detaylar = filterData.detaylar;
+            const talepInfo = filterData.talepInfo;
+            filterData['data'] = {};
+
+            let messages = [];
+
+            if (!talepInfo['irsaliyeNo']) {
+                messages.push("İrsaliye Numarası boş olamaz!");
+            }
+
+            if (talepInfo['sevkiyatYonetimiIrsaliyeDurumID'] == 2 && !talepInfo['sevkTarihi']) {
+                messages.push("Alıcıya gönderilecek irsaliyede Sevk Tarihi  boş olamaz!");
+            }
+
+            if (!detaylar || detaylar.length == 0) {
+                messages.push("irsaliye detayları boş olamaz!");
             }
             else {
 
-                if(sipDurum['operasyonID'] != 7){
-                    throw "sadece sevk bekleyen sipariş üzerinden irsaliye alınabilir!";
-                }
+                const isPositiveNumber = (numberStr) => {
+                    const pattern = new RegExp('^[1-9]\\d*$');
+                    return pattern.test(numberStr)
+                };
 
-                const filterData = req.body;
-                const detaylar = filterData.detaylar;
-                const talepInfo = filterData.talepInfo;
-                filterData['data'] = {};
+                detaylar.forEach(d => {
 
-                let messages = [];
+                    if (!isPositiveNumber(d['miktar'])) {
+                        messages.push("ürün miktarı, 0'dan büyük tamsayı olmalıdır!")
+                    }
 
-                if (!talepInfo['irsaliyeNo']) {
-                    messages.push("İrsaliye Numarası boş olamaz!");
-                }
-
-                if (talepInfo['sevkiyatYonetimiIrsaliyeDurumID'] == 2 && !talepInfo['sevkTarihi']) {
-                    messages.push("Alıcıya gönderilecek irsaliyede Sevk Tarihi  boş olamaz!");
-                }
-
-                if (!detaylar || detaylar.length == 0) {
-                    messages.push("irsaliye detayları boş olamaz!");
-                }
-                else {
-
-                    const isPositiveNumber = (numberStr) => {
-                        const pattern = new RegExp('^[1-9]\\d*$');
-                        return pattern.test(numberStr)
-                    };
-
-                    detaylar.forEach(d => {
-
-                        if (!isPositiveNumber(d['miktar'])) {
-                            messages.push("ürün miktarı, 0'dan büyük tamsayı olmalıdır!")
-                        }
-
-                    });
-
-                }
-
-                if (messages.length > 0) {
-
-                    return res.status(400).json(messages);
-
-                } else {
-
-                    filterData.data['sevkiyatYonetimiIrsaliyeDurumID'] = talepInfo['sevkiyatYonetimiIrsaliyeDurumID'];
-                    filterData.data['irsaliyeNo'] = talepInfo['irsaliyeNo'];
-                    filterData.data['sevkTarihi'] = talepInfo['sevkTarihi'];
-                    filterData.data['siparisYonetimiKesinSiparisID'] = siparisID;
-                    filterData.data['tedarikciFirmaID'] = sipDurum['tedarikciFirmaID'];
-                    filterData.data['tedarikciFirmaAdi'] = sipDurum['tedarikciFirmaAdi'];
-                    filterData.data['tedarikciFirmaKodu'] = sipDurum['tedarikciFirmaKodu'];
-                    filterData.data['ureticiFirmaID'] = sipDurum['ureticiFirmaID'];
-                    filterData.data['ureticiFirmaAdi'] = sipDurum['ureticiFirmaAdi'];
-                    filterData.data['ureticiFirmaKodu'] = sipDurum['ureticiFirmaKodu'];
-                    filterData.data['cikisAdresiID'] = sipDurum['cikisAdresiID'];
-                    filterData.data['cikisAdresi'] = sipDurum['cikisAdresi'];
-                    filterData.data['varisAdresiID'] = sipDurum['varisAdresiID'];
-                    filterData.data['varisAdresi'] = sipDurum['varisAdresi'];
-                    filterData.data['siparisNo'] = sipDurum['siparisNo'];
-                    filterData.data['siparisTarihi'] = sipDurum['siparisTarihi'];
-
-                    await crudHelper.createR({
-                        body: req.body,
-                        table: table,
-                        keyExpr: keyExpr
-                    }, (data, err) => {
-                        if (data) {
-
-                            db.sevkiyat_yonetimi_irsaliye_detay.bulkCreate(detaylar.map(detay => {
-                                detay[keyExpr] = data[keyExpr];
-                                detay['createdUserID'] = req.body.userData.userID;
-                                detay['urunAdi']= detay['stokAdi'];
-                                detay['urunKodu']= detay['stokKodu'];
-                                delete detay['sevkiyatYonetimiIrsaliyeDetayID'];
-                                delete detay['createdAt'];
-                                delete detay['updatedAt'];
-                                return detay;
-
-                            }))
-                                .then(() => {
-                                    return res.json("OK");
-                                })
-                                .catch(e => {
-                                    console.error(e);
-                                    return res.status(400).json("detaylar kaydedilirken hata oluştu!");
-                                })
-
-                        }
-
-                        if (err) {
-                            console.error(err);
-
-                            return res.status(400).json("irsaliye kaydedilirken hata oluştu!");
-                        }
-                    });
-
-                }
-
-
+                });
 
             }
+
+            if (messages.length > 0) {
+
+                return res.status(400).json(messages);
+
+            } else {
+
+                filterData.data['sevkiyatYonetimiIrsaliyeDurumID'] = talepInfo['sevkiyatYonetimiIrsaliyeDurumID'];
+                filterData.data['irsaliyeNo'] = talepInfo['irsaliyeNo'];
+                filterData.data['sevkTarihi'] = talepInfo['sevkTarihi'];
+                filterData.data['siparisYonetimiKesinSiparisID'] = siparisID;
+                filterData.data['tedarikciFirmaID'] = sipDurum['tedarikciFirmaID'];
+                filterData.data['tedarikciFirmaAdi'] = sipDurum['tedarikciFirmaAdi'];
+                filterData.data['tedarikciFirmaKodu'] = sipDurum['tedarikciFirmaKodu'];
+                filterData.data['ureticiFirmaID'] = sipDurum['ureticiFirmaID'];
+                filterData.data['ureticiFirmaAdi'] = sipDurum['ureticiFirmaAdi'];
+                filterData.data['ureticiFirmaKodu'] = sipDurum['ureticiFirmaKodu'];
+                filterData.data['cikisAdresiID'] = sipDurum['cikisAdresiID'];
+                filterData.data['cikisAdresi'] = sipDurum['cikisAdresi'];
+                filterData.data['varisAdresiID'] = sipDurum['varisAdresiID'];
+                filterData.data['varisAdresi'] = sipDurum['varisAdresi'];
+                filterData.data['siparisNo'] = sipDurum['siparisNo'];
+                filterData.data['siparisTarihi'] = sipDurum['siparisTarihi'];
+
+                await crudHelper.createR({
+                    body: req.body,
+                    table: table,
+                    keyExpr: keyExpr
+                }, (data, err) => {
+                    if (data) {
+
+                        db.sevkiyat_yonetimi_irsaliye_detay.bulkCreate(detaylar.map(detay => {
+                            detay[keyExpr] = data[keyExpr];
+                            detay['createdUserID'] = req.body.userData.userID;
+                            detay['urunAdi'] = detay['stokAdi'];
+                            detay['urunKodu'] = detay['stokKodu'];
+                            delete detay['sevkiyatYonetimiIrsaliyeDetayID'];
+                            delete detay['createdAt'];
+                            delete detay['updatedAt'];
+                            return detay;
+
+                        }))
+                            .then(() => {
+                                return res.json("OK");
+                            })
+                            .catch(e => {
+                                console.error(e);
+                                return res.status(400).json("detaylar kaydedilirken hata oluştu!");
+                            })
+
+                    }
+
+                    if (err) {
+                        console.error(err);
+
+                        return res.status(400).json("irsaliye kaydedilirken hata oluştu!");
+                    }
+                });
+
+            }
+
+
+
         }
         else {
-            throw "aranan sipariş bulunamadı"
+            throw "aranan sipariş bulunamadı";
         }
 
 
@@ -166,13 +161,13 @@ router.post('/siparisDetay', async function (req, res) {
         console.log(`post request => ${req.originalUrl}`);
 
         const filterData = req.body;
-        const siparisID = +filterData.ID;
+        const siparisID = filterData.ID;
 
-        if(!siparisID){
+        if (!siparisID) {
             throw "sipariş id boş olamaz!";
         }
 
-        const siparis = (await db.sequelize.query(`SELECT * FROM siparis_yonetimi_kesin_siparis WHERE siparisYonetimiKesinSiparisID = ${siparisID}`, { type: db.Sequelize.QueryTypes.SELECT })
+        const siparis = (await db.sequelize.query(`SELECT * FROM siparis_yonetimi_kesin_siparis WHERE siparisYonetimiKesinSiparisID = '${siparisID}'`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
                 throw "sipariş sorgulama esnasında hata oluştu!";
             }))[0];
@@ -210,7 +205,7 @@ LEFT JOIN (
 		irsDet.genelOlcuBirimiID
 ) AS irsOzet ON irsOzet.siparisYonetimiKesinSiparisID = sip.siparisYonetimiKesinSiparisID
 WHERE
-	sip.siparisYonetimiKesinSiparisID = 2
+	sip.siparisYonetimiKesinSiparisID = '${siparisID}'
 AND (
 	irsOzet.miktar IS NULL
  	OR 

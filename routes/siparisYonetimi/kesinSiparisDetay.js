@@ -122,7 +122,7 @@ router.post('/update', async function (req, res) {
                 }
                 else {
 
-                    if (sipDurum['siparisDurumID'] == 4) {
+                    if (sipDurum['siparisDurumID'] == 2) {
                         throw "tamamlanmış sipariş güncellenemez!";
                     }
 
@@ -130,8 +130,10 @@ router.post('/update', async function (req, res) {
                         throw "iptal edilmiş sipariş güncellenemez!";
                     }
 
-                    else if (sipDurum['siparisDurumID'] == 2) {
-                        throw "şartlı onayladığınız siparişi güncelleyemezsiniz!";
+                    else if (sipDurum['siparisDurumID'] == 4) {
+                        if (sipDurum['operasyonID'] == 7) {
+                            throw "tamamlanmış sipariş güncellenemez!";
+                        }
                     }
 
 
@@ -144,16 +146,22 @@ router.post('/update', async function (req, res) {
 
         const siparisMiktari = req.body.data['siparisMiktari'] ? Number(req.body.data['siparisMiktari']) : 0;
         const sevkMiktari = req.body.data['sevkMiktari'] ? Number(req.body.data['sevkMiktari']) : 0;
+        
         req.body.data['siparisMiktari'] = siparisMiktari;
         req.body.data['sevkMiktari'] = sevkMiktari;
 
         if (siparisMiktari == 0) {
-            throw "sipariş miktarı 0'dan büyük olmalıdır!"
+            throw "sipariş miktarı 0'dan büyük olmalıdır!";
         }
 
         if (firmaTurID == 2) {
-            if (siparisMiktari != sevkMiktari) {
+
+            const sevkTarihi = new Date(req.body.data['sevkTeslimTarihi']).setHours(0,0,0,0);
+            const siparisTarihi = new Date(req.body.data['siparisTeslimTarihi']).setHours(0,0,0,0);
+
+            if ((siparisMiktari != sevkMiktari) || (sevkTarihi != siparisTarihi)) {
                 // şartlı onay durum güncelleme
+                console.log("Parametreler değişti!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 await durumGuncelle(siparisID, 4, req);
 
             }

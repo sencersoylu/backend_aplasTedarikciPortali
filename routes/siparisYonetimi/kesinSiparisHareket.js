@@ -18,7 +18,7 @@ router.post('/getList', async function (req, res) {
     if(userFirmaTurID == 1){
         fieldName = "aliciFirmaDurum"
     }
-    else if(userFirmaturID == 2){
+    else if(userFirmaTurID == 2){
         fieldName = "saticiFirmaDurum"
     }
 
@@ -29,11 +29,6 @@ router.post('/getList', async function (req, res) {
     }
 
     let rawQuery = `
-    
-    SELECT
-	a.*, (@rownum := @rownum + 1) AS sira
-FROM
-	(
 		SELECT
 			t.${keyExpr},
 			t.createdAt AS islemTarihi,
@@ -50,11 +45,8 @@ FROM
 		LEFT JOIN kullanici AS kul ON kul.kullaniciID = t.createdUserID
 		LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon AS oper ON oper.siparisYonetimiKesinSiparisOperasyonID = t.siparisYonetimiKesinSiparisOperasyonID
         WHERE t.${parentKeyExpr} = '${parentID}'
-	) AS a,
-	(SELECT @rownum := 0) r
-ORDER BY
-	sira DESC
-    
+        ORDER BY
+	        islemTarihi ASC
     `;
 
     await crudHelper.getListR({
@@ -62,6 +54,15 @@ ORDER BY
         rawQuery: rawQuery
     }, (data, err) => {
         if (data) {
+
+            if(!filterData.ID){
+                data.data.forEach((element, indis) => {
+                    element['sira'] = indis + 1 ;
+                });
+
+                data.data = data.data.reverse();
+            }
+            
             return res.status(201).json(filterData.ID ? data.data[0] : data);
         }
 

@@ -12,7 +12,7 @@ router.post('/getList', async function (req, res) {
         console.log(`post request => ${req.originalUrl}`);
 
         const filterData = req.body;
-        const userFirmaID = +filterData.userData.userFirmaID;
+        const userFirmaID = filterData.userData.userFirmaID;
         const userFirmaTurID = +filterData.userData.userFirmaTurID;
 
         // üretci firma
@@ -25,7 +25,7 @@ FROM
     ${table} AS t
 LEFT JOIN sevkiyat_yonetimi_irsaliye_durum AS durum ON durum.sevkiyatYonetimiIrsaliyeDurumID = t.sevkiyatYonetimiIrsaliyeDurumID
 WHERE
-	t.ureticiFirmaID = '${userFirmaID}'
+	(t.ureticiFirmaID = '${userFirmaID}' OR t.tedarikciFirmaID = '${userFirmaID}')
     ${userFirmaTurID == 1 ? 'AND t.sevkiyatYonetimiIrsaliyeDurumID > 1' : ''} 
 ORDER BY
 	t.createdAt DESC
@@ -82,7 +82,7 @@ router.post('/update', async function (req, res) {
             throw "Data boş olamaz!";
         }
 
-        const oldRecord = (await db.sequelize.query(`SELECT * FROM ${table} WHERE ${keyExpr} = ${data[keyExpr]}`, { type: db.Sequelize.QueryTypes.SELECT })
+        const oldRecord = (await db.sequelize.query(`SELECT * FROM ${table} WHERE ${keyExpr} = '${data[keyExpr]}'`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
                 console.log(e);
                 throw "Sorgulama esnasında hata oluştu!";
@@ -137,7 +137,7 @@ router.post('/delete', async function (req, res) {
             }
             else {
 
-                await db.sequelize.query(`DELETE FROM sevkiyat_yonetimi_irsaliye_detay WHERE ${keyExpr} = ${id}`, { type: db.Sequelize.QueryTypes.DELETE })
+                await db.sequelize.query(`DELETE FROM sevkiyat_yonetimi_irsaliye_detay WHERE ${keyExpr} = '${id}'`, { type: db.Sequelize.QueryTypes.DELETE })
                     .catch(e => {
                         console.log(e);
                         throw "Detay silme işlemi esnasında hata oluştu!";
@@ -194,7 +194,7 @@ FROM
 	sevkiyat_yonetimi_irsaliye AS ir
 LEFT JOIN sevkiyat_yonetimi_irsaliye_detay AS det ON det.sevkiyatYonetimiIrsaliyeID = ir.sevkiyatYonetimiIrsaliyeID
 WHERE
-	det.sevkiyatYonetimiIrsaliyeDetayID = ${irsaliyeDetayID}
+	det.sevkiyatYonetimiIrsaliyeDetayID = '${irsaliyeDetayID}'
     `;
 
     await crudHelper.getListR({
