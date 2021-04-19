@@ -138,6 +138,7 @@ const updateR = async (d, callbackFunc) => {
 
     data["updatedUserID"] = userID;
     delete data["createdAt"];
+    delete data["updatedAt"];
 
     try {
         const result = await db[d.table].update(

@@ -8,6 +8,7 @@ const siparisYonetimiRoutes = require('./siparisYonetimi');
 const urunYonetimiRoutes = require('./urunYonetimi');
 const sevkiyatYonetimiRoutes = require('./sevkiyatYonetimi');
 const iletisimMerkeziRoutes = require('./iletisimMerkezi');
+const kaliteYonetimiRoutes = require('./kaliteYonetimi');
 
 router.use([
 	anasayfaRoutes, 
@@ -16,7 +17,8 @@ router.use([
 	siparisYonetimiRoutes, 
 	urunYonetimiRoutes,
 	sevkiyatYonetimiRoutes,
-	iletisimMerkeziRoutes
+	iletisimMerkeziRoutes,
+	kaliteYonetimiRoutes
 ]);
 
 module.exports = router;
