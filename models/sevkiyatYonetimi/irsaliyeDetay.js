@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         miktar: DataTypes.DECIMAL(10,3), // sevk miktarı
         genelOlcuBirimiID: DataTypes.UUID,
         urunYonetimiUreticiUrunID: DataTypes.UUID,
+        genelUlkeID: DataTypes.UUID,
 
         tedarikciUrunKodu: DataTypes.STRING, // satıcı ürün kodu
         urunAdi: DataTypes.STRING, // alıcı ürün adı
@@ -42,6 +43,11 @@ module.exports = (sequelize, DataTypes) => {
         model.belongsTo(models.urun_yonetimi_uretici_urun, {
             foreignKey: 'urunYonetimiUreticiUrunID',
             targetKey: 'urunYonetimiUreticiUrunID'
+        });
+
+        model.belongsTo(models.genel_ulke, {
+            foreignKey: 'genelUlkeID',
+            targetKey: 'genelUlkeID'
         });
 
     };

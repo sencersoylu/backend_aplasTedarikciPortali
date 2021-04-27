@@ -256,6 +256,14 @@ router.post('/onayla', async function (req, res) {
                     if(firmaTurID == 1){
                         throw "onaya çıkarılan sipariş, öncelikle satıcı tarafından onaylanmalıdır!"
                     }
+                    else if(firmaTurID == 2){
+                        const miktarTarihBelirtilmeyenKalemler = await db.sequelize.query(`SELECT * FROM siparis_yonetimi_kesin_siparis_detay WHERE ${keyExpr} = '${siparisID}' AND bakiye > 0 AND (sevkTeslimTarihi IS NULL OR sevkMiktari IS NULL)`);
+
+                        if(miktarTarihBelirtilmeyenKalemler.length > 0){
+                            throw "Bakiyesi kalan ürünler için sevk edebileceğiniz miktar veya tarih alanları boş olmamalıdır!"
+                        }
+                    }
+
                     
                     // onay hareket kaydı
                     await operasyonHareketiEkle(siparisID, 5, req);
@@ -317,7 +325,8 @@ SELECT
 	tedarikciFirma.firmaAdi AS tedarikciFirma,
 	ureticiFirma.firmaAdi AS ureticiFirma,
 	uretAdres.adres AS varisYeri,
-	tedAdres.adres AS cikisYeri
+	tedAdres.adres AS cikisYeri,
+    lokasyon.kisaKodu AS lokasyon
 FROM
     ${table} AS t
 LEFT JOIN tedarikci_firma AS tedarikciFirma ON tedarikciFirma.tedarikciFirmaID = t.tedarikciFirmaID
@@ -335,6 +344,7 @@ LEFT JOIN (
         ${keyExpr}
 ) AS sonHar ON sonHar.${keyExpr} = t.${keyExpr}
 LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon as oper ON oper.siparisYonetimiKesinSiparisOperasyonID = sonHar.siparisYonetimiKesinSiparisOperasyonID
+LEFT JOIN kullanici_firma_adres as lokasyon ON lokasyon.kullaniciFirmaAdresID = t.lokasyonID
 WHERE
 	t.ureticiFirmaID = '${userFirmaID}'
 ORDER BY
@@ -350,7 +360,8 @@ SELECT
 	tedarikciFirma.firmaAdi AS tedarikciFirma,
 	ureticiFirma.firmaAdi AS ureticiFirma,
 	uretAdres.adres AS varisYeri,
-	tedAdres.adres AS cikisYeri
+	tedAdres.adres AS cikisYeri,
+    lokasyon.kisaKodu AS lokasyon
 FROM
     ${table} AS t
 LEFT JOIN tedarikci_firma AS tedarikciFirma ON tedarikciFirma.tedarikciFirmaID = t.tedarikciFirmaID
@@ -367,6 +378,7 @@ LEFT JOIN (
         ${keyExpr}
 ) AS sonHar ON sonHar.${keyExpr} = t.${keyExpr}
 LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon as oper ON oper.siparisYonetimiKesinSiparisOperasyonID = sonHar.siparisYonetimiKesinSiparisOperasyonID
+LEFT JOIN kullanici_firma_adres as lokasyon ON lokasyon.kullaniciFirmaAdresID = t.lokasyonID
 WHERE
 	t.tedarikciFirmaID = '${userFirmaID}' AND sonHar.siparisYonetimiKesinSiparisOperasyonID > 2
 ORDER BY

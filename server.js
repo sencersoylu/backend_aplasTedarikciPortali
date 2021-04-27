@@ -35,6 +35,9 @@ app.use(express.json());
 app.use(express.urlencoded({
       extended: true
 }));
+
+require("./cronJobs");
+
 // for parsing multipart/form-data
 app.use(express.static('public'));
 

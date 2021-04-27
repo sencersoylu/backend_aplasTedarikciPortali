@@ -20,6 +20,7 @@ const kullaniciFirmaRoutes = require('./kullaniciFirma');
 const kullaniciFirmaAdresRoutes = require('./kullaniciFirmaAdres');
 const kullaniciFirmaKullaniciRoutes = require('./kullaniciFirmaKullanici');
 const tedarikciFirmaKullaniciRoutes = require('./tedarikciFirmaKullanici');
+const genelUrunTasimaTuruRoutes = require('./genelUrunTasimaTuru');
 
 router.use('/dosya', dosyaRoutes);
 router.use('/genelMenu', genelMenuRoutes);
@@ -40,5 +41,6 @@ router.use('/kullaniciFirma', kullaniciFirmaRoutes);
 router.use('/kullaniciFirmaAdres', kullaniciFirmaAdresRoutes);
 router.use('/kullaniciFirmaKullanici', kullaniciFirmaKullaniciRoutes);
 router.use('/tedarikciFirmaKullanici', tedarikciFirmaKullaniciRoutes);
+router.use('/genelUrunTasimaTuru', genelUrunTasimaTuruRoutes);
 
 module.exports = router;

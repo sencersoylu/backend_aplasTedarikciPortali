@@ -13,19 +13,19 @@ const opts = {
 const log = require('simple-node-logger').createSimpleLogger(opts);
 
 // taslak siparişler
-const sql1 =  "SELECT t.*, t.createdAt AS dokumanTarihi, oper.aliciFirmaDurum AS durumu, tedarikciFirma.firmaAdi AS tedarikciFirma, ureticiFirma.firmaAdi AS ureticiFirma, uretAdres.adres AS varisYeri, tedAdres.adres AS cikisYeri FROM siparis_yonetimi_kesin_siparis AS t LEFT JOIN tedarikci_firma AS tedarikciFirma ON tedarikciFirma.tedarikciFirmaID = t.tedarikciFirmaID LEFT JOIN kullanici_firma AS ureticiFirma ON ureticiFirma.kullaniciFirmaID = t.ureticiFirmaID LEFT JOIN tedarikci_firma_adres AS tedAdres ON tedAdres.tedarikciFirmaAdresID = t.cikisAdresiID LEFT JOIN kullanici_firma_adres AS uretAdres ON uretAdres.kullaniciFirmaAdresID = t.varisAdresiID LEFT JOIN ( SELECT MAX(siparisYonetimiKesinSiparisOperasyonID) as siparisYonetimiKesinSiparisOperasyonID, siparisYonetimiKesinSiparisID FROM siparis_yonetimi_kesin_siparis_hareket GROUP BY siparisYonetimiKesinSiparisID ) AS sonHar ON sonHar.siparisYonetimiKesinSiparisID = t.siparisYonetimiKesinSiparisID LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon as oper ON oper.siparisYonetimiKesinSiparisOperasyonID = sonHar.siparisYonetimiKesinSiparisOperasyonID WHERE sonHar.siparisYonetimiKesinSiparisOperasyonID IN (1,2) ORDER BY t.createdAt DESC"
+const sql1 = "SELECT t.*, t.createdAt AS dokumanTarihi, oper.aliciFirmaDurum AS durumu, tedarikciFirma.firmaAdi AS tedarikciFirma, ureticiFirma.firmaAdi AS ureticiFirma, uretAdres.adres AS varisYeri, tedAdres.adres AS cikisYeri FROM siparis_yonetimi_kesin_siparis AS t LEFT JOIN tedarikci_firma AS tedarikciFirma ON tedarikciFirma.tedarikciFirmaID = t.tedarikciFirmaID LEFT JOIN kullanici_firma AS ureticiFirma ON ureticiFirma.kullaniciFirmaID = t.ureticiFirmaID LEFT JOIN tedarikci_firma_adres AS tedAdres ON tedAdres.tedarikciFirmaAdresID = t.cikisAdresiID LEFT JOIN kullanici_firma_adres AS uretAdres ON uretAdres.kullaniciFirmaAdresID = t.varisAdresiID LEFT JOIN ( SELECT MAX(siparisYonetimiKesinSiparisOperasyonID) as siparisYonetimiKesinSiparisOperasyonID, siparisYonetimiKesinSiparisID FROM siparis_yonetimi_kesin_siparis_hareket GROUP BY siparisYonetimiKesinSiparisID ) AS sonHar ON sonHar.siparisYonetimiKesinSiparisID = t.siparisYonetimiKesinSiparisID LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon as oper ON oper.siparisYonetimiKesinSiparisOperasyonID = sonHar.siparisYonetimiKesinSiparisOperasyonID WHERE sonHar.siparisYonetimiKesinSiparisOperasyonID IN (1,2) ORDER BY t.createdAt DESC"
 
 // onay bekleyen siparişler
-const sql2 = "SELECT t.*, t.createdAt AS dokumanTarihi, oper.aliciFirmaDurum AS durumu, tedarikciFirma.firmaAdi AS tedarikciFirma, ureticiFirma.firmaAdi AS ureticiFirma, uretAdres.adres AS varisYeri, tedAdres.adres AS cikisYeri FROM siparis_yonetimi_kesin_siparis AS t LEFT JOIN tedarikci_firma AS tedarikciFirma ON tedarikciFirma.tedarikciFirmaID = t.tedarikciFirmaID LEFT JOIN kullanici_firma AS ureticiFirma ON ureticiFirma.kullaniciFirmaID = t.ureticiFirmaID LEFT JOIN tedarikci_firma_adres AS tedAdres ON tedAdres.tedarikciFirmaAdresID = t.cikisAdresiID LEFT JOIN kullanici_firma_adres AS uretAdres ON uretAdres.kullaniciFirmaAdresID = t.varisAdresiID LEFT JOIN ( SELECT MAX(siparisYonetimiKesinSiparisOperasyonID) as siparisYonetimiKesinSiparisOperasyonID, siparisYonetimiKesinSiparisID FROM siparis_yonetimi_kesin_siparis_hareket GROUP BY siparisYonetimiKesinSiparisID ) AS sonHar ON sonHar.siparisYonetimiKesinSiparisID = t.siparisYonetimiKesinSiparisID LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon as oper ON oper.siparisYonetimiKesinSiparisOperasyonID = sonHar.siparisYonetimiKesinSiparisOperasyonID WHERE sonHar.siparisYonetimiKesinSiparisOperasyonID IN (:operID) ORDER BY t.createdAt DESC"
+const sql2 = "SELECT t.*, t.createdAt AS dokumanTarihi, oper.aliciFirmaDurum AS durumu, tedarikciFirma.firmaAdi AS tedarikciFirma, ureticiFirma.firmaAdi AS ureticiFirma, uretAdres.adres AS varisYeri, tedAdres.adres AS cikisYeri, tedarikciFirma.tedarikciFirmaID FROM siparis_yonetimi_kesin_siparis AS t LEFT JOIN tedarikci_firma AS tedarikciFirma ON tedarikciFirma.tedarikciFirmaID = t.tedarikciFirmaID LEFT JOIN kullanici_firma AS ureticiFirma ON ureticiFirma.kullaniciFirmaID = t.ureticiFirmaID LEFT JOIN tedarikci_firma_adres AS tedAdres ON tedAdres.tedarikciFirmaAdresID = t.cikisAdresiID LEFT JOIN kullanici_firma_adres AS uretAdres ON uretAdres.kullaniciFirmaAdresID = t.varisAdresiID LEFT JOIN ( SELECT MAX(siparisYonetimiKesinSiparisOperasyonID) as siparisYonetimiKesinSiparisOperasyonID, siparisYonetimiKesinSiparisID FROM siparis_yonetimi_kesin_siparis_hareket GROUP BY siparisYonetimiKesinSiparisID ) AS sonHar ON sonHar.siparisYonetimiKesinSiparisID = t.siparisYonetimiKesinSiparisID LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon as oper ON oper.siparisYonetimiKesinSiparisOperasyonID = sonHar.siparisYonetimiKesinSiparisOperasyonID WHERE sonHar.siparisYonetimiKesinSiparisOperasyonID IN (:operID) ORDER BY t.createdAt DESC"
 
 // sevk bekleyen siparişler
 const sql3 = "SELECT t.*, t.createdAt AS dokumanTarihi, oper.aliciFirmaDurum AS durumu, tedarikciFirma.firmaAdi AS tedarikciFirma, ureticiFirma.firmaAdi AS ureticiFirma, uretAdres.adres AS varisYeri, tedAdres.adres AS cikisYeri FROM siparis_yonetimi_kesin_siparis AS t LEFT JOIN tedarikci_firma AS tedarikciFirma ON tedarikciFirma.tedarikciFirmaID = t.tedarikciFirmaID LEFT JOIN kullanici_firma AS ureticiFirma ON ureticiFirma.kullaniciFirmaID = t.ureticiFirmaID LEFT JOIN tedarikci_firma_adres AS tedAdres ON tedAdres.tedarikciFirmaAdresID = t.cikisAdresiID LEFT JOIN kullanici_firma_adres AS uretAdres ON uretAdres.kullaniciFirmaAdresID = t.varisAdresiID LEFT JOIN ( SELECT MAX(siparisYonetimiKesinSiparisOperasyonID) as siparisYonetimiKesinSiparisOperasyonID, siparisYonetimiKesinSiparisID FROM siparis_yonetimi_kesin_siparis_hareket GROUP BY siparisYonetimiKesinSiparisID ) AS sonHar ON sonHar.siparisYonetimiKesinSiparisID = t.siparisYonetimiKesinSiparisID LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon as oper ON oper.siparisYonetimiKesinSiparisOperasyonID = sonHar.siparisYonetimiKesinSiparisOperasyonID WHERE sonHar.siparisYonetimiKesinSiparisOperasyonID IN (7) ORDER BY t.createdAt DESC"
 
 // iptal edilen siparişler
-const sql4 = "SELECT t.*, t.createdAt AS dokumanTarihi, oper.aliciFirmaDurum AS durumu, tedarikciFirma.firmaAdi AS tedarikciFirma, ureticiFirma.firmaAdi AS ureticiFirma, uretAdres.adres AS varisYeri, tedAdres.adres AS cikisYeri FROM siparis_yonetimi_kesin_siparis AS t LEFT JOIN tedarikci_firma AS tedarikciFirma ON tedarikciFirma.tedarikciFirmaID = t.tedarikciFirmaID LEFT JOIN kullanici_firma AS ureticiFirma ON ureticiFirma.kullaniciFirmaID = t.ureticiFirmaID LEFT JOIN tedarikci_firma_adres AS tedAdres ON tedAdres.tedarikciFirmaAdresID = t.cikisAdresiID LEFT JOIN kullanici_firma_adres AS uretAdres ON uretAdres.kullaniciFirmaAdresID = t.varisAdresiID LEFT JOIN ( SELECT MAX(siparisYonetimiKesinSiparisOperasyonID) as siparisYonetimiKesinSiparisOperasyonID, siparisYonetimiKesinSiparisID FROM siparis_yonetimi_kesin_siparis_hareket GROUP BY siparisYonetimiKesinSiparisID ) AS sonHar ON sonHar.siparisYonetimiKesinSiparisID = t.siparisYonetimiKesinSiparisID LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon as oper ON oper.siparisYonetimiKesinSiparisOperasyonID = sonHar.siparisYonetimiKesinSiparisOperasyonID WHERE sonHar.siparisYonetimiKesinSiparisOperasyonID IN (4) ORDER BY t.createdAt DESC";
+const sql4 = "SELECT t.*, t.createdAt AS dokumanTarihi, oper.aliciFirmaDurum AS durumu, tedarikciFirma.firmaAdi AS tedarikciFirma, ureticiFirma.firmaAdi AS ureticiFirma, uretAdres.adres AS varisYeri, tedAdres.adres AS cikisYeri, tedarikciFirma.tedarikciFirmaID FROM siparis_yonetimi_kesin_siparis AS t LEFT JOIN tedarikci_firma AS tedarikciFirma ON tedarikciFirma.tedarikciFirmaID = t.tedarikciFirmaID LEFT JOIN kullanici_firma AS ureticiFirma ON ureticiFirma.kullaniciFirmaID = t.ureticiFirmaID LEFT JOIN tedarikci_firma_adres AS tedAdres ON tedAdres.tedarikciFirmaAdresID = t.cikisAdresiID LEFT JOIN kullanici_firma_adres AS uretAdres ON uretAdres.kullaniciFirmaAdresID = t.varisAdresiID LEFT JOIN ( SELECT MAX(siparisYonetimiKesinSiparisOperasyonID) as siparisYonetimiKesinSiparisOperasyonID, siparisYonetimiKesinSiparisID FROM siparis_yonetimi_kesin_siparis_hareket GROUP BY siparisYonetimiKesinSiparisID ) AS sonHar ON sonHar.siparisYonetimiKesinSiparisID = t.siparisYonetimiKesinSiparisID LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon as oper ON oper.siparisYonetimiKesinSiparisOperasyonID = sonHar.siparisYonetimiKesinSiparisOperasyonID WHERE sonHar.siparisYonetimiKesinSiparisOperasyonID IN (4) ORDER BY t.createdAt DESC";
 
 // onaylanan siparişler
-const sql5 = "SELECT t.*, t.createdAt AS dokumanTarihi, oper.aliciFirmaDurum AS durumu, tedarikciFirma.firmaAdi AS tedarikciFirma, ureticiFirma.firmaAdi AS ureticiFirma, uretAdres.adres AS varisYeri, tedAdres.adres AS cikisYeri FROM siparis_yonetimi_kesin_siparis AS t LEFT JOIN tedarikci_firma AS tedarikciFirma ON tedarikciFirma.tedarikciFirmaID = t.tedarikciFirmaID LEFT JOIN kullanici_firma AS ureticiFirma ON ureticiFirma.kullaniciFirmaID = t.ureticiFirmaID LEFT JOIN tedarikci_firma_adres AS tedAdres ON tedAdres.tedarikciFirmaAdresID = t.cikisAdresiID LEFT JOIN kullanici_firma_adres AS uretAdres ON uretAdres.kullaniciFirmaAdresID = t.varisAdresiID LEFT JOIN ( SELECT MAX(siparisYonetimiKesinSiparisOperasyonID) as siparisYonetimiKesinSiparisOperasyonID, siparisYonetimiKesinSiparisID FROM siparis_yonetimi_kesin_siparis_hareket GROUP BY siparisYonetimiKesinSiparisID ) AS sonHar ON sonHar.siparisYonetimiKesinSiparisID = t.siparisYonetimiKesinSiparisID LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon as oper ON oper.siparisYonetimiKesinSiparisOperasyonID = sonHar.siparisYonetimiKesinSiparisOperasyonID WHERE sonHar.siparisYonetimiKesinSiparisOperasyonID IN (5) ORDER BY t.createdAt DESC";
+const sql5 = "SELECT t.*, t.createdAt AS dokumanTarihi, oper.aliciFirmaDurum AS durumu, tedarikciFirma.firmaAdi AS tedarikciFirma, ureticiFirma.firmaAdi AS ureticiFirma, uretAdres.adres AS varisYeri, tedAdres.adres AS cikisYeri, tedarikciFirma.tedarikciFirmaID FROM siparis_yonetimi_kesin_siparis AS t LEFT JOIN tedarikci_firma AS tedarikciFirma ON tedarikciFirma.tedarikciFirmaID = t.tedarikciFirmaID LEFT JOIN kullanici_firma AS ureticiFirma ON ureticiFirma.kullaniciFirmaID = t.ureticiFirmaID LEFT JOIN tedarikci_firma_adres AS tedAdres ON tedAdres.tedarikciFirmaAdresID = t.cikisAdresiID LEFT JOIN kullanici_firma_adres AS uretAdres ON uretAdres.kullaniciFirmaAdresID = t.varisAdresiID LEFT JOIN ( SELECT MAX(siparisYonetimiKesinSiparisOperasyonID) as siparisYonetimiKesinSiparisOperasyonID, siparisYonetimiKesinSiparisID FROM siparis_yonetimi_kesin_siparis_hareket GROUP BY siparisYonetimiKesinSiparisID ) AS sonHar ON sonHar.siparisYonetimiKesinSiparisID = t.siparisYonetimiKesinSiparisID LEFT JOIN siparis_yonetimi_kesin_siparis_operasyon as oper ON oper.siparisYonetimiKesinSiparisOperasyonID = sonHar.siparisYonetimiKesinSiparisOperasyonID WHERE sonHar.siparisYonetimiKesinSiparisOperasyonID IN (5) ORDER BY t.createdAt DESC";
 
 router.post('/header', async function (req, res) {
     try {
@@ -33,6 +33,7 @@ router.post('/header', async function (req, res) {
 
         const filter = req.body.filterIndex;
         const userFirmaTurID = req.body.userData.userFirmaTurID;
+        const userFirmaID = req.body.userData.userFirmaID;
 
         if (filter == 1) { // taslak siparişler
 
@@ -49,37 +50,54 @@ router.post('/header', async function (req, res) {
         } else if (filter == 2) { // onay bekleyen siparişler
 
             let operID = userFirmaTurID == 1 ? 6 : 3;
-            db.sequelize.query("select COUNT(*) as talepSayisi from (" + sql2 + ")x", {
+            let firmaID = userFirmaTurID == 2 ? userFirmaID : null;
+
+            db.sequelize.query(sql2, {
                 type: db.Sequelize.QueryTypes.SELECT,
                 replacements: {
                     operID: operID
                 }
             })
                 .then(sonuc => {
-                    return res.json(sonuc[0].talepSayisi);
+                    let talepSayisi = sonuc.length;
+                    if (firmaID) {
+                        talepSayisi = sonuc.filter(a => a.tedarikciFirmaID == firmaID).length;
+                    }
+                    return res.json(talepSayisi);
                 })
                 .catch(e => {
                     throw e;
                 });
 
         } else if (filter == 3) { // sevk bekleyen siparişler
+            let firmaID = userFirmaTurID == 2 ? userFirmaID : null;
 
-            db.sequelize.query("select COUNT(*)  as talepSayisi from (" + sql3 + ")x", {
+            db.sequelize.query(sql3, {
                 type: db.Sequelize.QueryTypes.SELECT
             })
                 .then(sonuc => {
-                    return res.json(sonuc[0].talepSayisi);
+                    let talepSayisi = sonuc.length;
+                    if (firmaID) {
+                        talepSayisi = sonuc.filter(a => a.tedarikciFirmaID == firmaID).length;
+                    }
+                    return res.json(talepSayisi);
                 })
                 .catch(e => {
                     throw e;
                 });
         } else if (filter == 4) { // iptal edilen siparişler
 
-            db.sequelize.query("select COUNT(*) as talepSayisi from (" + sql4 + ")x", {
+            let firmaID = userFirmaTurID == 2 ? userFirmaID : null;
+
+            db.sequelize.query(sql4, {
                 type: db.Sequelize.QueryTypes.SELECT
             })
                 .then(sonuc => {
-                    return res.json(sonuc[0].talepSayisi);
+                    let talepSayisi = sonuc.length;
+                    if (firmaID) {
+                        talepSayisi = sonuc.filter(a => a.tedarikciFirmaID == firmaID).length;
+                    }
+                    return res.json(talepSayisi);
                 })
                 .catch(e => {
                     throw e;
@@ -88,11 +106,17 @@ router.post('/header', async function (req, res) {
         }
         else if (filter == 5) { // onaylanan siparişler
 
-            db.sequelize.query("select COUNT(*) as talepSayisi from (" + sql5 + ")x", {
+            let firmaID = userFirmaTurID == 2 ? userFirmaID : null;
+
+            db.sequelize.query(sql5, {
                 type: db.Sequelize.QueryTypes.SELECT
             })
                 .then(sonuc => {
-                    return res.json(sonuc[0].talepSayisi);
+                    let talepSayisi = sonuc.length;
+                    if (firmaID) {
+                        talepSayisi = sonuc.filter(a => a.tedarikciFirmaID == firmaID).length;
+                    }
+                    return res.json(talepSayisi);
                 })
                 .catch(e => {
                     throw e;
@@ -113,6 +137,8 @@ router.post('/detay', async function (req, res) {
         const filterData = req.body;
         const filter = filterData.filterIndex;
         const userFirmaTurID = filterData.userData.userFirmaTurID;
+        const userFirmaID = req.body.userData.userFirmaID;
+
 
         if (filter == 1) { // taslak siparişler
 
@@ -130,6 +156,7 @@ router.post('/detay', async function (req, res) {
         } else if (filter == 2) { // onay bekleyen siparişler
 
             let operID = userFirmaTurID == 1 ? 6 : 3;
+            let firmaID = userFirmaTurID == 2 ? userFirmaID : null;
 
             db.sequelize.query(sql2, {
                 type: db.Sequelize.QueryTypes.SELECT,
@@ -138,6 +165,9 @@ router.post('/detay', async function (req, res) {
                 }
             })
                 .then(sonuc => {
+                    if (firmaID) {
+                        sonuc = sonuc.filter(a => a.tedarikciFirmaID == firmaID);
+                    }
                     return res.json(sonuc);
                 })
                 .catch(e => {
@@ -146,10 +176,15 @@ router.post('/detay', async function (req, res) {
 
         } else if (filter == 3) { //  sevk bekleyen siparişler
 
+            let firmaID = userFirmaTurID == 2 ? userFirmaID : null;
+
             db.sequelize.query(sql3, {
                 type: db.Sequelize.QueryTypes.SELECT
             })
                 .then(sonuc => {
+                    if (firmaID) {
+                        sonuc = sonuc.filter(a => a.tedarikciFirmaID == firmaID);
+                    }
                     return res.json(sonuc);
                 })
                 .catch(e => {
@@ -157,12 +192,17 @@ router.post('/detay', async function (req, res) {
                 })
 
         } else if (filter == 4) { //iptal edilen siparişler
+            let firmaID = userFirmaTurID == 2 ? userFirmaID : null;
 
             db.sequelize.query(sql4, {
                 type: db.Sequelize.QueryTypes.SELECT
             })
                 .then(sonuc => {
+                    if (firmaID) {
+                        sonuc = sonuc.filter(a => a.tedarikciFirmaID == firmaID);
+                    }
                     return res.json(sonuc);
+
                 })
                 .catch(e => {
                     throw e;
@@ -170,12 +210,17 @@ router.post('/detay', async function (req, res) {
 
 
         } else if (filter == 5) { // onaylanan siparişler
+            let firmaID = userFirmaTurID == 2 ? userFirmaID : null;
 
             db.sequelize.query(sql5, {
                 type: db.Sequelize.QueryTypes.SELECT
             })
                 .then(sonuc => {
+                    if (firmaID) {
+                        sonuc = sonuc.filter(a => a.tedarikciFirmaID == firmaID);
+                    }
                     return res.json(sonuc);
+
                 })
                 .catch(e => {
                     throw e;

@@ -10,7 +10,7 @@ router.post('/getList', async function (req, res) {
     try {
         console.log(`post request => ${req.originalUrl}`);
 
-        const userFirmaTurID = req.body.userData.userfirmaTurID;
+        const userFirmaTurID = req.body.userData.userFirmaTurID;
         const userFirmaID = req.body.userData.userFirmaID;
 
         let whereCond = "";

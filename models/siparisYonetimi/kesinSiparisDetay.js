@@ -19,6 +19,9 @@ module.exports = (sequelize, DataTypes) => {
         sevkMiktari: DataTypes.DECIMAL(10,3),
         sevkTeslimTarihi: DataTypes.DATE,
 
+        eesKayitNo: DataTypes.INTEGER,
+        bakiye: DataTypes.DECIMAL(10,3), // kalan gönderim miktarı
+
         createdUserID: DataTypes.UUID,
         updatedUserID: DataTypes.UUID,
         createdAt: {

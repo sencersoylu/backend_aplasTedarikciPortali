@@ -90,9 +90,8 @@ router.post('/update', async function (req, res) {
 
         if (oldRecord) {
 
-
             if (oldRecord['sevkiyatYonetimiIrsaliyeDurumID'] == 2) {
-                throw "Onaylanmış irsaliye güncellenemez!";
+                throw "Alıcıya gönderilmiş irsaliye güncellenemez!";
             }
 
             await crudHelper.updateR({
@@ -125,7 +124,7 @@ router.post('/delete', async function (req, res) {
 
         const id = req.body.ID;
 
-        const irsDurum = (await db.sequelize.query(`SELECT t.sevkiyatYonetimiIrsaliyeDurumID as durumID FROM ${table} as t WHERE t.${keyExpr} = ${id}`, { type: db.Sequelize.QueryTypes.SELECT })
+        const irsDurum = (await db.sequelize.query(`SELECT t.sevkiyatYonetimiIrsaliyeDurumID as durumID FROM ${table} as t WHERE t.${keyExpr} = '${id}'`, { type: db.Sequelize.QueryTypes.SELECT })
             .catch(e => {
                 console.log(e);
                 throw "Sorgulama esnasında hata oluştu!";
@@ -236,5 +235,6 @@ WHERE
     });
 
 });
+
 
 module.exports = router;

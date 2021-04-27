@@ -68,7 +68,7 @@ module.exports = function sendMail() {
                             }
                             if (info) {
                                 log.info("mail gönderildi olarak işaretleniyor... MailLogID:", mailLog.mailLogID);
-                                await db.sequelize.query("UPDATE mail_log SET gonderildiMi = 1 , gonderilmeTarihi = NOW() WHERE mailLogID = " + mailLog.mailLogID, {
+                                await db.sequelize.query("UPDATE mail_log SET gonderildiMi = 1 , gonderilmeTarihi = NOW() WHERE mailLogID = '" + mailLog.mailLogID+ "'", {
                                     type: db.Sequelize.QueryTypes.UPDATE
                                 }).catch(() => {
                                     reject("mail gönderildi işaretleme sırasında hata ile karşılaşıldı! MailLogID:" + mailLog.mailLogID);

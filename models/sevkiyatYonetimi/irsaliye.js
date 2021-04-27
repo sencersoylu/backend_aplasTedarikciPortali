@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         sevkTarihi: DataTypes.DATE,
         sevkiyatYonetimiIrsaliyeDurumID: DataTypes.INTEGER,
         siparisYonetimiKesinSiparisID: DataTypes.UUID,
-        siparisNo: DataTypes.STRING,
+        siparisNo: DataTypes.STRING, // ees deki siparis no
         siparisTarihi: DataTypes.DATE,
         not: DataTypes.TEXT,
         tedarikciFirmaID: DataTypes.UUID,
@@ -26,6 +26,13 @@ module.exports = (sequelize, DataTypes) => {
         tedarikciFirmaAdi: DataTypes.STRING,
         ureticiFirmaKodu: DataTypes.STRING,
         ureticiFirmaAdi: DataTypes.STRING,
+
+        genelUrunTasimaTuruID: DataTypes.INTEGER,
+        kargoTakipNo: DataTypes.STRING,
+        surucuAdiSoyadi: DataTypes.STRING,
+        surucuTelefonNo: DataTypes.STRING,
+        aracPlakaNo: DataTypes.STRING,
+        aracDorseNo: DataTypes.STRING,
 
         createdUserID: DataTypes.UUID,
         updatedUserID: DataTypes.UUID,
@@ -68,6 +75,11 @@ module.exports = (sequelize, DataTypes) => {
         model.belongsTo(models.sevkiyat_yonetimi_irsaliye_durum, {
             foreignKey: 'sevkiyatYonetimiIrsaliyeDurumID',
             targetKey: 'sevkiyatYonetimiIrsaliyeDurumID'
+        });
+
+        model.belongsTo(models.genel_urun_tasima_turu, {
+            foreignKey: 'genelUrunTasimaTuruID',
+            targetKey: 'genelUrunTasimaTuruID'
         });
 
     };

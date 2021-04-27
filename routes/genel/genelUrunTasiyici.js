@@ -15,7 +15,7 @@ router.post('/boxStokKartiUrunTasiyici', async function(req, res) {
     if (!filterData.ID) { // liste
         rawQuery = `SELECT t.*, tur.adi as turu, CONCAT('[ ',t.kodu,' ] ', t.adi) as koduAdi FROM ${table} as t LEFT JOIN genel_urun_tasiyici_turu as tur ON tur.genelUrunTasiyiciTuruID = t.genelUrunTasiyiciTuruID  ORDER BY t.kodu ASC`;
     } else { // tek kayıt
-        rawQuery = `SELECT t.*, tur.adi as turu, CONCAT('[ ',t.kodu,' ] ', t.adi) as koduAdi FROM ${table} as t LEFT JOIN genel_urun_tasiyici_turu as tur ON tur.genelUrunTasiyiciTuruID = t.genelUrunTasiyiciTuruID WHERE ${keyExpr} = ${filterData.ID}`;
+        rawQuery = `SELECT t.*, tur.adi as turu, CONCAT('[ ',t.kodu,' ] ', t.adi) as koduAdi FROM ${table} as t LEFT JOIN genel_urun_tasiyici_turu as tur ON tur.genelUrunTasiyiciTuruID = t.genelUrunTasiyiciTuruID WHERE ${keyExpr} = '${filterData.ID}'`;
     }
 
     await crudHelper.getListR({

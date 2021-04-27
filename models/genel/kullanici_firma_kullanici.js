@@ -37,6 +37,11 @@ module.exports = (sequelize, DataTypes) => {
       targetKey: 'kullaniciFirmaID'
     });
 
+    tanim.belongsTo(models.kullanici, {
+      foreignKey: 'kullaniciID',
+      targetKey: 'kullaniciID'
+    });
+
   };
 
   return tanim;

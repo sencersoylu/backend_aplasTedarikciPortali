@@ -19,7 +19,7 @@ router.post('/getList', async function (req, res) {
         });
     }
 
-    let rawQuery = "SELECT t.*, CONCAT('[ ',gob.kodu,' ] ', gob.adi) as olcuBirimi FROM " + table + " as t LEFT JOIN genel_olcu_birimi as gob ON gob.genelOlcuBirimiID = t.genelOlcuBirimiID WHERE t." + parentKeyExpr + " = '" + parentID + "'";
+    let rawQuery = "SELECT t.*, CONCAT('[ ',gob.kodu,' ] ', gob.adi) as olcuBirimi, gu.adi as mensei FROM " + table + " as t LEFT JOIN genel_olcu_birimi as gob ON gob.genelOlcuBirimiID = t.genelOlcuBirimiID LEFT JOIN genel_ulke as gu ON gu.genelUlkeID = t.genelUlkeID WHERE t." + parentKeyExpr + " = '" + parentID + "'";
 
     await crudHelper.getListR({
         data: filterData,

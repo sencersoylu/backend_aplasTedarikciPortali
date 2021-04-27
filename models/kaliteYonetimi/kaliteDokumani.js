@@ -1,15 +1,14 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
 
-    const model = sequelize.define('urun_yonetimi_mal_alis_katalogu', {
-        urunYonetimiMalAlisKataloguID: {
+    const model = sequelize.define('kalite_yonetimi_kalite_dokumani', {
+        kaliteYonetimiKaliteDokumaniID: {
             type: DataTypes.UUID, 
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
-        urunYonetimiUreticiUrunID: DataTypes.UUID,
+        kaliteYonetimiKaliteDokumaniTurID: DataTypes.INTEGER,
         tedarikciFirmaID: DataTypes.UUID,
-        tedarikciUrunKodu: DataTypes.STRING,
 
         createdUserID: DataTypes.UUID,
         updatedUserID: DataTypes.UUID,
@@ -23,15 +22,17 @@ module.exports = (sequelize, DataTypes) => {
 
     model.associate = function (models) {
 
-        model.belongsTo(models.urun_yonetimi_uretici_urun, {
-            foreignKey: 'urunYonetimiUreticiUrunID',
-            targetKey: 'urunYonetimiUreticiUrunID'
+        model.belongsTo(models.kalite_yonetimi_kalite_dokumani_tur, {
+            foreignKey: 'kaliteYonetimiKaliteDokumaniTurID',
+            targetKey: 'kaliteYonetimiKaliteDokumaniTurID'
         });
 
         model.belongsTo(models.tedarikci_firma, {
             foreignKey: 'tedarikciFirmaID',
             targetKey: 'tedarikciFirmaID'
         });
+
+
 
     };
 

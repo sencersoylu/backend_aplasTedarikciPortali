@@ -10,6 +10,14 @@ module.exports = (sequelize, DataTypes) => {
         adi: DataTypes.STRING,
         kodu: DataTypes.STRING,
         aciklama: DataTypes.TEXT,
+
+        teknikResimNo: DataTypes.STRING,
+        parcaAgirlik: DataTypes.DECIMAL(10,3),
+        parcaHacim: DataTypes.DECIMAL(10,3),
+        parcaEn: DataTypes.DECIMAL(10,3),
+        parcaBoy: DataTypes.DECIMAL(10,3),
+        parcaYukseklik: DataTypes.DECIMAL(10,3),
+        
         kullaniciFirmaAdresID: DataTypes.UUID,
         genelUrunGrupID: DataTypes.UUID,
         genelUrunTurID: DataTypes.UUID,

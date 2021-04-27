@@ -274,7 +274,7 @@ router.post('/update', async function (req, res) {
 
     try {
 
-        const userUUID = req.body.data.userID;
+        const userUUID = req.body.data.kullaniciID;
         if (!userUUID) {
             res.status(400).json({ validationError: "kullanıcı id boş olamaz!" });
             return;

@@ -15,6 +15,8 @@ module.exports = (sequelize, DataTypes) => {
 
     kisiAdi: DataTypes.STRING,
     kisiSoyadi: DataTypes.STRING,
+
+    eesSicilKodu: DataTypes.STRING,
     
     aktifMi: DataTypes.BOOLEAN,
     createdUserID: DataTypes.UUID,

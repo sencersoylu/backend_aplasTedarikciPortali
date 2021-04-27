@@ -58,9 +58,30 @@ router.post('/kaydet', async function (req, res) {
                 messages.push("İrsaliye Numarası boş olamaz!");
             }
 
-            if (talepInfo['sevkiyatYonetimiIrsaliyeDurumID'] == 2 && !talepInfo['sevkTarihi']) {
-                messages.push("Alıcıya gönderilecek irsaliyede Sevk Tarihi  boş olamaz!");
+            if (!talepInfo['genelUrunTasimaTuruID']) {
+                messages.push("Taşıma Türü boş olamaz!");
             }
+
+            if(talepInfo['sevkiyatYonetimiIrsaliyeDurumID'] == 2){
+
+                if(!talepInfo['sevkTarihi']){
+                    messages.push("Alıcıya gönderilecek irsaliyede Sevk Tarihi  boş olamaz!");
+                }
+
+                if(talepInfo['genelUrunTasimaTuruID'] == 1){
+
+                    if(!talepInfo['kargoTakipNo']){
+                        messages.push("Alıcıya gönderilecek irsaliyede KArgo Takip No boş olamaz!");
+                    }
+                }
+                else{
+                    if(!talepInfo['aracPlakaNo']){
+                        messages.push("Alıcıya gönderilecek irsaliyede Araç Plaka No boş olamaz!");
+                    }
+                }
+
+            }
+
 
             if (!detaylar || detaylar.length == 0) {
                 messages.push("irsaliye detayları boş olamaz!");
@@ -78,6 +99,10 @@ router.post('/kaydet', async function (req, res) {
                         messages.push("ürün miktarı, 0'dan büyük tamsayı olmalıdır!")
                     }
 
+                    if(!d['genelUlkeID']){
+                        messages.push("menşei ülke, boş olmamalıdır!")
+                    }
+
                 });
 
             }
@@ -91,7 +116,15 @@ router.post('/kaydet', async function (req, res) {
                 filterData.data['sevkiyatYonetimiIrsaliyeDurumID'] = talepInfo['sevkiyatYonetimiIrsaliyeDurumID'];
                 filterData.data['irsaliyeNo'] = talepInfo['irsaliyeNo'];
                 filterData.data['sevkTarihi'] = talepInfo['sevkTarihi'];
+                filterData.data['genelUrunTasimaTuruID'] = talepInfo['genelUrunTasimaTuruID'];
+                filterData.data['kargoTakipNo'] = talepInfo['kargoTakipNo'];
+                filterData.data['surucuAdiSoyadi'] = talepInfo['surucuAdiSoyadi'];
+                filterData.data['surucuTelefonNo'] = talepInfo['surucuTelefonNo'];
+                filterData.data['aracPlakaNo'] = talepInfo['aracPlakaNo'];
+                filterData.data['aracDorseNo'] = talepInfo['aracDorseNo'];
+
                 filterData.data['siparisYonetimiKesinSiparisID'] = siparisID;
+
                 filterData.data['tedarikciFirmaID'] = sipDurum['tedarikciFirmaID'];
                 filterData.data['tedarikciFirmaAdi'] = sipDurum['tedarikciFirmaAdi'];
                 filterData.data['tedarikciFirmaKodu'] = sipDurum['tedarikciFirmaKodu'];
@@ -102,7 +135,7 @@ router.post('/kaydet', async function (req, res) {
                 filterData.data['cikisAdresi'] = sipDurum['cikisAdresi'];
                 filterData.data['varisAdresiID'] = sipDurum['varisAdresiID'];
                 filterData.data['varisAdresi'] = sipDurum['varisAdresi'];
-                filterData.data['siparisNo'] = sipDurum['siparisNo'];
+                filterData.data['siparisNo'] = sipDurum['siparisNo']; // ees deki siparis no
                 filterData.data['siparisTarihi'] = sipDurum['siparisTarihi'];
 
                 await crudHelper.createR({
@@ -206,6 +239,7 @@ LEFT JOIN (
 ) AS irsOzet ON irsOzet.siparisYonetimiKesinSiparisID = sip.siparisYonetimiKesinSiparisID
 WHERE
 	sip.siparisYonetimiKesinSiparisID = '${siparisID}'
+    AND sipDet.bakiye > 0
 AND (
 	irsOzet.miktar IS NULL
  	OR 

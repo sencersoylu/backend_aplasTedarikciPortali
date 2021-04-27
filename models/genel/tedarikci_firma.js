@@ -16,6 +16,11 @@ module.exports = (sequelize, DataTypes) => {
         ePosta: DataTypes.STRING,
         kepAdresi: DataTypes.STRING,
         aktifMi: DataTypes.BOOLEAN,
+
+        sendikaUyesiMi: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
         
         createdUserID: DataTypes.UUID,
         updatedUserID: DataTypes.UUID,

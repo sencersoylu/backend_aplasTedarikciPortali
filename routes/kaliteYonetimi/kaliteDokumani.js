@@ -3,19 +3,26 @@ const router = express.Router();
 const crudHelper = require('../../helpers/crudHelper');
 const db = require('../../models');
 
-const table = "urun_yonetimi_mal_alis_katalogu";
-const keyExpr = "urunYonetimiMalAlisKataloguID";
+const table = "kalite_yonetimi_kalite_dokumani";
+const keyExpr = "kaliteYonetimiKaliteDokumaniID";
 
 router.post('/getList', async function (req, res) {
     try {
         console.log(`post request => ${req.originalUrl}`);
 
-        const filterData = req.body;
+        const userFirmaTurID = req.body.userData.userFirmaTurID;
+        const userFirmaID = req.body.userData.userFirmaID;
 
-        let rawQuery = `SELECT t.*, urun.adi as urunAdi, firma.firmaAdi, adr.kisaKodu as adres FROM ${table} as t LEFT JOIN urun_yonetimi_uretici_urun as urun ON urun.urunYonetimiUreticiUrunID = t.urunYonetimiUreticiUrunID LEFT JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = t.tedarikciFirmaID LEFT JOIN kullanici_firma_adres as adr ON adr.kullaniciFirmaAdresID = t.kullaniciFirmaAdresID ORDER BY t.createdAt DESC`;
+        let whereCond = "";
+
+        if(userFirmaTurID == 2){
+            whereCond = " WHERE tedarikciFirmaID = '" + userFirmaID+ "'";
+        }
+
+        let rawQuery = `SELECT t.*, tur.adi as turAdi, firma.firmaAdi  as tedarikciFirma FROM ${table} as t LEFT JOIN kalite_yonetimi_kalite_dokumani_tur as tur ON tur.kaliteYonetimiKaliteDokumaniTurID = t.kaliteYonetimiKaliteDokumaniTurID LEFT JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = t.tedarikciFirmaID ${whereCond} ORDER BY t.createdAt DESC`;
 
         await crudHelper.getListR({
-            data: filterData,
+            data: req.body,
             rawQuery: rawQuery
         }, (data, err) => {
             if (data) {
@@ -42,19 +49,6 @@ router.post('/create', async function (req, res) {
 
         if (!data) {
             throw "Data boş olamaz!";
-        }
-
-        const oldRecord = (await db.sequelize.query(`SELECT * FROM ${table} WHERE tedarikciFirmaID = :firmaID AND urunYonetimiUreticiUrunID = :urunID`, { type: db.Sequelize.QueryTypes.SELECT,replacements: {
-            firmaID: data['tedarikciFirmaID'],
-            urunID: data['urunYonetimiUreticiUrunID']
-        } })
-            .catch(e => {
-                console.log(e);
-                throw "Sorgulama esnasında hata oluştu!";
-            }))[0];
-
-        if (oldRecord) {
-            throw "bu firma için ilgili ürün zaten mevcut!";
         }
 
         await crudHelper.createR({
@@ -105,20 +99,6 @@ router.post('/update', async function (req, res) {
 
         if (!data) {
             throw "Data boş olamaz!";
-        }
-
-        const oldRecord = (await db.sequelize.query(`SELECT * FROM ${table} WHERE tedarikciFirmaID =:firmaID AND urunYonetimiUreticiUrunID = :urunID AND ${keyExpr} != :id`, { type: db.Sequelize.QueryTypes.SELECT,replacements: {
-            firmaID: data['tedarikciFirmaID'],
-            urunID: data['urunYonetimiUreticiUrunID'],
-            id: data[keyExpr]
-        } })
-            .catch(e => {
-                console.log(e);
-                throw "Sorgulama esnasında hata oluştu!";
-            }))[0];
-
-        if (oldRecord) {
-            throw "bu firma için ilgili ürün zaten mevcut!";
         }
 
         await crudHelper.updateR({
