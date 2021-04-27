@@ -25,15 +25,15 @@ module.exports = async function sendikaUyesiTedarikciler() {
             ted.*
         FROM
             tedarikci_firma AS ted
-        LEFT JOIN kalite_yonetimi_dokumani as dok
-        LEFT JOIN kalite_yonetimi_dokumani_ek AS dokEk ON dokEk.kaliteYonetimiKaliteDokumaniID = dok.kaliteYonetimiKaliteDokumaniID
-        WHERE ted.sendikaUyesiMi = 1 AND dok.kaliteYonetimiKaliteDokumaniTurID = 1 AND dokEk.kaliteYonetimiKaliteDokumaniID IS NULL
+        LEFT JOIN kalite_yonetimi_kalite_dokumani as dok ON dok.tedarikciFirmaID = ted.tedarikciFirmaID AND dok.kaliteYonetimiKaliteDokumaniTurID = 1 
+        LEFT JOIN kalite_yonetimi_kalite_dokumani_ek AS dokEk ON dokEk.kaliteYonetimiKaliteDokumaniID = dok.kaliteYonetimiKaliteDokumaniID
+        WHERE ted.sendikaUyesiMi = 1 AND dokEk.kaliteYonetimiKaliteDokumaniID IS NULL
             `, {
                 type: db.Sequelize.QueryTypes.SELECT
             });
 
 
-            const sendMailTedarikciBakiyeHatirlatmasi = async (tedarikci) => {
+            const sendMailTedarikciSendikaHatirlatmasi = async (tedarikci) => {
 
                 // ilgili tedarikçi firma kullanılarına bakiye hatırlatması mail bilgisi gönderiliyor
                 const userMails = await db.sequelize.query("SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = :tedarikciID", {
@@ -67,7 +67,7 @@ module.exports = async function sendikaUyesiTedarikciler() {
             if (tedarikciler.length > 0) {
 
                 Promise.all(tedarikciler.map(kalem => {
-                    return sendMailTedarikciBakiyeHatirlatmasi(kalem);
+                    return sendMailTedarikciSendikaHatirlatmasi(kalem);
                 }))
                 .catch(e => {
                     log.error(e);

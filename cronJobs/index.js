@@ -8,6 +8,8 @@ const kesinSiparisler = require('./kesinSiparisler');
 const tedarikciSiparisBakiyeKontrol = require('./tedarikciSiparisBakiyeKontrol');
 const tedarikciSiparisTeyitKontrol = require('./tedarikciSiparisTeyitKontrol');
 const tedarikciSendikaUyesiKontrol = require('./tedarikciSendikaUyesiKontrol');
+const tedarikciSertifikaGecerlilikKontrol = require('./tedarikciSertifikaGecerlilikKontrol');
+const tedarikciSertifikaBelgesiKontrol = require('./tedarikciSertifikaBelgesiKontrol');
 // const malzemeTasiyicilari = require('./malzemeTasiyicilari');
 
 
@@ -25,7 +27,8 @@ const starter = setTimeout(() => {
         tedarikciSiparisTeyitKontrol();
         tedarikciSiparisBakiyeKontrol();
         tedarikciSendikaUyesiKontrol();
-
+        tedarikciSertifikaGecerlilikKontrol();
+        tedarikciSertifikaBelgesiKontrol();
         // malzemeTasiyicilari();
 
 

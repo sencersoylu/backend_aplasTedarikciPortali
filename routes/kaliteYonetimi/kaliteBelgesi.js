@@ -16,7 +16,7 @@ router.post('/getList', async function (req, res) {
         let whereCond = "";
 
         if(userFirmaTurID == 2){
-            whereCond = " WHERE tedarikciFirmaID = '" + userFirmaID+ "'";
+            whereCond = " WHERE t.tedarikciFirmaID = '" + userFirmaID+ "'";
         }
 
         let rawQuery = `SELECT t.*, tur.adi as turAdi, firma.firmaAdi  as tedarikciFirma FROM ${table} as t LEFT JOIN kalite_yonetimi_kalite_belgesi_tur as tur ON tur.kaliteYonetimiKaliteBelgesiTurID = t.kaliteYonetimiKaliteBelgesiTurID LEFT JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = t.tedarikciFirmaID ${whereCond} ORDER BY t.createdAt DESC`;
