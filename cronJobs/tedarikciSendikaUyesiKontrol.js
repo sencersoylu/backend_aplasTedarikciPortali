@@ -43,10 +43,6 @@ module.exports = async function sendikaUyesiTedarikciler() {
     }
                 });
 
-                const customDateFormat = (tarih) => {
-                    return moment(tarih).format("DD.MM.YYYY");
-                }
-
                 if (userMails.length > 0) {
                     let toAddress = userMails.map(m => m.ePosta).toString(); // comma seperated
                     let subject = 'A-PLAS Tedarikçi Portalı: Sendika Üyelik Formu Hatırlatması';

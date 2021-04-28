@@ -54,7 +54,7 @@ module.exports = async function tedarikciler() {
 
             if (dokumanlar.length > 0) {
 
-                const sendMail = (dokuman) => {
+                const sendMail = async (dokuman) => {
 
                     const userMails = await db.sequelize.query("SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = :tedarikciID", {
                         type: db.Sequelize.QueryTypes.SELECT,
@@ -63,14 +63,11 @@ module.exports = async function tedarikciler() {
                         }
                     });
 
-                    const customDateFormat = (tarih) => {
-                        return moment(tarih).format("DD.MM.YYYY");
-                    }
 
                     if (userMails.length > 0) {
                         let toAddress = userMails.map(m => m.ePosta).toString(); // comma seperated
                         let subject = 'A-PLAS Tedarikçi Portalı: Kalite Sertifikası Geçerlilik Süresi Hatırlatması';
-                        let htmlMessage = `'${dokuman['turAdi']}' sertifikasınızın geçerlilik süresi dolmuştur. Lütfen en yakın zamanda güncel dökümanı sisteme yükleyiniz.`;
+                        let htmlMessage = `'${dokuman['turAdi']}' sertifikasınızın geçerlilik süresi dolmuştur. Dökümanın geçerlilik süresi : ${dokuman['gecerlilikTarihi']}. Lütfen en yakın zamanda güncel dökümanı sisteme yükleyiniz.`;
                         let attachments = [];
 
                         helperService.mailKaydet(subject, toAddress, htmlMessage, new Date(), JSON.stringify(attachments), function (data, error) {
