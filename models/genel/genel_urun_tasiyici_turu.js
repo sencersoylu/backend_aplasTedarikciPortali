@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
 
+    // ees'deki ambalaj türlerine karşılık geliyor
     const model = sequelize.define('genel_urun_tasiyici_turu', {
         genelUrunTasiyiciTuruID: {
             type: DataTypes.UUID, 

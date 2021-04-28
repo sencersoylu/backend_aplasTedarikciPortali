@@ -38,7 +38,7 @@ router.post('/getList', async function(req, res) {
 
     const filterData = req.body;
 
-    let rawQuery = `SELECT t.*, tur.adi as turu FROM ${table} as t LEFT JOIN genel_urun_tasiyici_turu as tur ON tur.genelUrunTasiyiciTuruID = t.genelUrunTasiyiciTuruID  ORDER BY t.kodu ASC`;
+    let rawQuery = `SELECT t.*, tur.adi as turu, urun.adi as urunAdi FROM ${table} as t LEFT JOIN genel_urun_tasiyici_turu as tur ON tur.genelUrunTasiyiciTuruID = t.genelUrunTasiyiciTuruID LEFT JOIN urun_yonetimi_uretici_urun as urun ON urun.urunYonetimiUreticiUrunID = t.urunYonetimiUreticiUrunID  ORDER BY t.kodu ASC`;
 
     await crudHelper.getListR({
         data: filterData,

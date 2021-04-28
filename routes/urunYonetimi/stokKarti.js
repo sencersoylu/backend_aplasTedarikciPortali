@@ -5,6 +5,35 @@ const crudHelper = require('../../helpers/crudHelper');
 const table = "urun_yonetimi_uretici_urun";
 const keyExpr = "urunYonetimiUreticiUrunID";
 
+router.post('/boxGenelUrunTasiyici', async function (req, res) {
+
+    const filterData = req.body;
+
+    let rawQuery;
+
+    if (!filterData.ID) { // liste
+        rawQuery = `SELECT t.*, CONCAT('[ ',kodu,' ] ', adi) as koduAdi  FROM ${table} as t ORDER BY kodu, adi ASC`;
+    } else { // tek kayıt
+        rawQuery = `SELECT t.*, CONCAT('[ ',kodu,' ] ', adi) as koduAdi  FROM ${table} as t WHERE t.${keyExpr} = '${filterData.ID}'`;
+    }
+
+    await crudHelper.getListR({
+        data: filterData,
+        rawQuery: rawQuery
+    }, (data, err) => {
+        if (data) {
+            res.json(filterData.ID ? data.data[0] : data);
+        }
+
+        if (err) {
+            res.status(400).json(err);
+        }
+    });
+
+
+
+});
+
 router.post('/boxIrsaliyeDetay', async function (req, res) {
 
     const filterData = req.body;
