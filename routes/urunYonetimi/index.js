@@ -3,10 +3,12 @@ const router = express.Router();
 
 const ureticiUrunRoutes = require('./stokKarti');
 const ureticiUrunUrunTasiyiciRoutes = require('./stokKartiUrunTasiyici');
-const malSatisKataloguRoutes = require('./malSatisKatalogu');
+const malAlisKataloguRoutes = require('./malAlisKatalogu');
+const urunKapasiteRoutes = require('./urunKapasite');
 
 router.use('/urunYonetimiStokKarti', ureticiUrunRoutes);
 router.use('/urunYonetimiStokKartiUrunTasiyici', ureticiUrunUrunTasiyiciRoutes);
-router.use('/urunYonetimiMalAlisKatalogu', malSatisKataloguRoutes);
+router.use('/urunYonetimiMalAlisKatalogu', malAlisKataloguRoutes);
+router.use('/urunYonetimiUrunKapasite', urunKapasiteRoutes);
 
 module.exports = router;

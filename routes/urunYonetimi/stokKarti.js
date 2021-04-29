@@ -5,6 +5,60 @@ const crudHelper = require('../../helpers/crudHelper');
 const table = "urun_yonetimi_uretici_urun";
 const keyExpr = "urunYonetimiUreticiUrunID";
 
+router.post('/boxUrunKapasite', async function (req, res) {
+
+    const filterData = req.body;
+    const tedarikciFirmaID = filterData.firmaID;
+    const firmaLokasyonID = filterData.adresID;
+
+    let rawQuery;
+
+    if (!filterData.ID) { // liste
+        rawQuery = `
+    SELECT
+        urun.*, CONCAT(
+            '[ ',
+            urun.kodu,
+            ' ] ',
+            urun.adi
+        ) AS koduAdi,
+        CONCAT(
+            '[ ',
+            birim.kodu,
+            ' ] ',
+            birim.adi
+        ) AS olcuBirimi
+        
+    FROM
+        urun_yonetimi_uretici_urun AS urun
+    INNER JOIN urun_yonetimi_mal_alis_katalogu AS kat ON urun.urunYonetimiUreticiUrunID = kat.urunYonetimiUreticiUrunID
+    LEFT JOIN genel_olcu_birimi as birim ON urun.genelOlcuBirimiID = birim.genelOlcuBirimiID
+    WHERE
+        kat.tedarikciFirmaID = '${tedarikciFirmaID}'
+    AND urun.kullaniciFirmaAdresID = '${firmaLokasyonID}'
+    ORDER BY urun.kodu, urun.adi ASC`;
+    } else { // tek kayıt
+        rawQuery = `SELECT t.*, 
+        CONCAT('[ ',kodu,' ] ', adi) as koduAdi, CONCAT( '[ ', birim.kodu, ' ] ',  birim.adi ) AS olcuBirimi  FROM ${table} as t LEFT JOIN genel_olcu_birimi as birim ON urun.genelOlcuBirimiID = birim.genelOlcuBirimiID WHERE t.${keyExpr} = '${filterData.ID}'`;
+    }
+
+    await crudHelper.getListR({
+        data: filterData,
+        rawQuery: rawQuery
+    }, (data, err) => {
+        if (data) {
+            res.json(filterData.ID ? data.data[0] : data);
+        }
+
+        if (err) {
+            res.status(400).json(err);
+        }
+    });
+
+
+
+});
+
 router.post('/boxGenelUrunTasiyici', async function (req, res) {
 
     const filterData = req.body;
