@@ -10,11 +10,13 @@ const upload = multer({ storage: storage });
 router.get('/:duyuruID/images', async function (req, res) {
 
 	try {
-		const lokID = +req.params.duyuruID;
+		const lokID = req.params.duyuruID;
 
-		if (!lokID) return res.status(400).json("gecersiz dosya id");
+		if (!lokID) return res.status(400).json("gecersiz duyuru id");
 
-		db.sequelize.query("SELECT d.* FROM dosya as d LEFT JOIN duyuru_fotolari as pf ON d.dosyaID = pf.dosyaID WHERE pf.iletisimMerkeziDuyuruID = " + lokID, { type: db.Sequelize.QueryTypes.SELECT })
+		db.sequelize.query("SELECT d.* FROM dosya as d LEFT JOIN duyuru_fotolari as pf ON d.dosyaID = pf.dosyaID WHERE pf.iletisimMerkeziDuyuruID = :duyuruID", { type: db.Sequelize.QueryTypes.SELECT, replacements: {
+			duyuruID: lokID
+		} })
 			.then(result => {
 				res.json(result.map(d => {
 					d.icerik = Buffer.from(d.icerik).toString('base64');
@@ -22,7 +24,7 @@ router.get('/:duyuruID/images', async function (req, res) {
 				}))
 			})
 			.catch(error => {
-				res.status(400).error(error);
+				res.status(400).json(error);
 			});
 
 
@@ -35,13 +37,13 @@ router.get('/:duyuruID/images', async function (req, res) {
 router.get('/:duyuruID/images/:id', async function (req, res) {
 
 	const id = +req.params.id;
-	const lokID = +req.params.duyuruID;
+	const lokID = req.params.duyuruID;
 
 	if (!lokID) return res.status(400).json("gecersiz duyuru id");
 
 	if (!id) return res.status(400).json("gecersiz dosya id");
 
-	db.sequelize.query("SELECT d.adi, d.turu, d.dosyaID FROM dosya as d LEFT JOIN duyuru_fotolari as pf ON d.dosyaID = pf.dosyaID AND pf.iletisimMerkeziDuyuruID = " + lokID + " WHERE d.dosyaID = " + id, { type: db.Sequelize.QueryTypes.SELECT })
+	db.sequelize.query("SELECT d.adi, d.turu, d.dosyaID FROM dosya as d LEFT JOIN duyuru_fotolari as pf ON d.dosyaID = pf.dosyaID AND pf.iletisimMerkeziDuyuruID = '" + lokID + "' WHERE d.dosyaID = '" + id + "'", { type: db.Sequelize.QueryTypes.SELECT })
 		.then(result => {
 			res.json(result);
 		})
@@ -55,7 +57,7 @@ router.get('/:duyuruID/images/:id', async function (req, res) {
 router.post('/:duyuruID/images', upload.array('files', 12), (req, res, next) => {
 
 	const files = req.files;
-	const id = +req.params.duyuruID;
+	const id = req.params.duyuruID;
 
 	async function addDosyaRelation(dosya) {
 		return db.dosya.create({
@@ -64,7 +66,7 @@ router.post('/:duyuruID/images', upload.array('files', 12), (req, res, next) => 
 			icerik: dosya.buffer
 		}, { raw: false })
 			//		return db.sequelize.query("INSERT INTO dosya (adi,turu,icerik) VALUES ('"+ dosya.originalname + "','" +dosya.mimetype + "','" + dosya.buffer +"')", { type: db.Sequelize.QueryTypes.INSERT })
-			.then((result) => db.sequelize.query("INSERT INTO duyuru_fotolari (dosyaID, iletisimMerkeziDuyuruID, createdAt, updatedAt) VALUES ( " + result.dosyaID + "," + id + ", NOW(), NOW())", { type: db.Sequelize.QueryTypes.INSERT }))
+			.then((result) => db.sequelize.query("INSERT INTO duyuru_fotolari (dosyaID, iletisimMerkeziDuyuruID, createdAt, updatedAt) VALUES ( '" + result.dosyaID + "','" + id + "', NOW(), NOW())", { type: db.Sequelize.QueryTypes.INSERT }))
 
 	}
 
@@ -87,8 +89,8 @@ router.delete('/images/:id', async function (req, res, next) {
 		if (!dosyaID) return res.status(400).json("gecersiz dosya id");
 
 
-		db.sequelize.query("DELETE FROM duyuru_fotolari WHERE dosyaID = " + dosyaID, { type: db.Sequelize.QueryTypes.DELETE })
-			.then(() => db.sequelize.query("DELETE FROM dosya WHERE dosyaID = " + dosyaID, { type: db.Sequelize.QueryTypes.DELETE }))
+		db.sequelize.query("DELETE FROM duyuru_fotolari WHERE dosyaID = '" + dosyaID+"'", { type: db.Sequelize.QueryTypes.DELETE })
+			.then(() => db.sequelize.query("DELETE FROM dosya WHERE dosyaID = '" + dosyaID + "'", { type: db.Sequelize.QueryTypes.DELETE }))
 			.then(result => {
 
 				res.json("OK");

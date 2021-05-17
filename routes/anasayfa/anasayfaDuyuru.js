@@ -22,11 +22,11 @@ router.get('/', function (req, res, next) {
 router.get('/ekler/:duyuruID', async function (req, res) {
 
     try {
-        const lokID = +req.params.duyuruID;
+        const lokID = req.params.duyuruID;
 
         if (!lokID) return res.status(400).json("gecersiz paylaşım id");
 
-        db.sequelize.query("SELECT d.dosyaID, d.adi, d.turu FROM dosya as d LEFT JOIN duyuru_ekleri as pd ON pd.dosyaID = d.dosyaID WHERE pd.iletisimMerkeziDuyuruID ="+lokID, { type: db.Sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT d.dosyaID, d.adi, d.turu FROM dosya as d LEFT JOIN duyuru_ekleri as pd ON pd.dosyaID = d.dosyaID WHERE pd.iletisimMerkeziDuyuruID = '"+lokID + "'", { type: db.Sequelize.QueryTypes.SELECT })
 		.then(result => {
             res.json(result);
         })
@@ -45,11 +45,11 @@ router.get('/ekler/:duyuruID', async function (req, res) {
 router.get('/dosyaIcerik/:dosyaID', async function (req, res) {
 
     try {
-        const lokID = +req.params.dosyaID;
+        const lokID = req.params.dosyaID;
 
         if (!lokID) return res.status(400).json("gecersiz dosya id");
 
-        db.sequelize.query("SELECT d.* FROM dosya as d WHERE d.dosyaID = " + lokID, { type: db.Sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT d.* FROM dosya as d WHERE d.dosyaID = '" + lokID+"'", { type: db.Sequelize.QueryTypes.SELECT })
 		.then(result => {
             const base64data = Buffer.from(result[0].icerik).toString('base64');
             

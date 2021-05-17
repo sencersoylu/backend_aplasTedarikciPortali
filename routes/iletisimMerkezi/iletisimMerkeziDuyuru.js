@@ -88,11 +88,9 @@ router.post('/create', async function(req, res) {
 router.post('/delete', async function(req, res) {
 
 	try {
-		const {
-			id
-		} = req.params;
+		const id = req.body.ID;
 
-		if (!id) return res.status(400).json("gecersiz dosya id");
+		if (!id) return res.status(400).json("gecersiz duyuru id");
 
 		const willBeDeleted = await db.iletisim_merkezi_duyuru.findOne({
 			where: {
@@ -103,10 +101,10 @@ router.post('/delete', async function(req, res) {
 
 		if (!willBeDeleted) return res.status(400).json("duyuru bulunamadi");
 
-		db.sequelize.query("DELETE FROM dosya WHERE dosyaID IN (SELECT dosyaID FROM duyuru_fotolari WHERE iletisimMerkeziDuyuruID = " + id + ")", { type: db.Sequelize.QueryTypes.DELETE })
-			.then(() => db.sequelize.query("DELETE FROM duyuru_fotolari WHERE iletisimMerkeziDuyuruID = " + id, { type: db.Sequelize.QueryTypes.DELETE }))
-			.then(() => db.sequelize.query("DELETE FROM dosya WHERE dosyaID IN (SELECT dosyaID FROM duyuru_ekleri WHERE iletisimMerkeziDuyuruID = " + id + ")", { type: db.Sequelize.QueryTypes.DELETE }))
-			.then(() => db.sequelize.query("DELETE FROM duyuru_ekleri WHERE iletisimMerkeziDuyuruID = " + id, { type: db.Sequelize.QueryTypes.DELETE }))
+		db.sequelize.query("DELETE FROM dosya WHERE dosyaID IN (SELECT dosyaID FROM duyuru_fotolari WHERE iletisimMerkeziDuyuruID = '" + id + "')", { type: db.Sequelize.QueryTypes.DELETE })
+			.then(() => db.sequelize.query("DELETE FROM duyuru_fotolari WHERE iletisimMerkeziDuyuruID = '" + id + "'", { type: db.Sequelize.QueryTypes.DELETE }))
+			.then(() => db.sequelize.query("DELETE FROM dosya WHERE dosyaID IN (SELECT dosyaID FROM duyuru_ekleri WHERE iletisimMerkeziDuyuruID = '" + id + "')", { type: db.Sequelize.QueryTypes.DELETE }))
+			.then(() => db.sequelize.query("DELETE FROM duyuru_ekleri WHERE iletisimMerkeziDuyuruID = '" + id + "'", { type: db.Sequelize.QueryTypes.DELETE }))
 			.then(() => {
 				db.iletisim_merkezi_duyuru.destroy({
 					where: {
