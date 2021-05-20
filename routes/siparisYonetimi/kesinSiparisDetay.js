@@ -146,6 +146,12 @@ router.post('/update', async function (req, res) {
 
         const siparisMiktari = req.body.data['siparisMiktari'] ? Number(req.body.data['siparisMiktari']) : 0;
         const sevkMiktari = req.body.data['sevkMiktari'] ? Number(req.body.data['sevkMiktari']) : 0;
+
+        const bakiye = req.body.data['bakiye'] ? Number(req.body.data['bakiye']) : 0;
+
+        if(bakiye <= 0){
+            throw "bakiyesi 0 ve 0'dan küçük olan ürünler, sevk edilemez!";
+        }
         
         req.body.data['siparisMiktari'] = siparisMiktari;
         req.body.data['sevkMiktari'] = sevkMiktari;
@@ -158,6 +164,10 @@ router.post('/update', async function (req, res) {
 
             const sevkTarihi = new Date(req.body.data['sevkTeslimTarihi']).setHours(0,0,0,0);
             const siparisTarihi = new Date(req.body.data['siparisTeslimTarihi']).setHours(0,0,0,0);
+
+            if(sevkTarihi < siparisTarihi ){
+                throw "sevk tarihi sipariş tarihinden büyük olmalıdır!";
+            }
 
             if ((siparisMiktari != sevkMiktari) || (sevkTarihi != siparisTarihi)) {
                 // şartlı onay durum güncelleme
@@ -273,7 +283,6 @@ router.post('/create', async function (req, res) {
                 res.json(data);
 
                 // hareket kaydı
-                const aciklama = "";
                 await operasyonHareketiEkle(data[parentKeyExpr], 2, req);
 
             }

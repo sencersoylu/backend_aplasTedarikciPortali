@@ -222,7 +222,7 @@ END AS miktar
 
 FROM
 	siparis_yonetimi_kesin_siparis AS sip
-LEFT JOIN siparis_yonetimi_kesin_siparis_detay AS sipDet ON sipDet.siparisYonetimiKesinSiparisID = sip.siparisYonetimiKesinSiparisID
+INNER JOIN siparis_yonetimi_kesin_siparis_detay AS sipDet ON sipDet.siparisYonetimiKesinSiparisID = sip.siparisYonetimiKesinSiparisID
 LEFT JOIN (
 	SELECT
 		irs.siparisYonetimiKesinSiparisID,
@@ -240,11 +240,7 @@ LEFT JOIN (
 WHERE
 	sip.siparisYonetimiKesinSiparisID = '${siparisID}'
     AND sipDet.bakiye > 0
-AND (
-	irsOzet.miktar IS NULL
- 	OR 
- 	sipDet.siparisMiktari > irsOzet.miktar
-)
+AND miktar > 0
             
             `, { type: db.Sequelize.QueryTypes.SELECT })
                 .catch(e => {

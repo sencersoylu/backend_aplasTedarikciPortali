@@ -15,7 +15,6 @@ const tedarikciSertifikaBelgesiKontrol = require('./tedarikciSertifikaBelgesiKon
 
 const starter = setTimeout(() => {
 
-    sendMail();
 
     if (configs.startupMode != "test") {
 

@@ -18,6 +18,7 @@ const opts = {
 
 const log = logger.createSimpleLogger(opts);
 
+// henüz kod tamamlanmadı. güncellemen lazım!!!!
 
 // her gün saat 09:00'da çalışacak cronJob:  D1 ve D2 deki MTA tanımlarını kontrol edilip portala aktarılmasını sağlayan senkronizasyon
 module.exports = async function malzemeTasiyicilari() {

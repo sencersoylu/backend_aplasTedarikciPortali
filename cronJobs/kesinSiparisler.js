@@ -447,7 +447,7 @@ AND firma.CARI_FIR_KODU LIKE :cariFirmaKodu
                             if ((portalTelismTarihi != eesTeslimTarihi) || (portalSiparisMiktari != eesSiparisMiktari)) {
 
                                 guncellenenKalemler.push({
-                                    siparisDetayID: eslesenPortalKayit['siparisYonetimiKEsinSiparisDetayID'],
+                                    siparisDetayID: eslesenPortalKayit['siparisYonetimiKesinSiparisDetayID'],
                                     siparisMiktari: eesSiparisMiktari,
                                     siparisTeslimTarihi: eesTeslimTarihi,
                                     bakiye: eesKalem.bakiye
@@ -473,15 +473,15 @@ AND firma.CARI_FIR_KODU LIKE :cariFirmaKodu
                         if (matchedKalem.length > 0) {
 
                             const eslesenEESKayit = matchedKalem[0];
-                            const portalTelismTarihi = moment(portalKalem.siparisTeslimTarihi).format('YYYY-MM-DD');
+                            const portalTeslimTarihi = moment(portalKalem.siparisTeslimTarihi).format('YYYY-MM-DD');
                             const eesTeslimTarihi = moment(eslesenEESKayit.siparisTeslimTarihi).format('YYYY-MM-DD');
                             const portalSiparisMiktari = portalKalem.siparisMiktari ? portalKalem.siparisMiktari : 0;
                             const eesSiparisMiktari = eslesenEESKayit.siparisMiktari ? eslesenEESKayit.siparisMiktari : 0;
 
-                            if ((portalTelismTarihi != eesTeslimTarihi) || (portalSiparisMiktari != eesSiparisMiktari)) {
+                            if ((portalTeslimTarihi != eesTeslimTarihi) || (portalSiparisMiktari != eesSiparisMiktari)) {
 
                                 guncellenenKalemler.push({
-                                    siparisDetayID: portalKalem['siparisYonetimiKEsinSiparisDetayID'],
+                                    siparisDetayID: portalKalem['siparisYonetimiKesinSiparisDetayID'],
                                     siparisMiktari: eesSiparisMiktari,
                                     siparisTeslimTarihi: eesTeslimTarihi,
                                     bakiye: eslesenEESKayit.bakiye

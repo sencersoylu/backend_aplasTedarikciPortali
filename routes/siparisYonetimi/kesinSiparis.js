@@ -260,7 +260,7 @@ router.post('/onayla', async function (req, res) {
                         const miktarTarihBelirtilmeyenKalemler = await db.sequelize.query(`SELECT * FROM siparis_yonetimi_kesin_siparis_detay WHERE ${keyExpr} = '${siparisID}' AND bakiye > 0 AND (sevkTeslimTarihi IS NULL OR sevkMiktari IS NULL)`);
 
                         if(miktarTarihBelirtilmeyenKalemler.length > 0){
-                            throw "Bakiyesi kalan ürünler için sevk edebileceğiniz miktar veya tarih alanları boş olmamalıdır!"
+                            throw "Bakiyesi kalan ürünler için sevk edebileceğiniz miktar veya tarih alanları ile kalem sayısı boş olmamalıdır!"
                         }
                     }
 
