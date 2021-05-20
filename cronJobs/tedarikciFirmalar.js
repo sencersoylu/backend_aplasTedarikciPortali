@@ -54,7 +54,7 @@ module.exports = async function tedarikciFirmalar() {
                 firma.POSTA_KODU
         FROM
             FIRMALAR as firma
-        INNER JOIN ALIS_KAT as alisKat ON firma.FIRMA_KODU = alisKat.FIRMA_KODU
+        INNER JOIN ALIS_KAT as alisKat ON firma.KAYITNO = alisKat.FIRMALAR_KAY
                     `
             // portaldaki D1 ve D2 deki firmaların kontrol edilip, portala aktarılmasını gerçekleştirir
             const resultD1 = await eesD1.query(eesQuery, {
