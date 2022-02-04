@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const startupMode = require('../config/config.json').startupMode;
 
-const eesD1 = new Sequelize('EES_2021', 'sa', 'PLSkonigulsena206253', {
+const eesD1 = new Sequelize('EES_2022', 'sa', 'PLSkonigulsena206253', {
     host: '10.46.5.88',
     dialect: 'mssql',
     timezone: '+03:00',
@@ -13,7 +13,7 @@ const eesD1 = new Sequelize('EES_2021', 'sa', 'PLSkonigulsena206253', {
     }
 });
 
-const eesD2 = new Sequelize('EES_2021', 'sa', 'PLSkonigulsena206253', {
+const eesD2 = new Sequelize('EES_2022', 'sa', 'PLSkonigulsena206253', {
     host: '10.45.1.111',
     dialect: 'mssql',
     timezone: '+03:00',

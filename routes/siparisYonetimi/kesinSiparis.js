@@ -115,7 +115,7 @@ router.post('/onayaCikar', async function (req, res) {
             }
             else {
 
-                if(sipDurum['operasyonID'] != 2){
+                if (sipDurum['operasyonID'] != 2) {
                     throw "sipariş detayları eklendikten sonra onaya çıkarılmalıdır!"
                 }
 
@@ -125,7 +125,7 @@ router.post('/onayaCikar', async function (req, res) {
 
             }
         }
-        else{
+        else {
             throw "sipariş içeriği olmadan onaya çıkarılamaz!";
         }
 
@@ -185,22 +185,67 @@ router.post('/iptalEt', async function (req, res) {
                     updatedUserID: req.body.userData.userID,
                     not: req.body.not,
                 },
-                 {
-                    where: {
-                        [keyExpr]: siparisID
-                    }
-                })
-                .catch(e => {
-                    console.error(e);
-                    throw "iptal notu kaydedilirken hatayla karşılaşıldı!";
-                })
+                    {
+                        where: {
+                            [keyExpr]: siparisID
+                        }
+                    })
+                    .catch(e => {
+                        console.error(e);
+                        throw "iptal notu kaydedilirken hatayla karşılaşıldı!";
+                    })
 
                 // iptal hareket kaydı
                 await operasyonHareketiEkle(siparisID, 4, req);
 
                 // iptal edildi durum güncelleme
                 await durumGuncelle(siparisID, 3, req);
-                
+
+
+                 // mail başlangıç
+                    // açılan sipaişin iptali ilgili tedarikçi firma kullanıcılarına mail ile bildiriliyor
+                    const userMails = await db.sequelize.query(`
+                 SELECT
+                     k.ePosta, sip.siparisTarihi, firma.firmaAdi
+                 FROM
+                     siparis_yonetimi_kesin_siparis AS sip
+                 INNER JOIN kullanici_firma AS firma ON firma.kullaniciFirmaID = sip.ureticiFirmaID
+                 INNER JOIN tedarikci_firma AS tedFirma ON tedFirma.tedarikciFirmaID = sip.tedarikciFirmaID
+                 INNER JOIN kullanici_firma_kullanici AS fk ON fk.kullaniciFirmaID = firma.kullaniciFirmaID
+                 INNER JOIN kullanici AS k ON k.kullaniciID = fk.kullaniciID
+                 WHERE
+                     sip.siparisYonetimiKesinSiparisID = :siparisID
+                                  `, {
+                        type: db.Sequelize.QueryTypes.SELECT,
+                        replacements: {
+                            siparisID: siparisID
+                        }
+                    });
+
+                    const customDateFormat = (tarih) => {
+                        return moment(tarih).format("DD.MM.YYYY");
+                    }
+
+                    if (userMails.length > 0) {
+                        let toAddress = userMails.map(m => m.ePosta).toString(); // comma seperated
+                        let subject = 'A-PLAS Tedarikçi Portalı: İptal Edilen Sipariş';
+                        let htmlMessage = "Firmanıza açılan sipariş iptal edilmiştir. Lütfen portal üzerinden ilgili siparişi kontrol ediniz ve gerekli aksiyonları alınız. <br><br><u>Sipariş Bilgileri:</u><br>Sipariş Takip No: <strong>" + siparisID + "</strong><br>Sipariş Tarihi: <strong>" + customDateFormat(userMails[0]['siparisTarihi']) + "</strong> ";
+                        let attachments = [];
+
+                        helperService.mailKaydet(subject, toAddress, htmlMessage, new Date(), JSON.stringify(attachments), function (data, error) {
+                            if (error) {
+                                console.log(error);
+                            }
+
+                            if (data) {
+                            }
+                        });
+                    }
+
+
+                    // mail son
+
+
                 res.json("OK");
             }
         }
@@ -251,35 +296,126 @@ router.post('/onayla', async function (req, res) {
                 throw "iptal edilmiş sipariş onaylanamaz!";
             }
             else if (sipDurum['siparisDurumID'] == 1) {
-                if(sipDurum['operasyonID'] == 3){
+                if (sipDurum['operasyonID'] == 3) {
 
-                    if(firmaTurID == 1){
-                        throw "onaya çıkarılan sipariş, öncelikle satıcı tarafından onaylanmalıdır!"
+                    if (firmaTurID == 1) {
+                        throw "onaya çıkarılan sipariş, öncelikle satıcı tarafından onaylanmalıdır!";
                     }
-                    else if(firmaTurID == 2){
+                    else if (firmaTurID == 2) {
                         const miktarTarihBelirtilmeyenKalemler = await db.sequelize.query(`SELECT * FROM siparis_yonetimi_kesin_siparis_detay WHERE ${keyExpr} = '${siparisID}' AND bakiye > 0 AND (sevkTeslimTarihi IS NULL OR sevkMiktari IS NULL)`);
 
-                        if(miktarTarihBelirtilmeyenKalemler.length > 0){
-                            throw "Bakiyesi kalan ürünler için sevk edebileceğiniz miktar veya tarih alanları ile kalem sayısı boş olmamalıdır!"
+                        if (miktarTarihBelirtilmeyenKalemler.length > 0) {
+                            throw "Bakiyesi kalan ürünler için sevk edebileceğiniz miktar veya tarih alanları ile kalem sayısı boş olmamalıdır!";
                         }
                     }
 
-                    
+
                     // onay hareket kaydı
                     await operasyonHareketiEkle(siparisID, 5, req);
 
                     // onay durum güncelleme
                     await durumGuncelle(siparisID, 2, req);
+
+
+
+                    // mail başlangıç
+                    // satıcının siparişi onayladığı bilgisi, siparişi açan lokasyondaki alıcı kullanıcılarına mail ile bildiriliyor
+                    const userMails = await db.sequelize.query(`
+                 SELECT
+                     k.ePosta, sip.siparisTarihi, tedFirma.firmaAdi
+                 FROM
+                     siparis_yonetimi_kesin_siparis AS sip
+                 INNER JOIN kullanici_firma AS firma ON firma.kullaniciFirmaID = sip.ureticiFirmaID
+                 INNER JOIN tedarikci_firma AS tedFirma ON tedFirma.tedarikciFirmaID = sip.tedarikciFirmaID
+                 INNER JOIN kullanici_firma_kullanici AS fk ON fk.kullaniciFirmaID = firma.kullaniciFirmaID AND sip.lokasyonID = fk.kullaniciFirmaAdresID
+                 INNER JOIN kullanici AS k ON k.kullaniciID = fk.kullaniciID
+                 WHERE
+                     sip.siparisYonetimiKesinSiparisID = :siparisID
+                                  `, {
+                        type: db.Sequelize.QueryTypes.SELECT,
+                        replacements: {
+                            siparisID: siparisID
+                        }
+                    });
+
+                    const customDateFormat = (tarih) => {
+                        return moment(tarih).format("DD.MM.YYYY");
+                    }
+
+                    if (userMails.length > 0) {
+                        let toAddress = userMails.map(m => m.ePosta).toString(); // comma seperated
+                        let subject = 'A-PLAS Tedarikçi Portalı: Onay Bekleyen Sipariş';
+                        let htmlMessage = "'" + userMails[0]['firmaAdi'] + "' tarafından firma onayınıza sunulan sipariş bulunmaktadır. Lütfen portal üzerinden ilgili siparişi kontrol ediniz. <br><br><u>Sipariş Bilgileri:</u><br>Sipariş Takip No: <strong>" + siparisID + "</strong><br>Sipariş Tarihi: <strong>" + customDateFormat(userMails[0]['siparisTarihi']) + "</strong> ";
+                        let attachments = [];
+
+                        helperService.mailKaydet(subject, toAddress, htmlMessage, new Date(), JSON.stringify(attachments), function (data, error) {
+                            if (error) {
+                                console.log(error);
+                            }
+
+                            if (data) {
+                            }
+                        });
+                    }
+
+
+                    // mail son
+
                 }
-                else{
+                else {
                     throw "taslak sipariş önce satıcı onayına sunulmalıdır!";
                 }
             }
             else if (sipDurum['siparisDurumID'] == 4) { // şartlı onay
                 if (firmaTurID == 2) {
-                    
+
                     // onay hareket kaydı
                     await operasyonHareketiEkle(siparisID, 6, req);
+
+
+                    // mail başlangıç
+                    // tarih ve miktar değişikliği bilgisi, siparişi açan lokasyondaki kullanıcı firma kullanıcılarına mail ile bildiriliyor
+                    const userMails = await db.sequelize.query(`
+                 SELECT
+                     k.ePosta, sip.siparisTarihi, tedFirma.firmaAdi
+                 FROM
+                     siparis_yonetimi_kesin_siparis AS sip
+                 INNER JOIN kullanici_firma AS firma ON firma.kullaniciFirmaID = sip.ureticiFirmaID
+                 INNER JOIN tedarikci_firma AS tedFirma ON tedFirma.tedarikciFirmaID = sip.tedarikciFirmaID
+                 INNER JOIN kullanici_firma_kullanici AS fk ON fk.kullaniciFirmaID = firma.kullaniciFirmaID AND sip.lokasyonID = fk.kullaniciFirmaAdresID
+                 INNER JOIN kullanici AS k ON k.kullaniciID = fk.kullaniciID
+                 WHERE
+                     sip.siparisYonetimiKesinSiparisID = :siparisID
+                                  `, {
+                        type: db.Sequelize.QueryTypes.SELECT,
+                        replacements: {
+                            siparisID: siparisID
+                        }
+                    });
+
+                    const customDateFormat = (tarih) => {
+                        return moment(tarih).format("DD.MM.YYYY");
+                    }
+
+                    if (userMails.length > 0) {
+                        let toAddress = userMails.map(m => m.ePosta).toString(); // comma seperated
+                        let subject = 'A-PLAS Tedarikçi Portalı: Güncellenen Sipariş';
+                        let htmlMessage = "'" + userMails[0]['firmaAdi'] + "' firması, sipariş üzerinde sevk edilebilecek miktar ve tarih alanlarında güncelleme yapmış ve firma onayınıza sunulmuştur. Lütfen portal üzerinden ilgili siparişi kontrol ediniz. <br><br><u>Sipariş Bilgileri:</u><br>Sipariş Takip No: <strong>" + siparisID + "</strong><br>Sipariş Tarihi: <strong>" + customDateFormat(userMails[0]['siparisTarihi']) + "</strong> ";
+                        let attachments = [];
+
+                        helperService.mailKaydet(subject, toAddress, htmlMessage, new Date(), JSON.stringify(attachments), function (data, error) {
+                            if (error) {
+                                console.log(error);
+                            }
+
+                            if (data) {
+                            }
+                        });
+                    }
+
+
+                    // mail son
+
                 }
                 else if (firmaTurID == 1) {
 
@@ -288,6 +424,47 @@ router.post('/onayla', async function (req, res) {
 
                     // onay durum güncelleme
                     await durumGuncelle(siparisID, 2, req);
+
+
+                    // ilgili tedarikçi firma kullanılarına sevkiyatın başlanabileceğini bildiren mail bilgisi gönderiliyor
+                    const userMails = await db.sequelize.query(`
+                SELECT
+                    k.ePosta, sip.siparisTarihi, firma.firmaAdi
+                FROM
+                    siparis_yonetimi_kesin_siparis AS sip
+                INNER JOIN kullanici_firma AS firma ON firma.kullaniciFirmaID = sip.ureticiFirmaID
+                INNER JOIN tedarikci_firma AS tedFirma ON tedFirma.tedarikciFirmaID = sip.tedarikciFirmaID
+                INNER JOIN tedarikci_firma_kullanici AS fk ON fk.tedarikciFirmaID = tedFirma.kullaniciFirmaID
+                INNER JOIN kullanici AS k ON k.kullaniciID = fk.kullaniciID
+                WHERE
+                    sip.siparisYonetimiKesinSiparisID = :siparisID
+                                 `, {
+                        type: db.Sequelize.QueryTypes.SELECT,
+                        replacements: {
+                            siparisID: siparisID
+                        }
+                    });
+
+                    const customDateFormat = (tarih) => {
+                        return moment(tarih).format("DD.MM.YYYY");
+                    }
+
+                    if (userMails.length > 0) {
+                        let toAddress = userMails.map(m => m.ePosta).toString(); // comma seperated
+                        let subject = 'A-PLAS Tedarikçi Portalı: Onaylanan Sipariş';
+                        let htmlMessage = "Firmanıza açılan sipariş onaylanmış ve sevkiyatının başlaması beklenmektedir. Lütfen portal üzerinden ilgili siparişi kontrol ederek sevkiyatı başlatınız. <br><br><u>Sipariş Bilgileri:</u><br>Sipariş Takip No: <strong>" + siparisID + "</strong><br>Sipariş Tarihi: <strong>" + customDateFormat(userMails[0]['siparisTarihi']) + "</strong> ";
+                        let attachments = [];
+
+                        helperService.mailKaydet(subject, toAddress, htmlMessage, new Date(), JSON.stringify(attachments), function (data, error) {
+                            if (error) {
+                                console.log(error);
+                            }
+
+                            if (data) {
+                            }
+                        });
+                    }
+
                 }
             }
             else if (sipDurum['siparisDurumID'] == 2) {
@@ -513,7 +690,7 @@ router.post('/delete', async function (req, res) {
             }
             else {
 
-                if(sipDurum.operasyonID == 3){
+                if (sipDurum.operasyonID == 3) {
                     throw "onaya çıkarılmış sipariş silinemez!";
                 }
 

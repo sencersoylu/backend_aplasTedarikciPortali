@@ -174,6 +174,51 @@ router.post('/update', async function (req, res) {
                 console.log("Parametreler değişti!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 await durumGuncelle(siparisID, 4, req);
 
+
+                // mail başlangıç
+                // tarih ve miktar değişikliği bilgisi, siparişi açan lokasyondaki kullanıcı firma kullanıcılarına mail ile bildiriliyor
+
+//                  const userMails = await db.sequelize.query(`
+// SELECT
+// 	k.ePosta, sip.siparisTarihi, tedFirma.firmaAdi,
+// FROM
+// 	siparis_yonetimi_kesin_siparis AS sip
+// INNER JOIN kullanici_firma AS firma ON firma.kullaniciFirmaID = sip.ureticiFirmaID
+// INNER JOIN tedarikci_firma AS tedFirma ON tedFirma.tedarikciFirmaID = sip.tedarikciFirmaID
+// INNER JOIN kullanici_firma_kullanici AS fk ON fk.kullaniciFirmaID = firma.kullaniciFirmaID AND sip.lokasyonID = fk.kullaniciFirmaAdresID
+// INNER JOIN kullanici AS k ON k.kullaniciID = fk.kullaniciID
+// WHERE
+// 	sip.siparisYonetimiKesinSiparisID = :siparisID
+//                  `, {
+//                     type: db.Sequelize.QueryTypes.SELECT,
+//                     replacements: {
+//                         siparisID: siparisID
+//                     }
+//                 });
+
+//                 const customDateFormat = (tarih) => {
+//                     return moment(tarih).format("DD.MM.YYYY");
+//                 }
+
+//                 if (userMails.length > 0) {
+//                     let toAddress = userMails.map(m => m.ePosta).toString(); // comma seperated
+//                     let subject = 'A-PLAS Tedarikçi Portalı: Güncellenen Sipariş';
+//                     let htmlMessage = "'" + userMails[0]['firmaAdi'] + "' tarafından firmanıza açılan siparişte, sevk edilebilecek miktar ve tarih alanlarında güncelleme yapılmıştır. Lütfen portal üzerinden ilgili siparişi kontrol ediniz. <br><br><u>Sipariş Bilgileri:</u><br>Sipariş Takip No: <strong>" + siparisID + "</strong><br>Sipariş Tarihi: <strong>" + customDateFormat(userMails[0]['siparisTarihi']) + "</strong> ";
+//                     let attachments = [];
+
+//                     helperService.mailKaydet(subject, toAddress, htmlMessage, new Date(), JSON.stringify(attachments), function (data, error) {
+//                         if (error) {
+//                             console.log(error);
+//                         }
+
+//                         if (data) {
+//                         }
+//                     });
+//                 }
+
+
+                // mail son
+
             }
 
         }

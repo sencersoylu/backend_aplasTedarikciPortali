@@ -21,7 +21,7 @@ const log = logger.createSimpleLogger(opts);
 const helperService = require("../helpers/helperService");
 
 
-// 3 dk da bir çalışacak cronJob:  D1 ve D2 deki kesin siparişleri kontrol edilip portala aktarılmasını sağlayan senkronizasyon
+// 3 dk da bir çalışacak cronJob:  D1 ve D2 deki satın alma kesin siparişlerini kontrol edilip portala aktarılmasını sağlayan senkronizasyon
 module.exports = async function kesinSiparisler() {
 
     cron.schedule("0 */3 * * * *", async function () {
@@ -177,38 +177,33 @@ AND firma.CARI_FIR_KODU LIKE :cariFirmaKodu
             const eklenecekler = [];
             const guncellenecekler = [];
 
-            console.log(d1Siparisleri[0])
-            console.log(mevcutSiparisler[0])
+            d1Siparisleri.forEach(sipD1 => {
 
+                const matchedFirma = mevcutSiparisler.filter(sip => sipD1.SIPARISNO == sip.siparisNo && sipD1.CARI_FIR_KODU == sip.tedarikciFirmaKodu && sip.lokasyonID == d1FirmaAdresID);
 
-            d1Siparisleri.forEach(firmaD1 => {
-
-                const matchedFirma = mevcutSiparisler.filter(firma => firmaD1.SIPARISNO == firma.siparisNo && firmaD1.CARI_FIR_KODU == firma.tedarikciFirmaKodu && firma.lokasyonID == d1FirmaAdresID);
-
-                firmaD1['lokasyonID'] = d1FirmaAdresID;
+                sipD1['lokasyonID'] = d1FirmaAdresID;
 
                 if (matchedFirma.length > 0) {
-                    guncellenecekler.push({ eesKayit: firmaD1, portalKayit: matchedFirma[0] });
+                    guncellenecekler.push({ eesKayit: sipD1, portalKayit: matchedFirma[0] });
                 } else {
-                    eklenecekler.push(firmaD1);
+                    eklenecekler.push(sipD1);
                 }
 
             });
 
-            d2Siparisleri.forEach(firmaD2 => {
+            d2Siparisleri.forEach(sipD2 => {
 
-                const matchedFirma = mevcutSiparisler.filter(firma => firmaD2.SIPARISNO == firma.siparisNo && firmaD2.CARI_FIR_KODU == firma.tedarikciFirmaKodu && firma.lokasyonID == d2FirmaAdresID);
+                const matchedFirma = mevcutSiparisler.filter(sip => sipD2.SIPARISNO == sip.siparisNo && sipD2.CARI_FIR_KODU == sip.tedarikciFirmaKodu && sip.lokasyonID == d2FirmaAdresID);
 
-                firmaD2['lokasyonID'] = d2FirmaAdresID;
+                sipD2['lokasyonID'] = d2FirmaAdresID;
 
                 if (matchedFirma.length > 0) {
-                    guncellenecekler.push({ eesKayit: firmaD2, portalKayit: matchedFirma[0] });
+                    guncellenecekler.push({ eesKayit: sipD2, portalKayit: matchedFirma[0] });
                 } else {
-                    eklenecekler.push(firmaD2);
+                    eklenecekler.push(sipD2);
                 }
 
             });
-
 
             async function addSiparis(record) {
 
@@ -419,7 +414,7 @@ AND firma.CARI_FIR_KODU LIKE :cariFirmaKodu
                             }
                         })
                         .catch(e => {
-                            console.log("sipariş detayo güncellenirken hatayla karşılaşıldı")
+                            console.log("sipariş detayı güncellenirken hatayla karşılaşıldı")
                             throw e;
                         });
 
@@ -439,12 +434,12 @@ AND firma.CARI_FIR_KODU LIKE :cariFirmaKodu
 
                             const eslesenPortalKayit = matchedKalem[0];
 
-                            const portalTelismTarihi = moment(eslesenPortalKayit.siparisTeslimTarihi).format('YYYY-MM-DD');
+                            const portalTeslimTarihi = moment(eslesenPortalKayit.siparisTeslimTarihi).format('YYYY-MM-DD');
                             const eesTeslimTarihi = moment(eesKalem.siparisTeslimTarihi).format('YYYY-MM-DD');
                             const portalSiparisMiktari = eslesenPortalKayit.siparisMiktari ? eslesenPortalKayit.siparisMiktari : 0;
                             const eesSiparisMiktari = eesKalem.siparisMiktari ? eesKalem.siparisMiktari : 0;
 
-                            if ((portalTelismTarihi != eesTeslimTarihi) || (portalSiparisMiktari != eesSiparisMiktari)) {
+                            if ((portalTeslimTarihi != eesTeslimTarihi) || (portalSiparisMiktari != eesSiparisMiktari)) {
 
                                 guncellenenKalemler.push({
                                     siparisDetayID: eslesenPortalKayit['siparisYonetimiKesinSiparisDetayID'],
@@ -500,34 +495,68 @@ AND firma.CARI_FIR_KODU LIKE :cariFirmaKodu
 
                 }
 
-                return Promise.all(yeniKalemler.map(k => {
+                const yeniSiparisDetaylari = await Promise.all(yeniKalemler.map(k => {
                     return addSiparisDetay(k);
                 }))
-                    .then(() => {
-                        return Promise.all(guncellenenKalemler.map(k => {
-                            return updateSiparisDetay(k);
-                        }))
-                    })
-                    .then(() => {
-                        return Promise.all(silinecekKalemler.map(k => {
-                            return deleteSiparisDetay(k);
-                        }))
-                    })
+                    .catch(e => {
+                        log.error(e);
+                    });
+
+                const guncellenenSiparisDetaylari = await Promise.all(guncellenenKalemler.map(k => {
+                    return updateSiparisDetay(k);
+                }))
                     .catch(e => {
                         log.error(e);
                     });
 
 
+                const silinenSiparisDetaylari = await Promise.all(silinecekKalemler.map(k => {
+                    return deleteSiparisDetay(k);
+                }))
+                    .catch(e => {
+                        log.error(e);
+                    });
+
+                // ilgili tedarikçi firma kullanılarına sipariş güncellendi mail bilgisi gönderiliyor
+                const userMails = await db.sequelize.query("SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = :tedarikciID", {
+                    type: db.Sequelize.QueryTypes.SELECT,
+                    replacements: {
+                        tedarikciID: portalSiparisKayit['tedarikciFirmaID']
+                    }
+                });
+
+                const customDateFormat = (tarih) => {
+                    return moment(tarih).format("DD.MM.YYYY");
+                }
+
+                if (userMails.length > 0) {
+                    let toAddress = userMails.map(m => m.ePosta).toString(); // comma seperated
+                    let subject = 'A-PLAS Tedarikçi Portalı: Güncellenen Sipariş';
+                    let htmlMessage = "'" + kulFirma['firmaAdi'] + "' tarafından firmanıza oluşturulan sipariş güncellenmiştir. Lütfen portal üzerinden ilgili siparişi teyit ediniz. <br><br><u>Sipariş Bilgileri:</u><br>Sipariş Takip No: <strong>" + portalSiparisKayit[keyExpr] + "</strong><br>Sipariş Tarihi: <strong>" + customDateFormat(portalSiparisKayit['siparisTarihi']) + "</strong> ";
+                    let attachments = [];
+
+                    helperService.mailKaydet(subject, toAddress, htmlMessage, new Date(), JSON.stringify(attachments), function (data, error) {
+                        if (error) {
+                            console.log(error);
+                        }
+
+                        if (data) {
+                        }
+                    });
+                }
+
             }
 
-            return Promise.all(eklenecekler.map(mak => {
-                return addSiparis(mak);
+            await Promise.all(eklenecekler.map(sip => {
+                return addSiparis(sip);
             }))
-                .then(() => {
-                    return Promise.all(guncellenecekler.map(mak => {
-                        return updateSiparis(mak);
-                    }))
-                })
+                .catch(e => {
+                    log.error(e);
+                });
+
+            await Promise.all(guncellenecekler.map(sip => {
+                return updateSiparis(sip);
+            }))
                 .catch(e => {
                     log.error(e);
                 });

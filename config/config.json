@@ -1,6 +1,6 @@
 {
     "startupMode": "test",
-    "appVersion": "V1.20.12.25",
+    "appVersion": "V1.22.01.06",
     "serverExternalIpAdress": "78.189.231.153",
     "serverInternalIpAdress": "10.45.1.111",
     "test": {
