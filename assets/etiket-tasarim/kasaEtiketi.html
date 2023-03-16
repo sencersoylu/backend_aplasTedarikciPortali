@@ -1,0 +1,134 @@
+`
+<html>
+
+<head>
+   <meta charset="utf-8" />
+   <style>
+      @page {
+         size: auto portrait;
+         margin: 3mm 3mm 3mm 3mm;
+      }
+
+      body {
+         padding: 0px !important;
+         margin: 0px !important;
+         font-size: 12px;
+      }
+
+      table,
+      tr,
+      td {
+         border: 1px solid;
+         border-spacing: 0;
+      }
+
+      table {
+         table-layout: fixed;
+         margin: 0;
+         width: 100%;
+      }
+
+      .center {
+         text-align: center;
+         vertical-align: middle;
+      }
+
+      tr {
+         width: 100%;
+      }
+
+      td {
+         padding: 5px;
+         text-align: left;
+         word-wrap: break-word;
+      }
+
+      td.title {
+         font-weight: bolder;
+         width: 140px;
+      }
+
+      .h-1x {
+         height: 15px;
+      }
+
+      .h-2x {
+         height: 40px;
+      }
+
+      .h-3x {
+         height: 50px;
+      }
+
+      .h-4x {
+         height: 60px;
+      }
+
+      .h-5x {
+         height: 150px;
+      }
+
+      .font-size-lg {
+         font-size: 150px;
+         font-weight: bolder;
+      }
+   </style>
+</head>
+
+<body>
+   <table>
+      <tbody>
+         <tr class="h-2x">
+            <td class="title" colspan="2" style="text-align: center;">Aplas Malzeme Tanıtım Kartı</td>
+         </tr>
+         <tr class="h-4x">
+            <td class="title">Stok No</td>
+            <td>
+               <div style="display: flex; align-items:center;">
+                  <img class="h-3x" style="padding-left: 50px;" src="${qrUrlStokNo}" />
+                  <span style="margin-left: 20px;">${data.stokNo}</span>
+               </div>
+            </td>
+         </tr>
+         <tr class="h-2x">
+            <td class="title">Resim No</td>
+            <td>${data.resimNo}</td>
+         </tr>
+
+         <tr class="h-2x">
+            <td class="title">Tanım</td>
+            <td>${data.tanim}</td>
+         </tr>
+
+         <tr class="h-4x">
+            <td class="title">Lot No</td>
+            <td>
+            <div style="display: flex; align-items:center;">
+               <img class="h-4x" style="padding-left: 50px;" src="${qrUrlLotNo}" />
+               <span style="margin-left: 20px;">${data.lotNo}</span>
+            </div>
+               
+            </td>
+         </tr>
+
+         <tr class="h-2x">
+            <td class="title">Firma</td>
+            <td>${data.firma}</td>
+         </tr>
+
+         <tr class="h-2x">
+            <td class="title">Tarih</td>
+            <td>${data.tarih}</td>
+         </tr>
+
+         <tr class="h-2x">
+            <td class="title">İrsaliye No</td>
+            <td>${data.irsaliyeNo}</td>
+         </tr>
+
+      </tbody>
+   </table>
+</body>
+
+</html>
+`

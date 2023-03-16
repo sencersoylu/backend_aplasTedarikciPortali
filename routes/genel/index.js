@@ -1,0 +1,46 @@
+const express = require('express');
+const router = express.Router();
+
+const dosyaRoutes = require('./dosya');
+const genelMenuRoutes = require('./genelMenu');
+const genelIslemGrupRoutes = require('./genelIslemGrup');
+const genelIslemGrupKullaniciRoutes = require('./genelIslemGrupKullanici');
+const genelIlRoutes = require('./genelIl');
+const genelUlkeRoutes = require('./genelUlke');
+const genelIlceRoutes = require('./genelIlce');
+const kullaniciFirmaTeslimYeriRoutes = require('./kullaniciFirmaTeslimYeri');
+const genelUrunGrupRoutes = require('./genelUrunGrup');
+const genelUrunTurRoutes = require('./genelUrunTur');
+const genelOlcuBirimiRoutes = require('./genelOlcuBirimi');
+const genelUrunTasiyiciTuruRoutes = require('./genelUrunTasiyiciTuru');
+const genelUrunTasiyiciRoutes = require('./genelUrunTasiyici');
+const tedarikciFirmaRoutes = require('./tedarikciFirma');
+const tedarikciFirmaAdresRoutes = require('./tedarikciFirmaAdres');
+const kullaniciFirmaRoutes = require('./kullaniciFirma');
+const kullaniciFirmaAdresRoutes = require('./kullaniciFirmaAdres');
+const kullaniciFirmaKullaniciRoutes = require('./kullaniciFirmaKullanici');
+const tedarikciFirmaKullaniciRoutes = require('./tedarikciFirmaKullanici');
+const genelUrunTasimaTuruRoutes = require('./genelUrunTasimaTuru');
+
+router.use('/dosya', dosyaRoutes);
+router.use('/genelMenu', genelMenuRoutes);
+router.use('/genelIslemGrup', genelIslemGrupRoutes);
+router.use('/genelIslemGrupKullanici', genelIslemGrupKullaniciRoutes);
+router.use('/genelIl', genelIlRoutes);
+router.use('/genelIlce', genelIlceRoutes);
+router.use('/genelUlke', genelUlkeRoutes);
+router.use('/kullaniciFirmaTeslimYeri', kullaniciFirmaTeslimYeriRoutes);
+router.use('/genelUrunGrup', genelUrunGrupRoutes);
+router.use('/genelUrunTur', genelUrunTurRoutes);
+router.use('/genelOlcuBirimi', genelOlcuBirimiRoutes);
+router.use('/genelUrunTasiyiciTuru', genelUrunTasiyiciTuruRoutes);
+router.use('/genelUrunTasiyici', genelUrunTasiyiciRoutes);
+router.use('/tedarikciFirma', tedarikciFirmaRoutes);
+router.use('/tedarikciFirmaAdres', tedarikciFirmaAdresRoutes);
+router.use('/kullaniciFirma', kullaniciFirmaRoutes);
+router.use('/kullaniciFirmaAdres', kullaniciFirmaAdresRoutes);
+router.use('/kullaniciFirmaKullanici', kullaniciFirmaKullaniciRoutes);
+router.use('/tedarikciFirmaKullanici', tedarikciFirmaKullaniciRoutes);
+router.use('/genelUrunTasimaTuru', genelUrunTasimaTuruRoutes);
+
+module.exports = router;
