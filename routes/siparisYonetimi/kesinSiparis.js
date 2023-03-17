@@ -24,7 +24,7 @@ router.post('/boxOperasyonDurum', async function (req, res) {
         const aliciFirmaMi = ID == 1 ? true : false;
         const fieldName = aliciFirmaMi ? 'aliciFirmaDurum' : 'saticiFirmaDurum';
 
-        db.sequelize.query(`SELECT ${fieldName} as durum FROM siparis_yonetimi_kesin_siparis_operasyon WHERE ${fieldName} IS NOT NULL GROUP BY ${fieldName}  ORDER BY siparisYonetimiKesinSiparisOperasyonID ASC`, { type: db.Sequelize.QueryTypes.SELECT })
+        db.sequelize.query(`SELECT ${fieldName} as durum FROM siparis_yonetimi_kesin_siparis_operasyon WHERE ${fieldName} IS NOT NULL GROUP BY ${fieldName} `, { type: db.Sequelize.QueryTypes.SELECT })
             .then(d => {
                 res.json(d);
             })
