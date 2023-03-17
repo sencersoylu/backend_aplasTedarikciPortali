@@ -17,7 +17,7 @@
             "decimalNumbers": true
         },
         "apDownloaderPath": "C:/Kurumsal Portal (bim)/TEST_APIs/backend_web_tedarikci_portal",
-        "apiPort": 4270
+        "apiPort": 4250
     },
     "production": {
         "database": "tedarikcidb",
@@ -33,7 +33,7 @@
             "decimalNumbers": true
         },
         "apDownloaderPath": "C:/Kurumsal Portal (bim)/CANLI_APIs/backend_web_tedarikci_portal",
-        "apiPort": 4271
+        "apiPort": 4250
 
     }
 }
