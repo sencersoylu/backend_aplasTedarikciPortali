@@ -27,7 +27,7 @@ const startupMode = require('../config/config.json').startupMode;
 
 
 const appDB = new Sequelize(startupMode == 'production' ? 'tedarikcidb': 'tedarikcidb_test', 'root', 'Sencer77.', {
-    host: "51.158.243.42",
+    host: "127.0.0.1",
     port: 3306,
     dialect: "mysql",
     timezone: '+03:00',
