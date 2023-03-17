@@ -1,11 +1,9 @@
 const db = require('../models');
 const path = require('path');
 const cron = require('node-cron');
-const dbConnections = require('../config/dbConnections');
+//const dbConnections = require('../config/dbConnections');
 const logger = require('simple-node-logger');
 
-const eesD1 = dbConnections.eesD1;
-const eesD2 = dbConnections.eesD2;
 
 const table = "siparis_yonetimi_kesin_siparis";
 const keyExpr = "siparisYonetimiKesinSiparisID";

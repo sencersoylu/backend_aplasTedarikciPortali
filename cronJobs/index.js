@@ -19,10 +19,10 @@ const starter = setTimeout(() => {
     if (configs.startupMode != "test") {
 
         sendMail();
-        tedarikciFirmalar();
-        stokKartlari();
-        malAlisKataloglari();
-        kesinSiparisler();
+        //tedarikciFirmalar();
+        //stokKartlari();
+        //malAlisKataloglari();
+        //kesinSiparisler();
         tedarikciSiparisTeyitKontrol();
         tedarikciSiparisBakiyeKontrol();
         tedarikciSendikaUyesiKontrol();
