@@ -3,7 +3,7 @@
     "appVersion": "V1.22.01.06",
     "test": {
         "database": "tedarikcidb_test",
-        "host": "51.15.126.201",
+        "host": "51.158.243.42",
         "dialect": "mysql",
         "username": "root",
         "password": "Sencer77.",
@@ -19,7 +19,7 @@
     },
     "production": {
         "database": "tedarikcidb",
-        "host": "51.15.126.201",
+        "host": "51.158.243.42",
         "dialect": "mysql",
         "username": "root",
         "password": "Sencer77.",
