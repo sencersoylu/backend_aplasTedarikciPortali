@@ -19,15 +19,15 @@ const starter = setTimeout(() => {
     if (configs.startupMode != "test") {
 
         sendMail();
-        tedarikciFirmalar();
-        stokKartlari();
-        malAlisKataloglari();
-        kesinSiparisler();
-        tedarikciSiparisTeyitKontrol();
-        tedarikciSiparisBakiyeKontrol();
-        tedarikciSendikaUyesiKontrol();
-        tedarikciSertifikaGecerlilikKontrol();
-        tedarikciSertifikaBelgesiKontrol();
+        //tedarikciFirmalar();
+        // stokKartlari();
+        // malAlisKataloglari();
+        // kesinSiparisler();
+        // tedarikciSiparisTeyitKontrol();
+        // tedarikciSiparisBakiyeKontrol();
+        // tedarikciSendikaUyesiKontrol();
+        // tedarikciSertifikaGecerlilikKontrol();
+        // tedarikciSertifikaBelgesiKontrol();
         // malzemeTasiyicilari();
 
 

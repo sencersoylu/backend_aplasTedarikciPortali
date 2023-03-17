@@ -6,7 +6,7 @@ const path = require('path');
 const currentFileName = path.basename(__filename, '.js');
 
 const opts = {
-    logFilePath: './routes/anasayfa/logs/' + currentFileName + '.log',
+    logFilePath: './logs/' + currentFileName + '.log',
     timestampFormat: 'DD.MM.YYYY HH:mm:ss.SSS'
 };
 

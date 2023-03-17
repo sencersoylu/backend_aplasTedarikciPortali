@@ -12,7 +12,7 @@ const keyExpr = "urunYonetimiUreticiUrunID";
 
 const currentFileName = path.basename(__filename, '.js');
 const opts = {
-    logFilePath: './logs/cronJobs/' + currentFileName + '.log',
+    logFilePath: './logs/' + currentFileName + '.log',
     timestampFormat: 'DD.MM.YYYY HH:mm:ss.SSS'
 };
 
