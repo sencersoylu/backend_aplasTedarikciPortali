@@ -1,12 +1,14 @@
 {
     "startupMode": "test",
-    "appVersion": "V1.22.01.06",
+    "appVersion": "V1.23.03.01",
+    "serverExternalIpAdress": "78.189.231.153",
+    "serverInternalIpAdress": "10.45.1.111",
     "test": {
         "database": "tedarikcidb_test",
-        "host": "51.158.243.42",
+        "host": "10.45.1.111",
         "dialect": "mysql",
         "username": "root",
-        "password": "Sencer77.",
+        "password": "5421",
         "define": {
             "freezeTableName": true,
             "timestamps": true
@@ -15,14 +17,14 @@
             "decimalNumbers": true
         },
         "apDownloaderPath": "C:/Kurumsal Portal (bim)/TEST_APIs/backend_web_tedarikci_portal",
-        "apiPort": 4250
+        "apiPort": 4270
     },
     "production": {
         "database": "tedarikcidb",
-        "host": "51.158.243.42",
+        "host": "10.45.1.111",
         "dialect": "mysql",
         "username": "root",
-        "password": "Sencer77.",
+        "password": "5421",
         "define": {
             "freezeTableName": true,
             "timestamps": true
@@ -31,7 +33,7 @@
             "decimalNumbers": true
         },
         "apDownloaderPath": "C:/Kurumsal Portal (bim)/CANLI_APIs/backend_web_tedarikci_portal",
-        "apiPort": 4250
+        "apiPort": 4271
 
     }
 }

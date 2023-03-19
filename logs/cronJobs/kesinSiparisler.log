@@ -1,0 +1,1064 @@
+18.03.2023 21:26:37.519 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+18.03.2023 21:26:55.573 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '8d15b71a-6ff4-4962-817f-fb2d2c939959'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '8d15b71a-6ff4-4962-817f-fb2d2c939959'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '8d15b71a-6ff4-4962-817f-fb2d2c939959'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+18.03.2023 21:27:10.822 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+18.03.2023 21:28:04.654 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+18.03.2023 21:30:05.244 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+18.03.2023 21:45:04.950 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+18.03.2023 22:00:07.615 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+18.03.2023 22:15:06.883 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+18.03.2023 22:30:03.848 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+18.03.2023 22:45:04.812 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+18.03.2023 23:02:04.306 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+18.03.2023 23:49:03.296 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 00:00:32.560 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 00:16:19.910 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 00:31:55.170 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 00:46:19.455 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 01:01:40.003 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 01:19:15.074 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 01:30:41.978 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 01:47:13.558 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 02:00:46.694 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 02:19:17.540 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 02:31:26.050 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 02:46:52.105 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 03:00:34.875 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 03:16:09.884 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 03:32:59.211 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 03:46:58.302 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 04:04:09.166 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 04:16:27.686 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 04:32:56.863 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 04:47:07.575 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 05:01:19.341 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 05:18:10.664 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 05:31:45.131 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 05:45:15.282 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 06:02:09.124 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 06:18:07.815 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 06:31:22.906 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 06:46:54.916 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 07:00:54.754 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 07:15:17.906 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 07:31:09.948 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 07:47:44.011 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 08:00:36.482 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 08:16:02.251 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 08:31:02.132 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 08:45:48.151 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 09:03:30.931 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 09:15:35.268 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 09:34:13.830 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 09:46:43.491 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 10:01:25.979 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 10:16:54.980 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 10:30:56.487 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 10:48:10.807 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 11:01:50.328 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 11:16:21.544 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 11:32:13.564 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 11:46:15.342 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 12:02:06.684 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 12:16:44.177 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 12:31:17.688 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 12:45:25.736 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 13:01:38.374 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 13:19:17.677 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 13:32:48.617 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 13:47:14.261 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 14:03:08.831 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 14:16:26.278 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 14:32:04.688 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 14:45:55.952 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 15:03:19.014 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 15:17:31.370 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 15:34:11.304 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 15:46:48.042 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '926144c9-4fab-444d-897d-68c7439cb7d3'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 16:03:25.314 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 16:16:49.100 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 16:32:11.444 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 16:49:16.989 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 17:01:52.527 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 17:17:02.900 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 17:32:02.393 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 17:49:15.338 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 18:04:34.466 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 18:19:08.013 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 18:32:26.805 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 18:48:47.028 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 19:05:01.476 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 19:17:12.466 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 19:32:30.709 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 19:49:51.831 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 20:04:08.299 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 20:18:26.537 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 20:31:40.492 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 20:48:00.813 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 21:03:23.988 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 21:19:48.209 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 
+19.03.2023 21:33:05.914 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 21:46:23.535 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 
+19.03.2023 22:03:17.345 ERROR Column 'ePosta' in field list is ambiguous
+{"name":"SequelizeDatabaseError","parent":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"original":{"code":"ER_NON_UNIQ_ERROR","errno":1052,"sqlState":"23000","sqlMessage":"Column 'ePosta' in field list is ambiguous","sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"},"sql":"SELECT ePosta FROM kullanici as k INNER JOIN tedarikci_firma_kullanici as ik ON ik.kullaniciID = k.kullaniciID INNER JOIN tedarikci_firma as firma ON firma.tedarikciFirmaID = ik.tedarikciFirmaID WHERE ik.tedarikciFirmaID = '53bca3f0-d5de-4874-9594-4c80ef6769bc'"}
+SequelizeDatabaseError: Column 'ePosta' in field list is ambiguous
+    at Query.formatError (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:408:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:70:12)
+    at PacketParser.executeStart (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\mysql2\lib\connection.js:77:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17) 

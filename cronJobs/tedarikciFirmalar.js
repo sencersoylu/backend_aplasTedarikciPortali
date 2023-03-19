@@ -22,7 +22,7 @@ const log = logger.createSimpleLogger(opts);
 // her gün saat 09:00'da çalışacak cronJob:  UVT tarafından yazılan D1 ve D2 deki tedarikçi firmaları kontrol edilip portala aktarılmasını sağlayan senkronizasyon
 module.exports = async function tedarikciFirmalar() {
 
-    cron.schedule("00 09 * * *", async function () {
+    cron.schedule("0 9 * * *", async function () {
 
         try {
 
@@ -218,7 +218,7 @@ module.exports = async function tedarikciFirmalar() {
                 return db[table]
                     .update(firma, {
                         where: {
-                            [keyExpr]: firma[keyExpr]
+                            firmaKodu: firma.CARI_FIR_KODU
                         }
                     });
 

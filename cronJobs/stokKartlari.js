@@ -3,6 +3,7 @@ const path = require('path');
 const cron = require('node-cron');
 const dbConnections = require('../config/dbConnections');
 const logger = require('simple-node-logger');
+const { Console } = require('console');
 
 const eesD1 = dbConnections.eesD1;
 const eesD2 = dbConnections.eesD2;
@@ -22,7 +23,7 @@ const log = logger.createSimpleLogger(opts);
 // her gün saat 09:00'da çalışacak cronJob:  D1 ve D2 deki stok kartlarını kontrol edilip portala aktarılmasını sağlayan senkronizasyon
 module.exports = async function stokKartlari() {
 
-    cron.schedule("00 09 * * *", async function () {
+    cron.schedule("* * * * *", async function () {
 
         try {
 
@@ -85,7 +86,7 @@ module.exports = async function stokKartlari() {
 
             d1Stoklari.forEach(d1Stok => {
 
-                const matchedStok = mecutStoklar.filter(stok => d1Stok.STOKNO == stok.urunKodu);
+                const matchedStok = mecutStoklar.filter(stok => d1Stok.STOKNO == stok.kodu);
                 d1Stok['kullaniciFirmaAdresID'] = "547dd4d6-3ba9-49f5-bded-58fd7a3dc2a1"; // d1 kullanıcı firma adres id
 
                 if (matchedStok.length > 0) {
@@ -98,7 +99,11 @@ module.exports = async function stokKartlari() {
 
             d2Stoklari.forEach(d2Stok => {
 
-                const matchedStok = mecutStoklar.filter(stok => d2Stok.STOKNO == stok.urunKodu);
+                //console.log(d2Stok);
+                //console.log(mecutStoklar);
+
+                const matchedStok = mecutStoklar.filter(stok => d2Stok.STOKNO == stok.kodu);
+
                 d2Stok['kullaniciFirmaAdresID'] = "30612299-241f-447e-8881-db060282aba9"; // d2 kullanıcı firma adres id
 
                 if (matchedStok.length > 0) {
@@ -111,8 +116,8 @@ module.exports = async function stokKartlari() {
 
             mecutStoklar.forEach(stok => {
 
-                const matchedStokD1 = d1Stoklari.filter(d1Stok => d1Stok.STOKNO == stok.urunKodu);
-                const matchedStokD2 = d2Stoklari.filter(d2Stok => d2Stok.STOKNO == stok.urunKodu);
+                const matchedStokD1 = d1Stoklari.filter(d1Stok => d1Stok.STOKNO == stok.kodu);
+                const matchedStokD2 = d2Stoklari.filter(d2Stok => d2Stok.STOKNO == stok.kodu);
 
                 if (matchedStokD1.length == 0 && matchedStokD2.length == 0) {
                     silinecekler.push(stok);
@@ -169,7 +174,7 @@ module.exports = async function stokKartlari() {
                 return db[table]
                     .update(stok, {
                         where: {
-                            [keyExpr]: stok[keyExpr]
+                            kodu: stok.kodu
                         }
                     });
 

@@ -14,20 +14,24 @@ const tedarikciSertifikaBelgesiKontrol = require('./tedarikciSertifikaBelgesiKon
 
 
 const starter = setTimeout(() => {
-
+        
+        tedarikciFirmalar();
+        stokKartlari();
+        malAlisKataloglari();
+        kesinSiparisler();
 
     if (configs.startupMode != "test") {
 
-        sendMail();
+        //sendMail();
         //tedarikciFirmalar();
         //stokKartlari();
         //malAlisKataloglari();
         //kesinSiparisler();
-        tedarikciSiparisTeyitKontrol();
-        tedarikciSiparisBakiyeKontrol();
-        tedarikciSendikaUyesiKontrol();
-        tedarikciSertifikaGecerlilikKontrol();
-        tedarikciSertifikaBelgesiKontrol();
+        //tedarikciSiparisTeyitKontrol();
+        //tedarikciSiparisBakiyeKontrol();
+        //tedarikciSendikaUyesiKontrol();
+        //tedarikciSertifikaGecerlilikKontrol();
+        //tedarikciSertifikaBelgesiKontrol();
         // malzemeTasiyicilari();
 
 
@@ -36,7 +40,7 @@ const starter = setTimeout(() => {
 
 
 
-}, 6000); // run crons after 6 seconds
+}, 10000); // run crons after 6 seconds
 
 
 module.exports = starter;

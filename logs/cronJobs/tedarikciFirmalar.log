@@ -1,0 +1,12 @@
+18.03.2023 21:14:00.004 ERROR Cannot read property 'query' of undefined
+{}
+TypeError: Cannot read property 'query' of undefined
+    at Task.execution (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\cronJobs\tedarikciFirmalar.js:60:42)
+    at Promise (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\node-cron\src\task.js:52:23)
+    at new Promise (<anonymous>)
+    at Task.update (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\node-cron\src\task.js:50:7)
+    at Timeout.ScheduledTask.task [as _onTimeout] (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\node-cron\src\scheduled-task.js:86:10)
+    at ontimeout (timers.js:436:11)
+    at tryOnTimeout (timers.js:300:5)
+    at listOnTimeout (timers.js:263:5)
+    at Timer.processTimers (timers.js:223:10) 

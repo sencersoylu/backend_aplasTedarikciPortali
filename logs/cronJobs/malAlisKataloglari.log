@@ -1,0 +1,4 @@
+19.03.2023 09:02:29.489 ERROR Operation timeout
+{"name":"SequelizeConnectionAcquireTimeoutError","parent":{},"original":{}}
+SequelizeConnectionAcquireTimeoutError: Operation timeout
+    at pool.acquire.catch.error (C:\Kurumsal Portal (bim)\TEST_APIs\backend_web_tedarikci_portal\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:289:52) 

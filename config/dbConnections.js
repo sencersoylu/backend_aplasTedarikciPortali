@@ -1,29 +1,29 @@
 const Sequelize = require('sequelize');
 const startupMode = require('../config/config.json').startupMode;
 
-// const eesD1 = new Sequelize('EES_2022', 'sa', 'PLSkonigulsena206253', {
-//     host: '10.46.5.88',
-//     dialect: 'mssql',
-//     timezone: '+03:00',
-//     pool: {
-//         max: 10,
-//         min: 0,
-//         acquire: 30000,
-//         idle: 10000
-//     }
-// });
+const eesD1 = new Sequelize('EES_2022', 'sa', 'PLSkonigulsena206253', {
+    host: '10.46.5.88',
+    dialect: 'mssql',
+    timezone: '+03:00',
+    pool: {
+        max: 10,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    }
+});
 
-// const eesD2 = new Sequelize('EES_2022', 'sa', 'PLSkonigulsena206253', {
-//     host: '10.45.1.111',
-//     dialect: 'mssql',
-//     timezone: '+03:00',
-//     pool: {
-//         max: 10,
-//         min: 0,
-//         acquire: 30000,
-//         idle: 10000
-//     }
-// });
+const eesD2 = new Sequelize('EES_2022', 'sa', 'PLSkonigulsena206253', {
+    host: '10.45.1.111',
+    dialect: 'mssql',
+    timezone: '+03:00',
+    pool: {
+        max: 10,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    }
+});
 
 
 const appDB = new Sequelize(startupMode == 'production' ? 'tedarikcidb': 'tedarikcidb_test', 'root', 'Sencer77.', {
@@ -43,6 +43,7 @@ const appDB = new Sequelize(startupMode == 'production' ? 'tedarikcidb': 'tedari
 
 
 module.exports = {
-   
+   eesD1,
+   eesD2,
     appDB
 }

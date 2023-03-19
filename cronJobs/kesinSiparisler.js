@@ -24,7 +24,7 @@ const helperService = require("../helpers/helperService");
 // 3 dk da bir çalışacak cronJob:  D1 ve D2 deki satın alma kesin siparişlerini kontrol edilip portala aktarılmasını sağlayan senkronizasyon
 module.exports = async function kesinSiparisler() {
 
-    cron.schedule("0 */3 * * * *", async function () {
+    cron.schedule("0 */15 * * * *", async function () {
 
         try {
 
